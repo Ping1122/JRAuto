@@ -1,1 +1,7 @@
+# cache
 __pycache__/
+
+# image
+*.png
+
+.DS_Storeß

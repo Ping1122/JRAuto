@@ -1,7 +1,7 @@
 from appscript import *
 from config import *
 import time
-from moniter import *
+from monitor import *
 
 def inspectRepairReplace():
 	pass
