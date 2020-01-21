@@ -1,13 +1,15 @@
 from actions import *
 from logger import *
 
-def startStage74():
+def startStage(stage):
+	if stage not in stages:
+		log(message.invaildStage, Types.warning)
+		return
+	updateScreenshotAndState()
 	while True:
-		selectStage("7-4")
+		selectStage(stage)
 		inspectRepairReplace()	
 		supply()
-		battle()
+		battle(stage)
 
-stages = {
-	"7-4": startStage74,
-}
+stages = { "7-4b" }

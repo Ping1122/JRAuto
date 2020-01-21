@@ -8,15 +8,21 @@ class States(OrderedEnum):
 	sailingOffCombat = 4
 	sailingOffExpidition = 5
 	combatPreparationStatisticSquadron1 = 6
-	combatPreparationQuickSupplySquadron1 = 7
-	combatPreparationQuickSupplySquadron2 = 8
-	combatPreparationQuickSupplySquadron3 = 9
-	combatPreparationQuickSupplySquadron4 = 10
-	combatPreParationQuickRepairSquadron1 = 11
-	enemyInfo = 12
-	selectFormation = 13
-	forwardOrRetreat = 14
-	attendence = 15
+	combatPreparationStatisticSquadron2 = 7
+	combatPreparationStatisticSquadron3 = 8
+	combatPreparationStatisticSquadron4 = 9
+	combatPreparationQuickSupplySquadron1 = 10
+	combatPreparationQuickSupplySquadron2 = 11
+	combatPreparationQuickSupplySquadron3 = 12
+	combatPreparationQuickSupplySquadron4 = 13
+	combatPreParationQuickRepairSquadron1 = 14
+	combatPreParationQuickRepairSquadron2 = 15
+	combatPreParationQuickRepairSquadron3 = 16
+	combatPreParationQuickRepairSquadron4 = 17
+	enemyInfo = 18
+	selectFormation = 19
+	forwardOrRetreat = 20
+	attendence = 21
 
 gameCloseSignature = {
 	# Assumption: background does not change
@@ -172,6 +178,21 @@ stateSignature = {
 		**statisticSignature,
 		**squadron1Signature
 	},
+	States.combatPreparationStatisticSquadron2 : {
+		**combatPreparationSignature,
+		**statisticSignature,
+		**squadron2Signature
+	},
+	States.combatPreparationStatisticSquadron3 : {
+		**combatPreparationSignature,
+		**statisticSignature,
+		**squadron3Signature
+	},
+	States.combatPreparationStatisticSquadron4 : {
+		**combatPreparationSignature,
+		**statisticSignature,
+		**squadron4Signature
+	},
 	States.combatPreparationQuickSupplySquadron1 : {
 		**combatPreparationSignature,
 		**quickSupplySignature,
@@ -196,6 +217,21 @@ stateSignature = {
 		**combatPreparationSignature,
 		**quickRepairSignature,
 		**squadron1Signature
+	},
+	States.combatPreParationQuickRepairSquadron2 : {
+		**combatPreparationSignature,
+		**quickRepairSignature,
+		**squadron2Signature
+	},
+	States.combatPreParationQuickRepairSquadron3 : {
+		**combatPreparationSignature,
+		**quickRepairSignature,
+		**squadron3Signature
+	},
+	States.combatPreParationQuickRepairSquadron4 : {
+		**combatPreparationSignature,
+		**quickRepairSignature,
+		**squadron4Signature
 	},
 	States.enemyInfo: enemyInfoSignature,
 	States.selectFormation : selectFormationSignature,

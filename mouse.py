@@ -14,8 +14,11 @@ def simulateSingleClick(position, std):
 	moveAndClick(position, std)
 	sleepAfterClick()
 
-def clickUntilChangeState(state):
-	pass
+def simulateShortClick(position, std):
+	position = pixelPositionToMousePosition(position)
+	std = pixelStdToMouseStd(std)
+	moveAndClick(position, std)
+	shortSleepAfterClick()
 
 def pixelPositionToMousePosition(position):
 	x = SIMULATOR_WINDOW_POSITION_MOUSE[0] + IMG_RESOLUTION_MOUSE[0]*(position[0]/IMG_RESOLUTION[0])
@@ -27,6 +30,10 @@ def pixelStdToMouseStd(std):
 
 def sleepAfterClick():
 	sleepTime = SINGLE_CLICK_INTERVAL + random.gauss(0, SINGLE_CLICK_INTERVAL_STD)
+	time.sleep(sleepTime)
+
+def shortSleepAfterClick():
+	sleepTime = SHORT_CLICK_INTERVAL + random.gauss(0, SHORT_CLICK_INTERVAL_STD)
 	time.sleep(sleepTime)
 
 def moveAndClick(position, std):

@@ -1,2 +1,2 @@
-enterStage = "Enter the stage you want to level. \nCurrently support stage: \n 7-4"
+enterStage = "Enter the stage you want to level. \nCurrently support stage are 7-4b"
 invalidStage = "Invalid stage, please try again"

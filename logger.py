@@ -10,6 +10,5 @@ typeMessageHeader = {
 }
 
 def log(message, type):
-	print(typeMessageHeader[type] + message)
-	print(Style.RESET_ALL)
+	print(typeMessageHeader[type] + message + Style.RESET_ALL)
 

@@ -1,13 +1,12 @@
-from stages import stages
+from stages import *
 import message
+from logger import *
 
 def main():
 	while True:
-		stage = input(message.enterStage)
-		if stage in stages:
-			stages[stage]()
-		else:
-			print(message.invaildStage)
+		log(message.enterStage, Types.info)
+		stage = input()
+		startStage(stage)
 
 if __name__== "__main__":
 	main()

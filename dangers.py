@@ -31,3 +31,8 @@ stage74bExistsSubmarineSignature = {
 	(523, 526) : (208, 209, 211, 255),
 	(677, 574) : (185, 27, 78, 255),
 }
+
+existsSeriousDamagedShipSignature = {
+	(455, 294) : (255, 201, 70, 255),
+	(744, 281) : (228, 73, 73, 255),
+}

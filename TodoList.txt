@@ -1,0 +1,4 @@
+- auto expidition
+- 7-1
+- check squadron
+- Detect repairing
