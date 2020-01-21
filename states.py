@@ -1,15 +1,18 @@
-from enum import Enum     
+from util import OrderedEnum   
 
-States = Enum(
-	'States', 
-	'unknown ' + 
-	'gameClose ' +
-	'login ' +
-	'home ' +
-	'sailingOffCombat ' +
-	'sailingOffExpidition ' +
-	'combatPreparationStatisticSquadron1 ' 
-)
+class States(OrderedEnum):
+	unknown = 0
+	gameClose = 1
+	login = 2
+	home = 3
+	sailingOffCombat = 4
+	sailingOffExpidition = 5
+	combatPreparationStatisticSquadron1 = 6
+	combatPreparationQuickSupplySquadron1 = 7
+	combatPreParationQuickRepairSquadron1 = 8
+	enemyInfo = 9
+	forwardOrRetreat = 10
+	attendence = 11
 
 gameCloseSignature = {
 	# Assumption: background does not change
@@ -47,7 +50,7 @@ sailingOffSignature = {
 	(1219, 74) : (55, 68, 88, 255),
 	(1326, 780) : (88, 100, 117, 255),
 	(49, 778) : (67, 77, 88, 255),
-	(1451, 580) : (16, 36, 60, 255),
+	(1479, 409) : (17, 38, 59, 255),
 	(44, 14) : (84, 86, 96, 255),
 }
 
@@ -79,10 +82,46 @@ statisticSignature = {
 	(219, 666) : (251, 254, 255, 255),
 }
 
+quickSupplySignature = {
+	# Assumption: supply selected style does not change
+	(369, 669) : (30, 138, 240, 255),
+	(417, 665) : (254, 255, 255, 255),
+}
+
+quickRepairSignature = {
+	# Assumption: repair selected style does not change
+	(383, 658) : (34, 68, 95, 255),
+	(449, 651) : (230, 235, 238, 255),
+}
+
 squadron1Signature = {
 	# Assumption: squadrom1 selected style does not change
 	(123, 127) : (16, 132, 228, 255),
 	(147, 126) : (247, 251, 254, 255),
+}
+
+enemyInfoSignature = {
+	# Assumption: right-bottom logo does not change
+	(1018, 754) : (119, 12, 13, 255),
+	(1074, 768) : (240, 231, 231, 255),
+	(1130, 794) : (249, 245, 245, 255),
+	(1231, 814) : (195, 175, 45, 255),
+	(1231, 814) : (195, 175, 45, 255),
+	(1291, 769) : (0, 0, 0, 255),
+	(1416, 784) : (122, 110, 31, 255),
+}
+
+forwardOrRetreatSignature = {
+	(443, 329) : (204, 204, 204, 255),
+	(444, 355) : (97, 97, 97, 255),
+	(554, 553) : (152, 7, 7, 255),
+	(976, 534) : (39, 149, 252, 255),
+	(670, 575) : (237, 237, 237, 255),
+	(737, 255) : (237, 237, 237, 255),
+}
+
+attendenceSignature = {
+	# TODO
 }
 
 stateSignature = {
@@ -101,7 +140,25 @@ stateSignature = {
 		**combatPreparationSignature,
 		**statisticSignature,
 		**squadron1Signature
-	}
-
+	},
+	States.combatPreparationQuickSupplySquadron1 : {
+		**combatPreparationSignature,
+		**quickSupplySignature,
+		**squadron1Signature,
+	},
+	States.combatPreParationQuickRepairSquadron1 : {
+		**combatPreparationSignature,
+		**quickRepairSignature,
+		**squadron1Signature
+	},
+	States.enemyInfo: enemyInfoSignature,
+	States.forwardOrRetreat : forwardOrRetreatSignature,
+	#States.attendence : attendenceSignature,
 }
+
+def isSailingOffState(state):
+	return (state >= States.sailingOffCombat) and (state < States.combatPreparation)
+
+def isCombatPreparationState(state):
+	return (state >= States.combatPreparationStatisticSquadron1) and (state < States.enemyInfo)
 
