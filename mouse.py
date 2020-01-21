@@ -8,14 +8,11 @@ from states import *
 mouse = Controller()
 random.seed(datetime.now())
 
-def singleClick(position, std):
+def simulateSingleClick(position, std):
 	position = pixelPositionToMousePosition(position)
 	std = pixelStdToMouseStd(std)
 	moveAndClick(position, std)
 	sleepAfterClick()
-	img = takeScreenshot()
-	state = analyzeState()
-	return (img, state)
 
 def clickUntilChangeState(state):
 	pass
@@ -29,7 +26,7 @@ def pixelStdToMouseStd(std):
 	return int(std * (IMG_RESOLUTION_MOUSE[0] / IMG_RESOLUTION[0]))
 
 def sleepAfterClick():
-	sleepTime = CLICK_INTERVAL + random.gauss(0, CLICK_INTERVAL_STD)
+	sleepTime = SINGLE_CLICK_INTERVAL + random.gauss(0, SINGLE_CLICK_INTERVAL_STD)
 	time.sleep(sleepTime)
 
 def moveAndClick(position, std):

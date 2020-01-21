@@ -8,7 +8,6 @@ from logger import *
 
 currentScreenshot = None
 currentState = None
-updateScreenshotAndState()
 
 def updateScreenshotAndState():
 	global currentScreenshot
@@ -27,18 +26,41 @@ def inspectRepairReplace():
 
 def selectStage(stage):
 	assertCurrentState(States.sailingOffCombat, "select stage")
-	singleClick(SELECT_STAGE_CLICK_POSITION, SELECT_STAGE_CLICK_STD)
+	simulateSingleClick(SELECT_STAGE_CLICK_POSITION, SELECT_STAGE_CLICK_STD)
 	updateScreenshotAndState()
 
 def supply():
 	description = "quick supply ships"
 	assertCurrentStateSatisfyCondition(isCombatPreparationState, description)
-	singleClick(SELECT_STAGE_CLICK_POSITION, SELECT_STAGE_CLICK_STD)
-	updateScreenshotAndState()
-	
+	if not isCombatPreparationQuickSupplyState(currentState):
+		simulateSingleClick(SELECT_QUICK_SUPPLY_POSITION, SELECT_QUICK_SUPPLY_STD)
+		updateScreenshotAndState()
+	assertCurrentStateSatisfyCondition(isCombatPreparationQuickSupplyState, description)
+	simulateSingleClick(PERFORM_QUICK_SUPPLY_POSITION, PERFORM_QUICK_SUPPLY_STD)
+	time.sleep(2)
 
 def battle():
-	pass
+	description = "battle"
+	assertCurrentStateSatisfyCondition(isCombatPreparationState, description)
+	simulateSingleClick(START_COMBAT_POSITION, START_COMBAT_STD)
+	waitForState(States.enemyInfo)
+	assertCurrentState(States.enemyInfo, description)
+	if checkStage74bExistsSubmarine():
+		simulateSingleClick(RETREAT_ENEMY_INFO_POSITION, RETREAT_ENEMY_INFO_STD)
+		time.sleep(2)
+		return
+	simulateSingleClick(START_BATTLE_ENEMY_INFO_POSITION, START_BATTLE_ENEMY_INFO_STD)
+
+
+
+
+def waitForState(state):
+	iterationCount = 0
+	while currentState != state:
+		simulateShortClick(SAILING_OFF_ENEMY_INFO_POSITION, SAILING_OFF_ENEMY_INFO_STD)
+		iterationCount += 1
+		if iterationCount % 5 == 0:
+			updateScreenshotAndState()
 
 def openSimulator():
 	simulator = app("/Applications/NemuPlayer.app")
@@ -60,5 +82,4 @@ def assertCurrentStateSatisfyCondition(stateCondition, description):
 		log(message, Types.error)
 		exit(1)
 
-initialize()
-print(inspectRepairReplace())
+updateScreenshotAndState()

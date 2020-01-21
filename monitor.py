@@ -30,6 +30,14 @@ def findDamagedShips(img):
 			damagedShips.append(ship)
 	return damagedShips
 
+def checkStage74bExistsSubmarine(img):
+	imgData = img.getdata()
+	return all(
+		imgData[pixelPostionToImageDataIndex(pos)] == color 
+		for pos, color in stage74bExistsSubmarineSignature.items()
+	)
+
+
 def takeScreenshot():
 	img = ImageGrab.grab(bbox = SIMULATOR_WINDOW_POSITION)
 	return img

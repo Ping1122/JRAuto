@@ -9,10 +9,14 @@ class States(OrderedEnum):
 	sailingOffExpidition = 5
 	combatPreparationStatisticSquadron1 = 6
 	combatPreparationQuickSupplySquadron1 = 7
-	combatPreParationQuickRepairSquadron1 = 8
-	enemyInfo = 9
-	forwardOrRetreat = 10
-	attendence = 11
+	combatPreparationQuickSupplySquadron2 = 8
+	combatPreparationQuickSupplySquadron3 = 9
+	combatPreparationQuickSupplySquadron4 = 10
+	combatPreParationQuickRepairSquadron1 = 11
+	enemyInfo = 12
+	selectFormation = 13
+	forwardOrRetreat = 14
+	attendence = 15
 
 gameCloseSignature = {
 	# Assumption: background does not change
@@ -100,6 +104,24 @@ squadron1Signature = {
 	(147, 126) : (247, 251, 254, 255),
 }
 
+squadron2Signature = {
+	# Assumption: squadrom2 selected style does not change
+	(314, 136) : (16, 132, 229, 255),
+	(326, 126) : (206, 230, 249, 255),
+}
+
+squadron3Signature = {
+	# Assumption: squadrom3 selected style does not change
+	(502, 137) : (15, 132, 229, 255),
+	(512, 127) : (250, 252, 255, 255),
+}
+
+squadron4Signature = {
+	# Assumption: squadrom4 selected style does not change
+	(659, 130) : (16, 132, 228, 255),
+	(705, 139) : (255, 255, 255, 255),
+}
+
 enemyInfoSignature = {
 	# Assumption: right-bottom logo does not change
 	(1018, 754) : (119, 12, 13, 255),
@@ -109,6 +131,15 @@ enemyInfoSignature = {
 	(1231, 814) : (195, 175, 45, 255),
 	(1291, 769) : (0, 0, 0, 255),
 	(1416, 784) : (122, 110, 31, 255),
+}
+
+selectFormationSignature = {
+	(864, 168) : (255, 255, 255, 255),
+	(811, 486) : (255, 255, 255, 255),
+	(819, 358) : (255, 255, 255, 255),
+	(749, 652) : (255, 255, 255, 255),
+	(718, 758) : (255, 255, 255, 255),
+	(1421, 778) : (52, 52, 52, 255),
 }
 
 forwardOrRetreatSignature = {
@@ -146,19 +177,39 @@ stateSignature = {
 		**quickSupplySignature,
 		**squadron1Signature,
 	},
+	States.combatPreparationQuickSupplySquadron2 : {
+		**combatPreparationSignature,
+		**quickSupplySignature,
+		**squadron2Signature,
+	},
+	States.combatPreparationQuickSupplySquadron3 : {
+		**combatPreparationSignature,
+		**quickSupplySignature,
+		**squadron3Signature,
+	},
+	States.combatPreparationQuickSupplySquadron4 : {
+		**combatPreparationSignature,
+		**quickSupplySignature,
+		**squadron4Signature,
+	},
 	States.combatPreParationQuickRepairSquadron1 : {
 		**combatPreparationSignature,
 		**quickRepairSignature,
 		**squadron1Signature
 	},
 	States.enemyInfo: enemyInfoSignature,
+	States.selectFormation : selectFormationSignature,
 	States.forwardOrRetreat : forwardOrRetreatSignature,
 	#States.attendence : attendenceSignature,
 }
 
 def isSailingOffState(state):
-	return (state >= States.sailingOffCombat) and (state < States.combatPreparation)
+	return (state >= States.sailingOffCombat) and (state < States.combatPreparationStatisticSquadron1)
 
 def isCombatPreparationState(state):
 	return (state >= States.combatPreparationStatisticSquadron1) and (state < States.enemyInfo)
+
+def isCombatPreparationQuickSupplyState(state):
+	return (state >= States.combatPreparationQuickSupplySquadron1) and (state <= States.combatPreparationQuickSupplySquadron4)
+
 

@@ -2,14 +2,9 @@ from actions import *
 from logger import *
 
 def startStage74():
-	initialize()
 	while True:
 		selectStage("7-4")
-		damagedShips = inspectRepairReplace()
-		if damagedShips:
-			message = "Ship " + str(damagedShips) + "are damaged, stop auto play"
-			log(message, Type.warning)
-			break	
+		inspectRepairReplace()	
 		supply()
 		battle()
 

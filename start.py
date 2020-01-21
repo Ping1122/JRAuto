@@ -1,6 +1,5 @@
 from stages import stages
 import message
-from monitor import *
 
 def main():
 	while True:
