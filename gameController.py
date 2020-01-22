@@ -2,23 +2,24 @@ from mouseController import MouseController
 from gameStateManager import GameStateManager
 from states import *
 from config import *
+from logger import log, Types
 
 class GameController:
-    def __init__:
-        this.gameStateManager = GameStateManager()
-        this.mouseController = MouseController(this.gameStateManager)
-        this.stageBattleMap = {
-            "7-1a": battleStage71a,
-            "7-4b": battleStage74b
+    def __init__(self):
+        self.gameStateManager = GameStateManager()
+        self.mouseController = MouseController(self.gameStateManager)
+        self.stageBattleMap = {
+            "7-1a": self.battleStage71a,
+            "7-4b": self.battleStage74b
         }
 
-    def selectStage(stage):
+    def selectStage(self,stage):
         description = "select stage " + stage
-    	this.gameStateManager.assertCurrentStates(
-            {States.sailingOffCombat},
+        self.gameStateManager.assertCurrentStates(
+            {States.sailingOffCombat}, 
             description
         )
-        this.mouseController.clickAndWaitUntilStateChange(
+        self.mouseController.clickAndWaitUntilStateChange(
             SELECT_STAGE_CLICK_POSITION,
             SELECT_STAGE_CLICK_STD,
             {States.sailingOffCombat},
@@ -26,75 +27,72 @@ class GameController:
             False
         )
 
-    def inspectRepairReplace():
-    	description = "inspect, repair and replace damaged ships"
-        this.gameStateManager.assertCurrentStates(
+    def inspectRepairReplace(self):
+        description = "inspect, repair and replace damaged ships"
+        self.gameStateManager.assertCurrentStates(
             combatPreparationStates,
             description
         )
-        damagedShips = this.gameStateManager.findDamagedShips(currentScreenshot)
+        damagedShips = self.gameStateManager.findDamagedShips()
         if damagedShips:
             message = "Ship " + str(damagedShips) + " are damaged, stop auto play"
-    		log(message, Types.warning)
-    		exit(0)
+            log(message, Types.warning)
+            exit(0)
 
-    def supply():
-    	description = "quick supply ships"
-        this.gameStateManager.assertCurrentStates(
+    def supply(self):
+        description = "quick supply ships"
+        self.gameStateManager.assertCurrentStates(
             combatPreparationStates,
             description
         )
-        if this.gameStateManager.currentState not in combatPreparationStates:
-            this.mouseController.clickAndWaitUntilStateChange(
+        if self.gameStateManager.currentState not in combatPreparationQuickSupplyStates:
+            self.mouseController.clickAndWaitUntilStateChange(
                 SELECT_QUICK_SUPPLY_POSITION,
                 SELECT_QUICK_SUPPLY_STD,
-                {
-                    **combatPreparationStatisticStates,
-                    **combatPreparationQuickSupplyStates
-                },
-                combatPreparationQuickRepairStates,
+                combatPreparationStatisticStates | combatPreparationQuickRepairStates,
+                combatPreparationQuickSupplyStates,
                 False
             )
-        this.mouseController.clickAndNoStageChange(
+        self.mouseController.clickAndNoStageChange(
             PERFORM_QUICK_SUPPLY_POSITION,
             PERFORM_QUICK_SUPPLY_STD
         )
 
-    def battle(stage):
-        this.stageBattleMap[stage]()
+    def battle(self, stage):
+        self.stageBattleMap[stage]()
 
-    def battleStage71a():
+    def battleStage71a(self):
         description = "battle 7-1a"
-        this.gameStateManager.assertCurrentStates(
+        self.gameStateManager.assertCurrentStates(
             combatPreparationStates,
             description
         )
-        this.startCombatAtCombatPreparation()
-        this.startCombatAtEnemyInfo()
-        this.selectFormation(SELECT_SINGLE_HORIZONTAL_POSITION,SELECT_SINGLE_HORIZONTAL_STD)
-        if this.gameStateManager.currentState == States.nightBattleOrGiveUp:
-            this.giveUpAtNightBattleOrGiveUp()
-        this.retreatAtForwardOrRetreat()
+        self.startCombatAtCombatPreparation()
+        self.startCombatAtEnemyInfo()
+        self.selectFormation(SELECT_SINGLE_HORIZONTAL_POSITION,SELECT_SINGLE_HORIZONTAL_STD)
+        if self.gameStateManager.currentState == States.nightBattleOrGiveUp:
+            self.giveUpAtNightBattleOrGiveUp()
+        self.retreatAtForwardOrRetreat()
 
 
-    def battleStage74b():
+    def battleStage74b(self):
         description = "battle 7-4b"
-        this.gameStateManager.assertCurrentStates(
+        self.gameStateManager.assertCurrentStates(
             combatPreparationStates,
             description
         )
-        this.startCombatAtCombatPreparation()
-        if this.gameStateManager.checkStage74bExistsSubmarine():
-            this.retreatAtEnemyInfo()
+        self.startCombatAtCombatPreparation()
+        if self.gameStateManager.checkStage74bExistsSubmarine():
+            self.retreatAtEnemyInfo()
             return
-        this.startCombatAtEnemyInfo()
-        this.selectFormation(SELECT_SINGLE_VERTICAL_POSITION,SELECT_SINGLE_VERTICAL_STD)
-        if this.gameStateManager.currentState == States.nightBattleOrGiveUp:
-            this.giveUpAtNightBattleOrGiveUp()
-        this.retreatAtForwardOrRetreat()
+        self.startCombatAtEnemyInfo()
+        self.selectFormation(SELECT_SINGLE_VERTICAL_POSITION,SELECT_SINGLE_VERTICAL_STD)
+        if self.gameStateManager.currentState == States.nightBattleOrGiveUp:
+            self.giveUpAtNightBattleOrGiveUp()
+        self.retreatAtForwardOrRetreat()
 
-    def startCombatAtCombatPreparation():
-        this.mouseController.clickAndWaitUntilStateChange(
+    def startCombatAtCombatPreparation(self):
+        self.mouseController.clickAndWaitUntilStateChange(
             START_COMBAT_POSITION,
             START_COMBAT_STD,
             combatPreparationStates,
@@ -102,8 +100,8 @@ class GameController:
             True
         )
 
-    def retreatAtEnemyInfo():
-        this.mouseController.clickAndWaitUntilStateChange(
+    def retreatAtEnemyInfo(self):
+        self.mouseController.clickAndWaitUntilStateChange(
             RETREAT_ENEMY_INFO_POSITION,
             RETREAT_ENEMY_INFO_STD,
             {States.enemyInfo},
@@ -111,8 +109,8 @@ class GameController:
             False
         )
 
-    def startCombatAtEnemyInfo():
-        this.mouseController.clickAndWaitUntilStateChange(
+    def startCombatAtEnemyInfo(self):
+        self.mouseController.clickAndWaitUntilStateChange(
             START_BATTLE_ENEMY_INFO_POSITION,
             START_BATTLE_ENEMY_INFO_STD,
             {States.enemyInfo},
@@ -120,8 +118,8 @@ class GameController:
             False
         )
 
-    def selectFormation(position, std):
-        this.mouseController.clickAndWaitUntilStateChange(
+    def selectFormation(self, position, std):
+        self.mouseController.clickAndWaitUntilStateChange(
             position,
             std,
             {States.selectFormation},
@@ -129,17 +127,17 @@ class GameController:
             True
         )
 
-    def giveUpAtNightBattleOrGiveUp():
-        this.mouseController.clickAndWaitUntilStateChange(
+    def giveUpAtNightBattleOrGiveUp(self):
+        self.mouseController.clickAndWaitUntilStateChange(
             RETREAT_FORWARD_OR_RETREAT_POSITION,
             RETREAT_FORWARD_OR_RETREAT_STD,
             {States.nightBattleOrGiveUp},
-            {States.forwardOrRetreat}.
-            False
+            {States.forwardOrRetreat},
+            True
         )
 
-    def retreatAtForwardOrRetreat():
-        this.mouseController.clickAndWaitUntilStateChange(
+    def retreatAtForwardOrRetreat(self):
+        self.mouseController.clickAndWaitUntilStateChange(
             RETREAT_FORWARD_OR_RETREAT_POSITION,
             RETREAT_FORWARD_OR_RETREAT_STD,
             {States.forwardOrRetreat},

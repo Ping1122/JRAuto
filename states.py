@@ -15,10 +15,10 @@ class States(OrderedEnum):
 	combatPreparationQuickSupplySquadron2 = 11
 	combatPreparationQuickSupplySquadron3 = 12
 	combatPreparationQuickSupplySquadron4 = 13
-	combatPreParationQuickRepairSquadron1 = 14
-	combatPreParationQuickRepairSquadron2 = 15
-	combatPreParationQuickRepairSquadron3 = 16
-	combatPreParationQuickRepairSquadron4 = 17
+	combatPreparationQuickRepairSquadron1 = 14
+	combatPreparationQuickRepairSquadron2 = 15
+	combatPreparationQuickRepairSquadron3 = 16
+	combatPreparationQuickRepairSquadron4 = 17
 	enemyInfo = 18
 	selectFormation = 19
 	nightBattleOrGiveUp = 20
@@ -223,22 +223,22 @@ stateSignature = {
 		**quickSupplySignature,
 		**squadron4Signature,
 	},
-	States.combatPreParationQuickRepairSquadron1 : {
+	States.combatPreparationQuickRepairSquadron1 : {
 		**combatPreparationSignature,
 		**quickRepairSignature,
 		**squadron1Signature
 	},
-	States.combatPreParationQuickRepairSquadron2 : {
+	States.combatPreparationQuickRepairSquadron2 : {
 		**combatPreparationSignature,
 		**quickRepairSignature,
 		**squadron2Signature
 	},
-	States.combatPreParationQuickRepairSquadron3 : {
+	States.combatPreparationQuickRepairSquadron3 : {
 		**combatPreparationSignature,
 		**quickRepairSignature,
 		**squadron3Signature
 	},
-	States.combatPreParationQuickRepairSquadron4 : {
+	States.combatPreparationQuickRepairSquadron4 : {
 		**combatPreparationSignature,
 		**quickRepairSignature,
 		**squadron4Signature
@@ -273,17 +273,7 @@ combatPreparationQuickRepairStates = {
 
 
 
-combatPreparationStates = {
-	**combatPreparationStatisticStates,
-	**combatPreparationQuickSupplyStates,
-	**combatPreparationQuickRepairStates
-}
-
-def isSailingOffState(state):
-	return (state >= States.sailingOffCombat) and (state < States.combatPreparationStatisticSquadron1)
-
-def isCombatPreparationState(state):
-	return (state >= States.combatPreparationStatisticSquadron1) and (state < States.enemyInfo)
-
-def isCombatPreparationQuickSupplyState(state):
-	return (state >= States.combatPreparationQuickSupplySquadron1) and (state <= States.combatPreparationQuickSupplySquadron4)
+combatPreparationStates = \
+	combatPreparationStatisticStates | \
+	combatPreparationQuickSupplyStates | \
+	combatPreparationQuickRepairStates

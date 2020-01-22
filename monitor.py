@@ -5,9 +5,9 @@ from util import *
 from dangers import *
 
 class Monitor:
-	def __init__():
+	def __init__(self):
 		pass
 
-	def takeScreenshot():
+	def takeScreenshot(self):
 		img = ImageGrab.grab(bbox = SIMULATOR_WINDOW_POSITION)
 		return img
