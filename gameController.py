@@ -64,7 +64,18 @@ class GameController:
         this.stageBattleMap[stage]()
 
     def battleStage71a():
-        pass
+        description = "battle 7-1a"
+        this.gameStateManager.assertCurrentStates(
+            combatPreparationStates,
+            description
+        )
+        this.startCombatAtCombatPreparation()
+        this.startCombatAtEnemyInfo()
+        this.selectFormation(SELECT_SINGLE_HORIZONTAL_POSITION,SELECT_SINGLE_HORIZONTAL_STD)
+        if this.gameStateManager.currentState == States.nightBattleOrGiveUp:
+            this.giveUpAtNightBattleOrGiveUp()
+        this.retreatAtForwardOrRetreat()
+
 
     def battleStage74b():
         description = "battle 7-4b"
@@ -72,7 +83,7 @@ class GameController:
             combatPreparationStates,
             description
         )
-        this.stateCombatAtCombatPreparation()
+        this.startCombatAtCombatPreparation()
         if this.gameStateManager.checkStage74bExistsSubmarine():
             this.retreatAtEnemyInfo()
             return
@@ -82,7 +93,7 @@ class GameController:
             this.giveUpAtNightBattleOrGiveUp()
         this.retreatAtForwardOrRetreat()
 
-    def stateCombatAtCombatPreparation():
+    def startCombatAtCombatPreparation():
         this.mouseController.clickAndWaitUntilStateChange(
             START_COMBAT_POSITION,
             START_COMBAT_STD,

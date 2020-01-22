@@ -1,4 +1,7 @@
-- refactor actions.py
+- refactor scripting to oop
+- refactor varible name
+- refactor config
+- refactor to different folders
 - auto expidition
 - Better logger
 - retreat then no supply
@@ -11,3 +14,6 @@
 
 Completed:
 - 7-1
+- refactor actions.py
+- refactor mouse.py move
+- refactor monitor.py
