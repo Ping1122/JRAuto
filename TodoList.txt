@@ -1,4 +1,13 @@
+- refactor actions.py
 - auto expidition
-- 7-1
+- Better logger
+- retreat then no supply
+- auto quick repair
+- select stage
 - check squadron
 - Detect repairing
+- supply when <= 60%
+
+
+Completed:
+- 7-1

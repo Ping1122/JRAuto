@@ -8,16 +8,17 @@ def analyzeState(img):
 	imgData = img.getdata()
 	for state, signature in stateSignature.items():
 		if all(
+			#debug(state, imgData, pos, color)
 			imgData[pixelPostionToImageDataIndex(pos)] == color
 			for pos, color in signature.items()
 		):
 			return state
 	return States.unknown
 	
-# def debug(state, imgData, pos, color):
-# 	if state == States.sailingOffExpidition:
-# 		print(imgData[pixelPostionToImageDataIndex(pos)], color)
-# 	return 
+def debug(state, imgData, pos, color):
+	if state == States.enemyInfo:
+		print(imgData[pixelPostionToImageDataIndex(pos)], color)
+	return imgData[pixelPostionToImageDataIndex(pos)] == color
 
 def findDamagedShips(img):
 	imgData = img.getdata()

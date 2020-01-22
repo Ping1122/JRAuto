@@ -16,6 +16,13 @@ def updateScreenshotAndState():
 	currentState = analyzeState(currentScreenshot)
 	print(currentState)
 
+def selectStage(stage):
+	assertCurrentState(States.sailingOffCombat, "select stage")
+	while currentState == States.sailingOffCombat:
+		simulateSingleClick(SELECT_STAGE_CLICK_POSITION, SELECT_STAGE_CLICK_STD)
+		time.sleep(2)
+		updateScreenshotAndState()
+
 def inspectRepairReplace():
 	description = "inspect, repair and replace damaged ships"
 	assertCurrentStateSatisfyCondition(isCombatPreparationState, description)
@@ -24,14 +31,6 @@ def inspectRepairReplace():
 		message = "Ship " + str(damagedShips) + "are damaged, stop auto play"
 		log(message, Types.warning)
 		exit(0)
-
-def selectStage(stage):
-	assertCurrentState(States.sailingOffCombat, "select stage")
-	while currentState == States.sailingOffCombat:
-		time.sleep(0.5)
-		simulateSingleClick(SELECT_STAGE_CLICK_POSITION, SELECT_STAGE_CLICK_STD)
-		time.sleep(1.5)
-		updateScreenshotAndState()
 
 def supply():
 	description = "quick supply ships"
@@ -47,6 +46,7 @@ def battle74b():
 	description = "battle 7-4b"
 	assertCurrentStateSatisfyCondition(isCombatPreparationState, description)
 	simulateSingleClick(START_COMBAT_POSITION, START_COMBAT_STD)
+	time.sleep(1)
 	waitForState(States.enemyInfo)
 	assertCurrentState(States.enemyInfo, description)
 	if checkStage74bExistsSubmarine(currentScreenshot):
@@ -58,14 +58,40 @@ def battle74b():
 	updateScreenshotAndState()
 	assertCurrentState(States.selectFormation, description)
 	simulateSingleClick(SELECT_SINGLE_VERTICAL_POSITION, SELECT_SINGLE_VERTICAL_STD)
-	waitForState(States.forwardOrRetreat)
+	waitForStates({States.nightBattleOrGiveUp, States.forwardOrRetreat})
+	if currentState == States.nightBattleOrGiveUp:
+		simulateSingleClick(RETREAT_FORWARD_OR_RETREAT_POSITION, RETREAT_FORWARD_OR_RETREAT_STD)
+		waitForState(States.forwardOrRetreat)
 	simulateSingleClick(RETREAT_FORWARD_OR_RETREAT_POSITION, RETREAT_FORWARD_OR_RETREAT_STD)
 	time.sleep(2)
 	updateScreenshotAndState()
 
+def battle71a():
+	description = "battle 7-1a"
+	assertCurrentStateSatisfyCondition(isCombatPreparationState, description)
+	simulateSingleClick(START_COMBAT_POSITION, START_COMBAT_STD)
+	time.sleep(1)
+	waitForState(States.enemyInfo)
+	assertCurrentState(States.enemyInfo, description)
+	simulateSingleClick(START_BATTLE_ENEMY_INFO_POSITION, START_BATTLE_ENEMY_INFO_STD)
+	updateScreenshotAndState()
+	assertCurrentState(States.selectFormation, description)
+	simulateSingleClick(SELECT_SINGLE_HORIZONTAL_POSITION , SELECT_SINGLE_HORIZONTAL_STD)
+	waitForStates({States.nightBattleOrGiveUp, States.forwardOrRetreat})
+	if currentState == States.nightBattleOrGiveUp:
+		simulateSingleClick(RETREAT_FORWARD_OR_RETREAT_POSITION, RETREAT_FORWARD_OR_RETREAT_STD)
+		waitForState(States.forwardOrRetreat)
+	simulateSingleClick(RETREAT_FORWARD_OR_RETREAT_POSITION, RETREAT_FORWARD_OR_RETREAT_STD)
+	time.sleep(2)
+	updateScreenshotAndState()
+
+
+
 def battle(stage):
 	if stage == "7-4b":
 		battle74b()
+	elif stage == "7-1a":
+		battle71a()
 
 def waitForState(state):
 	description = "wait for " + str(state)
@@ -73,6 +99,18 @@ def waitForState(state):
 	updateScreenshotAndState()
 	iterationCount = 0
 	while currentState != state:
+		assertCurrentState(States.unknown, description)
+		simulateShortClick(SAILING_OFF_ENEMY_INFO_POSITION, SAILING_OFF_ENEMY_INFO_STD)
+		iterationCount += 1
+		if iterationCount % 5 == 0:
+			updateScreenshotAndState()
+
+def waitForStates(states):
+	description = "wait for " + str(states)
+	time.sleep(1)
+	updateScreenshotAndState()
+	iterationCount = 0
+	while currentState not in states:
 		assertCurrentState(States.unknown, description)
 		simulateShortClick(SAILING_OFF_ENEMY_INFO_POSITION, SAILING_OFF_ENEMY_INFO_STD)
 		iterationCount += 1

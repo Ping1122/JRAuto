@@ -21,8 +21,9 @@ class States(OrderedEnum):
 	combatPreParationQuickRepairSquadron4 = 17
 	enemyInfo = 18
 	selectFormation = 19
-	forwardOrRetreat = 20
-	attendence = 21
+	nightBattleOrGiveUp = 20
+	forwardOrRetreat = 21
+	attendence = 22
 
 gameCloseSignature = {
 	# Assumption: background does not change
@@ -136,7 +137,7 @@ enemyInfoSignature = {
 	(1231, 814) : (195, 175, 45, 255),
 	(1231, 814) : (195, 175, 45, 255),
 	(1291, 769) : (0, 0, 0, 255),
-	(1416, 784) : (122, 110, 31, 255),
+	(1407, 787) : (0, 0, 0, 255),
 }
 
 selectFormationSignature = {
@@ -148,13 +149,22 @@ selectFormationSignature = {
 	(1421, 778) : (52, 52, 52, 255),
 }
 
+nightBattleOrGiveUpSignature = {
+	(443, 329) : (204, 204, 204, 255),
+	(444, 355) : (97, 97, 97, 255),
+	(554, 553) : (152, 7, 7, 255),
+	(976, 534) : (39, 149, 252, 255),
+	(496, 562) : (228, 193, 193, 255),
+	(973, 552) : (211, 233, 253, 255),
+}
+
 forwardOrRetreatSignature = {
 	(443, 329) : (204, 204, 204, 255),
 	(444, 355) : (97, 97, 97, 255),
 	(554, 553) : (152, 7, 7, 255),
 	(976, 534) : (39, 149, 252, 255),
-	(670, 575) : (237, 237, 237, 255),
-	(737, 255) : (237, 237, 237, 255),
+	(504, 547) : (197, 109, 109, 255),
+	(973, 552) : (75, 163, 246, 255),
 }
 
 attendenceSignature = {
@@ -235,6 +245,7 @@ stateSignature = {
 	},
 	States.enemyInfo: enemyInfoSignature,
 	States.selectFormation : selectFormationSignature,
+	States.nightBattleOrGiveUp : nightBattleOrGiveUpSignature,
 	States.forwardOrRetreat : forwardOrRetreatSignature,
 	#States.attendence : attendenceSignature,
 }
