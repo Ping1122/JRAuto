@@ -1,5 +1,6 @@
 from monitor import Monitor
 from logger import *
+from dangers import *
 
 class GameStateManager:
     def __init__:
