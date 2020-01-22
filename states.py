@@ -1,4 +1,4 @@
-from util import OrderedEnum   
+from util import OrderedEnum
 
 class States(OrderedEnum):
 	unknown = 0
@@ -250,6 +250,35 @@ stateSignature = {
 	#States.attendence : attendenceSignature,
 }
 
+combatPreparationStatisticStates = {
+	States.combatPreparationStatisticSquadron1,
+	States.combatPreparationStatisticSquadron2,
+	States.combatPreparationStatisticSquadron3,
+	States.combatPreparationStatisticSquadron4,
+}
+
+combatPreparationQuickSupplyStates = {
+	States.combatPreparationQuickSupplySquadron1,
+	States.combatPreparationQuickSupplySquadron2,
+	States.combatPreparationQuickSupplySquadron3,
+	States.combatPreparationQuickSupplySquadron4,
+}
+
+combatPreparationQuickRepairStates = {
+	States.combatPreparationQuickRepairSquadron1,
+	States.combatPreparationQuickRepairSquadron2,
+	States.combatPreparationQuickRepairSquadron3,
+	States.combatPreparationQuickRepairSquadron4,
+}
+
+
+
+combatPreparationStates = {
+	**combatPreparationStatisticStates,
+	**combatPreparationQuickSupplyStates,
+	**combatPreparationQuickRepairStates
+}
+
 def isSailingOffState(state):
 	return (state >= States.sailingOffCombat) and (state < States.combatPreparationStatisticSquadron1)
 
@@ -258,5 +287,3 @@ def isCombatPreparationState(state):
 
 def isCombatPreparationQuickSupplyState(state):
 	return (state >= States.combatPreparationQuickSupplySquadron1) and (state <= States.combatPreparationQuickSupplySquadron4)
-
-
