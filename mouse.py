@@ -27,6 +27,6 @@ class Mouse:
 		nosie2 = random.gauss(0, std)
 		position = (position[0]+nosie1, position[1]+nosie2)
 		self.mouse.position = position
-		time.sleep(0.1)
+		time.sleep(MOVE_CLICK_INTERVAL)
 		self.mouse.press(Button.left)
 		self.mouse.release(Button.left)

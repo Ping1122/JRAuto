@@ -1,6 +1,4 @@
-- refactor scripting to oop
-- refactor varible name
-- refactor config
+- refactor message
 - refactor to different folders
 - auto expidition
 - Better logger
@@ -18,3 +16,5 @@ Completed:
 - refactor actions.py
 - refactor mouse.py move
 - refactor monitor.py
+- refactor scripting to oop
+- refactor config

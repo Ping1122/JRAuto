@@ -1,11 +1,13 @@
+from states import States, stateSignature
+from util import pixelPostionToImageDataIndex
+from messageService import MessageService
 from monitor import Monitor
 from logger import *
 from dangers import *
-from states import States, stateSignature
-from util import pixelPostionToImageDataIndex
 
 class GameStateManager:
     def __init__(self):
+        self.messageService = MessageService
         self.monitor = Monitor()
         self.updateScreenshotAndState()
 
@@ -51,6 +53,6 @@ class GameStateManager:
 
     def assertCurrentStates(self, states, description):
         if self.currentState not in states:
-            message = "Trying to " + description + ", but not in "+ str(states) + " screen."
+            message = self.messageService.assertStateFailMessage(description)
             log(message, Types.error)
             exit(1)

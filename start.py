@@ -1,13 +1,13 @@
-from taskManager import TaskManager
-import message
-from logger import *
+from StageManager import stageManager
+from messageService import MessageService
+from logger import log, Types
 
 def main():
-	taskManager = TaskManager()
+	stageManager = StageManager()
 	while True:
-		log(message.enterStage, Types.info)
+		log(MessageService().enterStagePrompt(stageManager.stages), Types.info)
 		stage = input()
-		taskManager.levelStage(stage)
+		stageManager.levelStage(stage)
 
 if __name__== "__main__":
 	main()

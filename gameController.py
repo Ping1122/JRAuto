@@ -1,22 +1,29 @@
 from mouseController import MouseController
 from gameStateManager import GameStateManager
+from messageService import MessageService
+from logger import log, Types
 from states import *
 from config import *
-from logger import log, Types
 
 class GameController:
     def __init__(self):
         self.gameStateManager = GameStateManager()
         self.mouseController = MouseController(self.gameStateManager)
+        self.messageService = MessageService()
         self.stageBattleMap = {
             "7-1a": self.battleStage71a,
             "7-4b": self.battleStage74b
         }
 
-    def selectStage(self,stage):
+    def selectStage(self, stage):
+        message = self.messageService.startSelectStateMessage(
+            stage,
+            self.gameStateManager.currentState
+        )
+        log(message, Types.verbose)
         description = "select stage " + stage
         self.gameStateManager.assertCurrentStates(
-            {States.sailingOffCombat}, 
+            {States.sailingOffCombat},
             description
         )
         self.mouseController.clickAndWaitUntilStateChange(
@@ -28,6 +35,10 @@ class GameController:
         )
 
     def inspectRepairReplace(self):
+        message = self.messageService.inspectRepairReplaceMessage(
+            self.gameStateManager.currentState
+        )
+        log(message, Types.verbose)
         description = "inspect, repair and replace damaged ships"
         self.gameStateManager.assertCurrentStates(
             combatPreparationStates,
@@ -35,11 +46,15 @@ class GameController:
         )
         damagedShips = self.gameStateManager.findDamagedShips()
         if damagedShips:
-            message = "Ship " + str(damagedShips) + " are damaged, stop auto play"
+            message = self.messageService.existsDamagedShipsWarning(damagedShips)
             log(message, Types.warning)
             exit(0)
 
     def supply(self):
+        message = self.messageService.startSupplyMessage(
+            self.gameStateManager.currentState
+        )
+        log(message, Types.verbose)
         description = "quick supply ships"
         self.gameStateManager.assertCurrentStates(
             combatPreparationStates,
@@ -59,6 +74,11 @@ class GameController:
         )
 
     def battle(self, stage):
+        message = self.messageService.startBattleMessage(
+            stage
+            self.gameStateManager.currentState
+        )
+        log(message, Types.verbose)
         self.stageBattleMap[stage]()
 
     def battleStage71a(self):
@@ -83,6 +103,8 @@ class GameController:
         )
         self.startCombatAtCombatPreparation()
         if self.gameStateManager.checkStage74bExistsSubmarine():
+            message = self.messageService.stage74bExistsSubmarineMessage()
+            log(message, Types.verbose)
             self.retreatAtEnemyInfo()
             return
         self.startCombatAtEnemyInfo()

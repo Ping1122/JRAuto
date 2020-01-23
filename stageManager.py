@@ -1,22 +1,23 @@
 from gameController import GameController
 from logger import log, Types
-import message
+from messageService import MessageService
+from config import MAX_LEVEL_STAGE_TIMES
 
 
-class TaskManager:
+class StageManager:
     def __init__(self):
         self.stages = { "7-1a", "7-4b" }
         self.gameController = GameController()
+        self.messageService = MessageService()
 
     def levelStage(self, stage):
+        log(self.messageService.startLevelStageMessage(), Types.info)
     	if stage not in self.stages:
-    		log(message.invalidStage, Types.warning)
+    		log(self.messageService.invalidStageWarning(stage), Types.warning)
     		return
-    	count = 0
-    	while True:
+    	for count in range(1, MAX_LEVEL_STAGE_TIMES+1):
     		self.gameController.selectStage(stage)
     		self.gameController.inspectRepairReplace()
     		self.gameController.supply()
     		self.gameController.battle(stage)
-    		count += 1
-    		log("Complete " + stage + " for " + str(count) + " times", Types.info)
+    		log(self.messageService.stageCompleteMessage(count, state), Types.info)
