@@ -2,7 +2,7 @@ from states import States, stateSignature
 from util import pixelPostionToImageDataIndex
 from messageService import MessageService
 from monitor import Monitor
-from logger import *
+from logger import log, Types
 from dangers import *
 
 class GameStateManager:
@@ -14,7 +14,7 @@ class GameStateManager:
     def updateScreenshotAndState(self):
         self.currentScreenshot = self.monitor.takeScreenshot()
         self.currentState = self.analyzeState()
-        print(self.currentState)
+        log(str(self.currentState), Types.debug)
         return self.currentState
 
     def analyzeState(self):

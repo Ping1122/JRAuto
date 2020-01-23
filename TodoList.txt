@@ -1,5 +1,7 @@
-- refactor message
+- more detailed log in battle method and inpsect
+- change stage selection to numbers
 - refactor to different folders
+- config file for stages
 - auto expidition
 - Better logger
 - retreat then no supply
@@ -18,3 +20,4 @@ Completed:
 - refactor monitor.py
 - refactor scripting to oop
 - refactor config
+- refactor message

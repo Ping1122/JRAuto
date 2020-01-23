@@ -1,4 +1,4 @@
-from StageManager import stageManager
+from stageManager import StageManager
 from messageService import MessageService
 from logger import log, Types
 

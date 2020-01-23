@@ -11,13 +11,13 @@ class StageManager:
         self.messageService = MessageService()
 
     def levelStage(self, stage):
-        log(self.messageService.startLevelStageMessage(), Types.info)
-    	if stage not in self.stages:
-    		log(self.messageService.invalidStageWarning(stage), Types.warning)
-    		return
-    	for count in range(1, MAX_LEVEL_STAGE_TIMES+1):
-    		self.gameController.selectStage(stage)
-    		self.gameController.inspectRepairReplace()
-    		self.gameController.supply()
-    		self.gameController.battle(stage)
-    		log(self.messageService.stageCompleteMessage(count, state), Types.info)
+        log(self.messageService.startLevelStageMessage(stage), Types.info)
+        if stage not in self.stages:
+            log(self.messageService.invalidStageWarning(stage), Types.warning)
+            return
+        for count in range(1, MAX_LEVEL_STAGE_TIMES+1):
+            self.gameController.selectStage(stage)
+            self.gameController.inspectRepairReplace()
+            self.gameController.supply()
+            self.gameController.battle(stage)
+            log(self.messageService.stageCompleteMessage(count, stage), Types.info)

@@ -49,6 +49,8 @@ class GameController:
             message = self.messageService.existsDamagedShipsWarning(damagedShips)
             log(message, Types.warning)
             exit(0)
+        message = self.messageService.noDamagedShipsMessage()
+        log(message, Types.verbose)
 
     def supply(self):
         message = self.messageService.startSupplyMessage(
@@ -75,7 +77,7 @@ class GameController:
 
     def battle(self, stage):
         message = self.messageService.startBattleMessage(
-            stage
+            stage,
             self.gameStateManager.currentState
         )
         log(message, Types.verbose)

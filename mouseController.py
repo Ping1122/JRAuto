@@ -9,17 +9,20 @@ class MouseController:
         self.gameStateManager = gameStateManager
 
     def clickAndWaitUntilStateChange(self, position, std, fromStates, toStates, clickWhileWaiting):
-        this.longSleep()
-        self.mouse.simulateClick(position, std)
-        this.normalSleep()
-        currentState = self.gameStateManager.updateScreenshotAndState()
+        self.normalSleep()
+        while True:
+            self.mouse.simulateClick(position, std)
+            self.longSleep()
+            currentState = self.gameStateManager.updateScreenshotAndState()
+            if currentState not in fromStates:
+                break
         while currentState not in toStates:
             if clickWhileWaiting:
                 for _ in range(NUM_CLICKS_BEFORE_UPDATE):
                     self.mouse.simulateClick(WAITING_CLICK_POSITION, WAITING_CLICK_STD)
                     self.shortSleep()
             else:
-                this.normalSleep()
+                self.normalSleep()
             currentState = self.gameStateManager.updateScreenshotAndState()
 
     def clickAndNoStageChange(self, position, std):
