@@ -1,5 +1,5 @@
-from enum import Enum
 from colorama import Fore, Style
+from enum import Enum
 
 Types = Enum("Types", "error warning info debug verbose")
 

@@ -2,6 +2,7 @@
 __pycache__/
 
 # image
+stateImages
 *.png
 
 .DS_Store

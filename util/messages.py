@@ -1,6 +1,6 @@
 from datetime import datetime
 
-class MessageService:
+class Messages:
     def __init__(self):
         pass
 

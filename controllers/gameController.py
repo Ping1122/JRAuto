@@ -1,22 +1,22 @@
-from mouseController import MouseController
 from gameStateManager import GameStateManager
-from messageService import MessageService
-from logger import log, Types
-from states import *
-from config import *
+from mouseController import MouseController
+from ..util.messages import Messages
+from ..util.logger import log, Types
+from ..data.constants import *
+from ..data.states import *
 
 class GameController:
     def __init__(self):
         self.gameStateManager = GameStateManager()
         self.mouseController = MouseController(self.gameStateManager)
-        self.messageService = MessageService()
+        self.messages = Messages()
         self.stageBattleMap = {
             "7-1a": self.battleStage71a,
             "7-4b": self.battleStage74b
         }
 
     def selectStage(self, stage):
-        message = self.messageService.startSelectStateMessage(
+        message = self.messages.startSelectStateMessage(
             stage,
             self.gameStateManager.currentState
         )
@@ -35,7 +35,7 @@ class GameController:
         )
 
     def inspectRepairReplace(self):
-        message = self.messageService.inspectRepairReplaceMessage(
+        message = self.messages.inspectRepairReplaceMessage(
             self.gameStateManager.currentState
         )
         log(message, Types.verbose)
@@ -46,14 +46,14 @@ class GameController:
         )
         damagedShips = self.gameStateManager.findDamagedShips()
         if damagedShips:
-            message = self.messageService.existsDamagedShipsWarning(damagedShips)
+            message = self.messages.existsDamagedShipsWarning(damagedShips)
             log(message, Types.warning)
             exit(0)
-        message = self.messageService.noDamagedShipsMessage()
+        message = self.messages.noDamagedShipsMessage()
         log(message, Types.verbose)
 
     def supply(self):
-        message = self.messageService.startSupplyMessage(
+        message = self.messages.startSupplyMessage(
             self.gameStateManager.currentState
         )
         log(message, Types.verbose)
@@ -76,7 +76,7 @@ class GameController:
         )
 
     def battle(self, stage):
-        message = self.messageService.startBattleMessage(
+        message = self.messages.startBattleMessage(
             stage,
             self.gameStateManager.currentState
         )
@@ -105,7 +105,7 @@ class GameController:
         )
         self.startCombatAtCombatPreparation()
         if self.gameStateManager.checkStage74bExistsSubmarine():
-            message = self.messageService.stage74bExistsSubmarineMessage()
+            message = self.messages.stage74bExistsSubmarineMessage()
             log(message, Types.verbose)
             self.retreatAtEnemyInfo()
             return

@@ -1,4 +1,4 @@
-from util import OrderedEnum
+from ..util.orderedEnum import OrderedEnum
 
 class States(OrderedEnum):
 	unknown = 0
@@ -270,8 +270,6 @@ combatPreparationQuickRepairStates = {
 	States.combatPreparationQuickRepairSquadron3,
 	States.combatPreparationQuickRepairSquadron4,
 }
-
-
 
 combatPreparationStates = \
 	combatPreparationStatisticStates | \

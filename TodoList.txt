@@ -1,7 +1,7 @@
-- more detailed log in battle method and inpsect
-- change stage selection to numbers
 - refactor to different folders
+- refactor dangers
 - config file for stages
+- more detailed log in battle method and inpsect
 - auto expidition
 - Better logger
 - retreat then no supply
@@ -21,3 +21,4 @@ Completed:
 - refactor scripting to oop
 - refactor config
 - refactor message
+- change stage selection to numbers

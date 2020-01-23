@@ -1,12 +1,14 @@
+from random import seed, gauss
+from datetime import datetime
 from time import sleep
-from mouse import Mouse
-from config import *
-import random
+from ..components.mouse import Mouse
+from ..data.constants import *
 
 class MouseController:
     def __init__(self, gameStateManager):
         self.mouse = Mouse()
         self.gameStateManager = gameStateManager
+        seed(datatime.now())
 
     def clickAndWaitUntilStateChange(self, position, std, fromStates, toStates, clickWhileWaiting):
         self.normalSleep()
@@ -30,13 +32,13 @@ class MouseController:
         self.normalSleep()
 
     def longSleep(self):
-        sleepTime = LONG_CLICK_INTERVAL + random.gauss(0, LONG_CLICK_INTERVAL_STD)
+        sleepTime = LONG_CLICK_INTERVAL + gauss(0, LONG_CLICK_INTERVAL_STD)
         sleep(sleepTime)
 
     def normalSleep(self):
-        sleepTime = NORMAL_CLICK_INTERVAL + random.gauss(0, NORMAL_CLICK_INTERVAL_STD)
+        sleepTime = NORMAL_CLICK_INTERVAL + gauss(0, NORMAL_CLICK_INTERVAL_STD)
         sleep(sleepTime)
 
     def shortSleep(self):
-        sleepTime = SHORT_CLICK_INTERVAL + random.gauss(0, SHORT_CLICK_INTERVAL_STD)
+        sleepTime = SHORT_CLICK_INTERVAL + gauss(0, SHORT_CLICK_INTERVAL_STD)
         sleep(sleepTime)

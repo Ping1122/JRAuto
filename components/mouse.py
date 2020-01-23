@@ -1,13 +1,13 @@
 from pynput.mouse import Button, Controller
-import random
+from random import seed, gauss
 from datetime import datetime
-import time
-from config import *
+from time import sleep
+from ..data.constants import *
 
 class Mouse:
 	def __init__(self):
 		self.mouse = Controller()
-		random.seed(datetime.now())
+		seed(datetime.now())
 
 	def simulateClick(self, position, std):
 		position = self.pixelPositionToMousePosition(position)
@@ -23,10 +23,10 @@ class Mouse:
 		return int(std * (IMG_RESOLUTION_MOUSE[0] / IMG_RESOLUTION[0]))
 
 	def moveAndClick(self, position, std):
-		nosie1 = random.gauss(0, std)
-		nosie2 = random.gauss(0, std)
+		nosie1 = gauss(0, std)
+		nosie2 = gauss(0, std)
 		position = (position[0]+nosie1, position[1]+nosie2)
 		self.mouse.position = position
-		time.sleep(MOVE_CLICK_INTERVAL)
+		sleep(MOVE_CLICK_INTERVAL)
 		self.mouse.press(Button.left)
 		self.mouse.release(Button.left)

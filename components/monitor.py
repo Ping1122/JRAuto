@@ -1,8 +1,5 @@
 from PIL import Image, ImageGrab
-from states import *
-from config import *
-from util import *
-from dangers import *
+from ..data.constants import SIMULATOR_WINDOW_POSITION
 
 class Monitor:
 	def __init__(self):

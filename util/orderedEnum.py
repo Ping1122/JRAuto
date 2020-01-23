@@ -1,4 +1,3 @@
-from config import *
 from enum import Enum
 
 class OrderedEnum(Enum):
@@ -18,6 +17,3 @@ class OrderedEnum(Enum):
          if self.__class__ is other.__class__:
              return self.value < other.value
          return NotImplemented
-
-def pixelPostionToImageDataIndex(position):
-	return position[1]*1497+position[0]
