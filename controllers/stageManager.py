@@ -1,7 +1,7 @@
-from gameController import GameController
-from ..data.constants import MAX_LEVEL_STAGE_TIMES
-from ..util.logger import log, Types
-from ..util.messages import Messages
+from controllers.gameController import GameController
+from data.constants import MAX_LEVEL_STAGE_TIMES
+from util.logger import log, Types
+from util.messages import Messages
 
 
 class StageManager:

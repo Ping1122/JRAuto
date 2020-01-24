@@ -1,4 +1,4 @@
-from ..components.monitor import Monitor
+from components.monitor import Monitor
 
 def main():
 	img = Monitor().takeScreenshot()

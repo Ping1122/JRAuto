@@ -2,7 +2,7 @@ from pynput.mouse import Button, Controller
 from random import seed, gauss
 from datetime import datetime
 from time import sleep
-from ..data.constants import *
+from data.constants import *
 
 class Mouse:
 	def __init__(self):

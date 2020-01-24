@@ -1,14 +1,14 @@
 from random import seed, gauss
 from datetime import datetime
 from time import sleep
-from ..components.mouse import Mouse
-from ..data.constants import *
+from components.mouse import Mouse
+from data.constants import *
 
 class MouseController:
     def __init__(self, gameStateManager):
         self.mouse = Mouse()
         self.gameStateManager = gameStateManager
-        seed(datatime.now())
+        seed(datetime.now())
 
     def clickAndWaitUntilStateChange(self, position, std, fromStates, toStates, clickWhileWaiting):
         self.normalSleep()

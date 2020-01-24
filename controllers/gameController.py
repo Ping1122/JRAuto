@@ -1,9 +1,9 @@
-from gameStateManager import GameStateManager
-from mouseController import MouseController
-from ..util.messages import Messages
-from ..util.logger import log, Types
-from ..data.constants import *
-from ..data.states import *
+from controllers.gameStateManager import GameStateManager
+from controllers.mouseController import MouseController
+from util.messages import Messages
+from util.logger import log, Types
+from data.constants import *
+from data.states import *
 
 class GameController:
     def __init__(self):
@@ -94,8 +94,13 @@ class GameController:
         self.selectFormation(SELECT_SINGLE_HORIZONTAL_POSITION,SELECT_SINGLE_HORIZONTAL_STD)
         if self.gameStateManager.currentState == States.nightBattleOrGiveUp:
             self.giveUpAtNightBattleOrGiveUp()
+        if self.gameStateManager.currentState == States.flagshipSeriousDamaged:
+            self.retreatAtFlagshipSeriousDamage()
+            self.startSailingOff()
+            if self.gemeStateManager.currentState == States.sailingOffExpidition:
+                self.selectCombat()
+            return
         self.retreatAtForwardOrRetreat()
-
 
     def battleStage74b(self):
         description = "battle 7-4b"
@@ -147,7 +152,11 @@ class GameController:
             position,
             std,
             {States.selectFormation},
-            {States.nightBattleOrGiveUp, States.forwardOrRetreat},
+            {
+                States.nightBattleOrGiveUp,
+                States.flagshipSeriousDamaged,
+                States.forwardOrRetreat,
+            },
             True
         )
 
@@ -158,6 +167,33 @@ class GameController:
             {States.nightBattleOrGiveUp},
             {States.forwardOrRetreat},
             True
+        )
+
+    def retreatAtFlagshipSeriousDamaged(self):
+        self.mouseController.clickAndWaitUntilStateChange(
+            FALGSHIP_SERIOUS_DAMAGED_RETREAT_POSITION,
+            FALGSHIP_SERIOUS_DAMAGED_RETREAT_STD,
+            {States.flagshipSeriousDamaged},
+            {States.home},
+            False
+        )
+
+    def startSailingOff(self):
+        self.mouseController.clickAndWaitUntilStateChange(
+            (1405, 765),
+            7,
+            {States.home},
+            {States.sailingOffCombat, sailingOffExpidition},
+            False
+        )
+
+    def selectCombat(self):
+        self.mouseController.clickAndWaitUntilStateChange(
+            (267, 37),
+            3,
+            {States.sailingOffExpidition},
+            {States.sailingOffCombat},
+            False
         )
 
     def retreatAtForwardOrRetreat(self):

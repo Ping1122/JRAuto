@@ -1,4 +1,4 @@
-from ..util.orderedEnum import OrderedEnum
+from util.orderedEnum import OrderedEnum
 
 class States(OrderedEnum):
 	unknown = 0
@@ -22,8 +22,9 @@ class States(OrderedEnum):
 	enemyInfo = 18
 	selectFormation = 19
 	nightBattleOrGiveUp = 20
-	forwardOrRetreat = 21
-	attendence = 22
+	flagshipSeriousDamaged = 21
+	forwardOrRetreat = 22
+	attendence = 23
 
 gameCloseSignature = {
 	# Assumption: background does not change
@@ -158,6 +159,15 @@ nightBattleOrGiveUpSignature = {
 	(973, 552) : (211, 233, 253, 255),
 }
 
+flagshipSeriousDamagedSignature = {
+	(733, 303) : (130, 33, 33, 255),
+	(780, 300) : (130, 33, 33, 255),
+	(994, 502) : (255, 255, 255, 255),
+	(1011, 516) : (255, 254, 254, 255),
+	(836, 323) : (130, 33, 33, 255),
+	(819, 298) : (130, 33, 33, 255),
+}
+
 forwardOrRetreatSignature = {
 	(443, 329) : (204, 204, 204, 255),
 	(444, 355) : (97, 97, 97, 255),
@@ -246,6 +256,7 @@ stateSignature = {
 	States.enemyInfo: enemyInfoSignature,
 	States.selectFormation : selectFormationSignature,
 	States.nightBattleOrGiveUp : nightBattleOrGiveUpSignature,
+	States.flagshipSeriousDamaged : flagshipSeriousDamagedSignature,
 	States.forwardOrRetreat : forwardOrRetreatSignature,
 	#States.attendence : attendenceSignature,
 }

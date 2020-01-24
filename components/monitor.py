@@ -1,5 +1,5 @@
 from PIL import Image, ImageGrab
-from ..data.constants import SIMULATOR_WINDOW_POSITION
+from data.constants import SIMULATOR_WINDOW_POSITION
 
 class Monitor:
 	def __init__(self):

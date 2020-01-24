@@ -1,9 +1,9 @@
-from ..util.util import pixelPostionToImageDataIndex
-from ..util.messages import Messages
-from ..util.logger import log, Types
-from ..data.states import States, stateSignature
-from ..data.dangers import *
-from ..components.monitor import Monitor
+from util.util import pixelPostionToImageDataIndex
+from util.messages import Messages
+from util.logger import log, Types
+from data.states import States, stateSignature
+from data.dangers import *
+from components.monitor import Monitor
 
 class GameStateManager:
     def __init__(self):

@@ -1,4 +1,4 @@
-from ..components.gameStateManager import GameStateManager
+from controllers.gameStateManager import GameStateManager
 
 def main():
 	gameStateManager = GameStateManager()
