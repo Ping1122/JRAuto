@@ -1,4 +1,5 @@
 from states.state import State
+from states.loginState import LoginState
 
 class GameCloseState(State):
 	signature = {
@@ -12,4 +13,6 @@ class GameCloseState(State):
 
 	def __init__(self):
 		super().__init__()
-		self.transit
+		self.transition = {
+			(750, 183, 6) : {LoginState}
+		}
