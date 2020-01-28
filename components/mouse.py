@@ -9,23 +9,23 @@ class Mouse:
 		self.mouse = Controller()
 		seed(datetime.now())
 
-	def simulateClick(self, position, std):
-		position = self.pixelPositionToMousePosition(position)
-		std = self.pixelStdToMouseStd(std)
-		self.moveAndClick(position, std)
+	def simulateClick(self, clickInfo):
+		clickInfo = self.pixelToMouse(clickInfo)
+		self.moveAndClick(clickInfo)
 
-	def pixelPositionToMousePosition(self, position):
-		x = SIMULATOR_WINDOW_POSITION_MOUSE[0] + IMG_RESOLUTION_MOUSE[0]*(position[0]/IMG_RESOLUTION[0])
-		y = SIMULATOR_WINDOW_POSITION_MOUSE[1] + IMG_RESOLUTION_MOUSE[1]*(position[1]/IMG_RESOLUTION[1])
-		return (int(x), int(y))
+	def pixelToMouse(self, clickInfo):
+		x = SIMULATOR_WINDOW_POSITION_MOUSE[0] + IMG_RESOLUTION_MOUSE[0]*(clickInfo[0]/IMG_RESOLUTION[0])
+		y = SIMULATOR_WINDOW_POSITION_MOUSE[1] + IMG_RESOLUTION_MOUSE[1]*(clickInfo[1]/IMG_RESOLUTION[1])
+		z = clickInfo[2] * (IMG_RESOLUTION_MOUSE[0] / IMG_RESOLUTION[0])
+		return (int(x), int(y), int(z))
 
 	def pixelStdToMouseStd(self, std):
-		return int(std * (IMG_RESOLUTION_MOUSE[0] / IMG_RESOLUTION[0]))
+		return 
 
-	def moveAndClick(self, position, std):
-		nosie1 = gauss(0, std)
-		nosie2 = gauss(0, std)
-		position = (position[0]+nosie1, position[1]+nosie2)
+	def moveAndClick(self, clickInfo):
+		nosie1 = gauss(0, clickInfo[2])
+		nosie2 = gauss(0, clickInfo[2])
+		position = (clickInfo[0]+nosie1, clickInfo[1]+nosie2)
 		self.mouse.position = position
 		sleep(MOVE_CLICK_INTERVAL)
 		self.mouse.press(Button.left)

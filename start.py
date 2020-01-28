@@ -1,15 +1,17 @@
-from controllers.stageManager import StageManager
+from controllers.gameController import GameController
 from util.messages import Messages
 from util.logger import log, Types
 
 def main():
-	stageManager = StageManager()
+	gameController = GameController()
+	stageNum = 0
 	while True:
 		try:
-			log(Messages().enterStagePrompt(stageManager.stages), Types.info)
+			log(Messages().enterStagePrompt(gameController.stages), Types.info)
 			stageNum = int(input())
 		except:
 			log(Messages().invalidUserInput(stageNum), Types.info)
-		stageManager.levelStage(stageNum)
+			continue
+		gameController.levelStage(stageNum)
 if __name__== "__main__":
 	main()

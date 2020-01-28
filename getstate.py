@@ -1,8 +1,8 @@
-from controllers.gameStateManager import GameStateManager
+from controllers.stateController import StateController
 
 def main():
-	gameStateManager = GameStateManager()
-	print(gameStateManager.currentState)
+	stateController = StateController()
+	print(stateController.currentState)
 
 if __name__== "__main__":
 	main()

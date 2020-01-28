@@ -10,6 +10,9 @@ class Messages:
             prompt.append(f"{index+1}. {stage}\n")
         return "".join(prompt)
 
+    def invalidUserInput(self, stageNum):
+        return f"{stageNum} is invalid"
+
     def invalidStageWarning(self, stage):
         return f"{stage} is not supported, please try again"
 
@@ -42,8 +45,8 @@ class Messages:
     def stage74bExistsSubmarineMessage(self):
         return "There are enemy submarines at 7-4b, retreat"
 
-    def assertStateFailMessage(self, description):
-        return f"Trying to {description} but not in correct screens"
-
     def noDamagedShipsMessage(self):
         return "There are no damaged ships, ready to start battle"
+
+    def invalidTransitionOrBehavior(self, type):
+        return f"Trying to {type}, but not in correct screen"

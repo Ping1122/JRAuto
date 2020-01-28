@@ -1,0 +1,72 @@
+from state.state import State
+from state.signals import Signals
+from state.stateKey import StateKey
+from state.behaviors import Behaviors
+from state.transitions import Transitions
+
+class CombatPreparation(State):
+	signature = {
+		(247, 47) : (255, 255, 255, 255),
+		(437, 64) : (255, 255, 255, 255),
+		(2080, 1335) : (255, 218, 48, 255),
+		(2343, 1347) : (97, 87, 38, 255),
+	}
+	
+	def __init__(self):
+		super().__init__()
+		self.sign.update({
+			Signals.ship1Intact : {
+				(138, 856) : (64, 162, 110, 255),
+				(149, 854) : (79, 169, 121, 255),
+			},
+			Signals.ship2Intact : {
+				(434, 854) : (63, 161, 108, 255),
+				(445, 854) : (85, 172, 126, 255),
+			},
+			Signals.ship3Intact : {
+				(734, 855) : (63, 161, 108, 255),
+				(742, 854) : (84, 171, 124, 255),
+			},
+			Signals.ship4Intact : {
+				(1025, 850) : (86, 172, 126, 255),
+				(1031, 854) : (63, 161, 108, 255),
+			},
+			Signals.ship5Intact : {
+				(1325, 850) : (85, 172, 125, 255),
+				(1329, 854) : (63, 161, 108, 255),
+			},
+			Signals.ship6Intact : {
+				(1625, 854) : (64, 161, 109, 255),
+				(1638, 852) : (86, 172, 126, 255),
+			}
+		})
+		self.transition.update({
+			Transitions.selectStatistic : ((StateKey.combatPreparationStatistic,), (447, 1133, 8), False),
+			Transitions.selectQuickSupply : ((StateKey.combatPreparationQuickSupply,), (789, 1133, 8), False),
+			Transitions.selectQuickRepair : ((StateKey.combatPreparationQuickRepair,), (1138, 1133, 8), False),
+			Transitions.backAtCombatPreparation : ((StateKey.sailingOffCombat,), (77, 74, 8), False),
+			Transitions.startBattleAtCombatPreparation : ((StateKey.enemyInfo, StateKey.selectFormation), (2234, 1317, 8), True),	
+		})
+		self.behavior.update({
+			Behaviors.selectSquardon1 : (272, 231, 8),
+			Behaviors.selectSquardon2 : (589, 231, 8),
+			Behaviors.selectSquardon3 : (906, 231, 8),
+			Behaviors.selectSquardon4 : (1220, 231, 8), 
+		})
+
+	def getDamagedShips(self):
+		damagedShips = []
+		if not self.signal[Signals.ship1Intact]:
+			damagedShips.append(1)
+		if not self.signal[Signals.ship2Intact]:
+			damagedShips.append(2)
+		if not self.signal[Signals.ship3Intact]:
+			damagedShips.append(3)
+		if not self.signal[Signals.ship4Intact]:
+			damagedShips.append(4)
+		if not self.signal[Signals.ship5Intact]:
+			damagedShips.append(5)
+		if not self.signal[Signals.ship6Intact]:
+			damagedShips.append(6)
+		return damagedShips
+

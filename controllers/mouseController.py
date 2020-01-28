@@ -5,30 +5,31 @@ from components.mouse import Mouse
 from data.constants import *
 
 class MouseController:
-    def __init__(self, gameStateManager):
+    def __init__(self, stateController):
         self.mouse = Mouse()
-        self.gameStateManager = gameStateManager
+        self.stateController = stateController
         seed(datetime.now())
 
-    def clickAndWaitUntilStateChange(self, position, std, fromStates, toStates, clickWhileWaiting):
+    def clickAndWaitUntilStateChange(self, clickInfo, fromState, toStates, clickWhileWaiting):
         self.normalSleep()
         while True:
-            self.mouse.simulateClick(position, std)
+            self.mouse.simulateClick(clickInfo)
             self.longSleep()
-            currentState = self.gameStateManager.updateScreenshotAndState()
-            if currentState not in fromStates:
+            currentState = self.stateController.updateState()
+            if currentState != fromState:
                 break
+        print(toStates)
         while currentState not in toStates:
             if clickWhileWaiting:
                 for _ in range(NUM_CLICKS_BEFORE_UPDATE):
-                    self.mouse.simulateClick(WAITING_CLICK_POSITION, WAITING_CLICK_STD)
+                    self.mouse.simulateClick(WAITING_CLICK_INFO)
                     self.shortSleep()
             else:
                 self.normalSleep()
-            currentState = self.gameStateManager.updateScreenshotAndState()
+            currentState = self.stateController.updateState()
 
-    def clickAndNoStageChange(self, position, std):
-        self.mouse.simulateClick(position, std)
+    def clickAndNoStageChange(self, clickInfo):
+        self.mouse.simulateClick(clickInfo)
         self.normalSleep()
 
     def longSleep(self):
