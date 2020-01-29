@@ -1,12 +1,9 @@
-- refactor to different folders
-- refactor dangers
-- config file for stages
-- more detailed log in battle method and inpsect
-- auto expidition
-- Better logger
-- retreat then no supply
-- auto quick repair
+- supply when need
+- auto campaign
+- extract stage into stage class
 - select stage
+- auto mission complete
+- auto tir down
 - check squadron
 - Detect repairing
 - supply when <= 60%
@@ -22,3 +19,8 @@ Completed:
 - refactor config
 - refactor message
 - change stage selection to numbers
+- refactor to different folders
+- refactor dangers
+- implement state and factory pattern
+- auto expidition
+- auto repair

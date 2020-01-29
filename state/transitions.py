@@ -1,6 +1,6 @@
-from util.orderedEnum import OrderedEnum
+from enum import IntEnum
 
-class Transitions(OrderedEnum):
+class Transitions(IntEnum):
 	confirm = 0
 	chase = 1,
 	giveUp = 2,
@@ -27,7 +27,16 @@ class Transitions(OrderedEnum):
 	selectCombat = 23,
 	selectCampaign = 24,
 	selectExercise = 25,
-	selectExpidition = 26
+	selectExpidition = 26,
+	confirmAtContinueExpidition = 27,
+	cancelAtContinueExpidition = 28,
+	collectExpidition1 = 29,
+	collectExpidition2 = 30,
+	collectExpidition3 = 31,
+	collectExpidition4 = 32,
+	confirmAtNewShip = 33,
+	cancelAtNewShip = 34,
+	retreatAtFlagShipSeriousDamaged = 35
 
 
 

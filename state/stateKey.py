@@ -1,6 +1,6 @@
-from util.orderedEnum import OrderedEnum
+from enum import IntEnum
 
-class StateKey(OrderedEnum):
+class StateKey(IntEnum):
 	unknown = 0
 	attendence = 1,
 	chaseOrGiveUp = 2,
@@ -18,5 +18,8 @@ class StateKey(OrderedEnum):
 	sailingOffCombat = 14,
 	sailingOffExercise = 15,
 	sailingOffExpidition = 16,
-	selectFormation = 17
+	selectFormation = 17,
+	continueExpidition = 18,
+	newShip = 19,
+	flagShipSeriousDamaged = 20
 

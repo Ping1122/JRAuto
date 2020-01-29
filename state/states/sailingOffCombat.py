@@ -5,8 +5,8 @@ from state.states.sailingOff import SailingOff
 class SailingOffCombat(SailingOff):
 	signature = {
 		**SailingOff.signature,
-		(432, 56) : (254, 255, 255, 255),
-		(563, 53) : (15, 126, 219, 255),
+		(432, 56) : ((254, 255, 255, 255),),
+		(563, 53) : ((15, 126, 219, 255),),
 	}
 	def __init__(self):
 		super().__init__()

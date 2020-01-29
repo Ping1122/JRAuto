@@ -18,7 +18,6 @@ class MouseController:
             currentState = self.stateController.updateState()
             if currentState != fromState:
                 break
-        print(toStates)
         while currentState not in toStates:
             if clickWhileWaiting:
                 for _ in range(NUM_CLICKS_BEFORE_UPDATE):

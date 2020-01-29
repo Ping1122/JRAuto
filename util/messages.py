@@ -32,9 +32,8 @@ class Messages:
         return f"Start inspect, repair and replace, at screen {str(state)[7:]}"
 
     def existsDamagedShipsWarning(self, damagedShips):
-        ships = map(lambda x: x+1, damagedShips)
         verb = "is" if len(damagedShips) == 1 else "are"
-        return f"Ship {str(list(ships))[1:-1]} {verb} damaged, leveling stopped"
+        return f"Ship {str(list(damagedShips))[1:-1]} {verb} damaged, quick repair it"
 
     def startSupplyMessage(self, state):
         return f"Start supply ships, at screen {str(state)[7:]}"
@@ -49,4 +48,7 @@ class Messages:
         return "There are no damaged ships, ready to start battle"
 
     def invalidTransitionOrBehavior(self, type):
-        return f"Trying to {type}, but not in correct screen"
+        return f"Trying to {str(type)}, but not in correct screen"
+
+    def existsCompletedExpiditionMessage(self):
+        return "There exists one or more completed expidition, collecting the resource"

@@ -1,12 +1,18 @@
-from util.orderedEnum import OrderedEnum
+from enum import IntEnum
 
-class Behaviors(OrderedEnum):
+class Behaviors(IntEnum):
 	repairAllShips = 0
 	supplyAllShips = 1,
 	selectSquardon1 = 2,
 	selectSquardon2 = 3,
 	selectSquardon3 = 4,
 	selectSquardon4 = 5,
-	checkNoNewsToday = 6
+	checkNoNewsToday = 6,
+	repairShip1 = 7,
+	repairShip2 = 8,
+	repairShip3 = 9,
+	repairShip4 = 10,
+	repairShip5 = 11,
+	repairShip6 = 12
 	
 

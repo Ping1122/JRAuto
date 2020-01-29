@@ -17,6 +17,7 @@ class GameController:
         stage = self.stages[stageNum-1]
         log(self.messages.startLevelStageMessage(stage), Types.info)
         for count in range(1, MAX_LEVEL_STAGE_TIMES+1):
+            self.activityController.collectAndRestartExpidition()
             self.activityController.selectStage(stage)
             self.activityController.inspectRepairReplace()
             self.activityController.supply()

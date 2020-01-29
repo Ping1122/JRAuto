@@ -17,7 +17,10 @@ from state.states.sailingOffCombat import SailingOffCombat
 from state.states.sailingOffExercise import SailingOffExercise
 from state.states.sailingOffExpidition import SailingOffExpidition
 from state.states.selectFormation import SelectFormation
+from state.states.continueExpidition import ContinueExpidition
+from state.states.newShip import NewShip
 from data.constants import IMG_RESOLUTION
+from state.signals import Signals
 
 class StateFactory:
 	def __init__(self):
@@ -39,8 +42,9 @@ class StateFactory:
 			StateKey.sailingOffExercise : SailingOffExercise,
 			StateKey.sailingOffExpidition : SailingOffExpidition,
 			StateKey.selectFormation : SelectFormation,
+			StateKey.continueExpidition: ContinueExpidition,
+			StateKey.newShip : NewShip,
 			StateKey.unknown : Unknown,
-
 		}
 
 	def makeStateByScreenshot(self, screenshot):
@@ -49,6 +53,7 @@ class StateFactory:
 		for state in self.keyStateMap.values():
 			if all(
 				self.debug(pos, data, color, state)
+				#data[pos[1]*IMG_RESOLUTION[0]+pos[0]] == color
 				for pos, color in state.signature.items()
 			):
 				stateClass = state
@@ -58,15 +63,19 @@ class StateFactory:
 		return state
 
 	def debug(self, pos, data, color, state):
-		if state == EnemyInfo:
+		if state == Signals.stage74bExistsSubmarine:
 			print(data[pos[1]*IMG_RESOLUTION[0]+pos[0]], color)
-		return data[pos[1]*IMG_RESOLUTION[0]+pos[0]] == color
+		return data[pos[1]*IMG_RESOLUTION[0]+pos[0]] in color
 
 	def setSignalByScreenshot(self, state, screenshot):
 		data = screenshot.getdata()
 		for key, signature in state.sign.items():
 			if all(
-				data[pos[1]*IMG_RESOLUTION[0]+pos[0]] == color
+				self.debug(pos, data, color, key)
+				#data[pos[1]*IMG_RESOLUTION[0]+pos[0]] == color
 				for pos, color in signature.items()
-			):
+			):	
 				state.signal[key] = True
+			else:
+				state.signal[key] = False
+
