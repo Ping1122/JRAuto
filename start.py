@@ -1,9 +1,9 @@
-from controllers.gameController import GameController
+from controllers.taskController import TaskController
 from util.messages import Messages
 from util.logger import log, Types
 
 def main():
-	gameController = GameController()
+	taskController = TaskController()
 	stageNum = 0
 	while True:
 		try:
@@ -12,6 +12,6 @@ def main():
 		except:
 			log(Messages().invalidUserInput(stageNum), Types.info)
 			continue
-		gameController.levelStage(stageNum)
+		taskController.startTask(stageNum)
 if __name__== "__main__":
 	main()

@@ -23,7 +23,7 @@ class StateController:
             message = self.messages.invalidTransitionOrBehavior(key)
             log(message, Types.error)
             exit(1)
-        resultStates, clickInfo, clickWhileWaiting = self.currentState.transition[key] 
+        resultStates, clickInfo, clickWhileWaiting = self.currentState.transition[key]
         self.mouseController.clickAndWaitUntilStateChange(
             clickInfo,
             self.currentState.key,
@@ -36,5 +36,6 @@ class StateController:
             message = self.messages.invalidTransitionOrBehavior(key)
             log(message, Types.error)
             exit(1)
-        clickInfo = self.currentState.behavior[key] 
+        clickInfo = self.currentState.behavior[key]
         self.mouseController.clickAndNoStageChange(clickInfo)
+        self.updateState()

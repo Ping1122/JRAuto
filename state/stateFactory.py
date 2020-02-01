@@ -19,6 +19,7 @@ from state.states.sailingOffExpidition import SailingOffExpidition
 from state.states.selectFormation import SelectFormation
 from state.states.continueExpidition import ContinueExpidition
 from state.states.newShip import NewShip
+from state.states.flagshipSeriousDamaged import FlagshipSeriousDamaged
 from data.constants import IMG_RESOLUTION
 from state.signals import Signals
 
@@ -74,8 +75,7 @@ class StateFactory:
 				self.debug(pos, data, color, key)
 				#data[pos[1]*IMG_RESOLUTION[0]+pos[0]] == color
 				for pos, color in signature.items()
-			):	
+			):
 				state.signal[key] = True
 			else:
 				state.signal[key] = False
-

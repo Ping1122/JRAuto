@@ -14,7 +14,7 @@ class CombatPreparationQuickRepair(CombatPreparation):
 		self.key = StateKey.combatPreparationQuickRepair
 		self.transition.pop(Transitions.selectQuickRepair, None)
 		self.behavior.update({
-			Behaviors.repairAllShips : (2195, 978, 8), 
+			Behaviors.repairAllShips : (2195, 978, 8),
 			Behaviors.repairShip1 : (264, 603, 10),
 			Behaviors.repairShip2 : (558, 603, 10),
 			Behaviors.repairShip3 : (870, 603, 10),
@@ -22,4 +22,3 @@ class CombatPreparationQuickRepair(CombatPreparation):
 			Behaviors.repairShip5 : (1470, 603, 10),
 			Behaviors.repairShip6 : (1764, 603, 10),
 		})
-	

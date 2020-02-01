@@ -12,6 +12,16 @@ class Signals(IntEnum):
 	expidition1Completed = 8,
 	expidition2Completed = 9,
 	expidition3Completed = 10,
-	expidition4Completed = 11
-	
-
+	expidition4Completed = 11,
+	slot1Empty = 12,
+	slot2Empty = 13,
+	slot3Empty = 14,
+	slot4Empty = 15,
+	slot5Empty = 16,
+	slot6Empty = 17,
+	ship1NeedSupply = 18,
+	ship2NeedSupply = 19,
+	ship3NeedSupply = 20,
+	ship4NeedSupply = 21,
+	ship5NeedSupply = 22,
+	ship6NeedSupply = 23

@@ -1,12 +1,15 @@
-- supply when need
 - auto campaign
+- auto exercise
 - extract stage into stage class
 - select stage
+- refactor retreatFlagShipDamaged
 - auto mission complete
+- 6-1
 - auto tir down
-- check squadron
-- Detect repairing
-- supply when <= 60%
+- statistic recorder
+- signal handler
+- daily mission
+- weekly mission
 - make it machine independent
 
 
@@ -24,3 +27,4 @@ Completed:
 - implement state and factory pattern
 - auto expidition
 - auto repair
+- supply when need
