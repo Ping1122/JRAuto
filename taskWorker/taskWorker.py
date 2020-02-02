@@ -1,4 +1,4 @@
-from util.message import Message
+from util.messages import Messages
 from taskWorker.status import Status
 from task.combat import Combat
 
@@ -6,8 +6,8 @@ class TaskWorker:
     def __init__(self, stateController, task):
         self.stateController = stateController
         self.task = task
-        self.message = Message()
-        self.status = Staus.normal
+        self.messages = Messages()
+        self.status = Status.normal
         self.workers = []
         if isinstance(task, Combat):
             self.initCombat()

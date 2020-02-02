@@ -3,7 +3,7 @@ from taskWorker.status import Status
 from state.stateKey import StateKey
 
 class CheckExecute(TaskWorker):
-    def __init__(self):
+    def __init__(self, stateController, task):
         super(CheckExecute, self).__init__(stateController, task)
         self.countExecute = 0;
 

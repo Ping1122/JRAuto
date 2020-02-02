@@ -1,6 +1,7 @@
 from taskWorker.taskWorker import TaskWorker
 from taskWorker.status import Status
 from state.transitions import Transitions
+from state.stateKey import StateKey
 
 class RetreatFlagShipDamaged(TaskWorker):
     def work(self, status):

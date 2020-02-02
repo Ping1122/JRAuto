@@ -19,7 +19,7 @@ from state.states.sailingOffExpidition import SailingOffExpidition
 from state.states.selectFormation import SelectFormation
 from state.states.continueExpidition import ContinueExpidition
 from state.states.newShip import NewShip
-from state.states.flagshipSeriousDamaged import FlagshipSeriousDamaged
+from state.states.flagShipSeriousDamaged import FlagShipSeriousDamaged
 from data.constants import IMG_RESOLUTION
 from state.signals import Signals
 

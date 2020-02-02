@@ -63,6 +63,24 @@ class CombatPreparation(State):
 				(1758, 646) : ((188, 192, 194, 255), ),
 				(1757, 732) : ((50, 94, 125, 255), )
 			},
+			Signals.ship1NeedSupply : {
+				(379, 996) : ((160, 160, 160, 255), ),
+			},
+			Signals.ship2NeedSupply : {
+				(975, 993) : ((160, 160, 160, 255), ),
+			},
+			Signals.ship3NeedSupply : {
+				(1274, 997) : ((160, 160, 160, 255), ),
+			},
+			Signals.ship4NeedSupply : {
+				(1571, 996) : ((160, 160, 160, 255), ),
+			},
+			Signals.ship5NeedSupply : {
+				(1572, 944) : ((160, 160, 160, 255), ),
+			},
+			Signals.ship6NeedSupply : {
+				(1867, 943) : ((160, 160, 160, 255), ),
+			},
 		})
 		self.transition.update({
 			Transitions.selectStatistic : ((StateKey.combatPreparationStatistic,), (447, 1133, 8), False),
@@ -84,3 +102,9 @@ class CombatPreparation(State):
 			if not self.signal[Signals(i)] and not self.signal[Signals(i+12)]:
 				damagedShips.append(i+1)
 		return damagedShips
+
+	def existsShipNeedSupply(self):
+		for i in range(6):
+			if not self.signal[Signals(i+12)] and self.signal[Signals(i+18)]:
+				return True
+		return False

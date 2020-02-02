@@ -6,7 +6,7 @@ from taskWorker.status import Status
 
 class DamageControl(TaskWorker):
     def __init__(self, stateController, task):
-        super(Initializer, self).__init__(stateController, task)
+        super(DamageControl, self).__init__(stateController, task)
 
     def initCombat(self):
         self.addTaskWorkers([

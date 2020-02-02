@@ -16,7 +16,7 @@ class SelectFormation(State):
 			StateKey.chaseOrGiveUp,
 			StateKey.forwardOrRetreat,
 			StateKey.newShip,
-			StateKey.SailingOffCombat
+			StateKey.sailingOffCombat
 		)
 		self.transition.update({
 			Transitions.selectSingleVertical : (resultStates, (1496, 327, 10), True),

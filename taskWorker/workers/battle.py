@@ -6,6 +6,7 @@ from taskWorker.workers.decideChase import DecideChase
 from taskWorker.workers.lockNewShip import LockNewShip
 from taskWorker.workers.retreatFlagShipDamaged import RetreatFlagShipDamaged
 from taskWorker.workers.decideForward import DecideForward
+from taskWorker.workers.checkBattleState import CheckBattleState
 from taskWorker.status import Status
 
 class Battle(TaskWorker):

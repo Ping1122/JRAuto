@@ -1,7 +1,7 @@
 from enum import IntEnum
 
 class Status(IntEnum):
-    init = 0,
+    initial = 0,
     final = 1,
     normal = 2,
     firstBattle = 3,

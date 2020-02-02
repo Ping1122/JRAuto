@@ -1,14 +1,17 @@
 from taskWorker.taskWorker import TaskWorker
-from taskWorker.workers.transitToTargetState import TransitToTargetState
+from taskWorker.workers.selectStage import SelectStage
 from taskWorker.workers.damageControl import DamageControl
 from taskWorker.workers.supply import Supply
 from taskWorker.workers.battle import Battle
+from taskWorker.workers.checkExecute import CheckExecute
+from taskWorker.workers.handleExpidition import HandleExpidition
 from taskWorker.status import Status
 
 class Execute(TaskWorker):
     def initCombat(self):
         self.addTaskWorkers([
-            TransitToTargetState,
+        	HandleExpidition,
+            SelectStage,
             DamageControl,
             Supply,
             Battle,

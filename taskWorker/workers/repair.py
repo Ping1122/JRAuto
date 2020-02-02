@@ -6,7 +6,7 @@ from state.transitions import Transitions
 from state.behaviors import Behaviors
 
 class Repair(TaskWorker):
-    def work(self, status, argument):
+    def work(self, status):
         damagedShips = status
         if damagedShips:
             message = self.messages.existsDamagedShipsWarning(damagedShips)

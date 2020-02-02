@@ -1,6 +1,7 @@
 from taskWorker.taskWorker import TaskWorker
 from taskWorker.status import Status
 from state.transitions import Transitions
+from state.stateKey import StateKey
 
 class LockNewShip(TaskWorker):
     def work(self, status):
