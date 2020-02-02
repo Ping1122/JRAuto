@@ -65,7 +65,7 @@ class StateFactory:
 		return state
 
 	def debug(self, pos, data, color, state):
-		#if state == Signals.stage74bExistsSubmarine:
+		#if state == Signals.sta:
 		#	print(data[pos[1]*IMG_RESOLUTION[0]+pos[0]], color)
 		return data[pos[1]*IMG_RESOLUTION[0]+pos[0]] in color
 

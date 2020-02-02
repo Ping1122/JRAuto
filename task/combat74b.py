@@ -8,4 +8,4 @@ class Combat74b(Combat):
         self.nightBattle = [False, ]
         self.formation = [1, ]
         self.maxRound = 50
-        self.retreatSignal = [Signals.stage74bExistsSubmarine, ]
+        self.retreatSignal = [(Signals.stage74bExistsSubmarine, ), ]

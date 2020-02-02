@@ -7,7 +7,7 @@ from state.behaviors import Behaviors
 
 class Supply(TaskWorker):
     def work(self, status):
-        message = self.messages.startSupplyMessage(self.stateController.currentState.key)
+        message = self.messages.startSupplyMessage()
         log(message, Types.verbose)
         if self.stateController.currentState.existsShipNeedSupply():
 	        if self.stateController.currentState.key !=  StateKey.combatPreparationQuickSupply:

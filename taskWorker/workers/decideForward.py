@@ -2,6 +2,7 @@ from taskWorker.taskWorker import TaskWorker
 from taskWorker.status import Status
 from state.stateKey import StateKey
 from state.transitions import Transitions
+from util.logger import log, Types
 
 class DecideForward(TaskWorker):
     def work(self, status):

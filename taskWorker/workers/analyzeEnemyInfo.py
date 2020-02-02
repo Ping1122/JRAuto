@@ -7,7 +7,7 @@ class AnalyzeEnemyInfo(TaskWorker):
     def work(self, status):
         index = int(status)-3
         retreatSignal = self.task.retreatSignal[index]
-        if retreatSignal and self.stateController.currentState.signal[retreatSignal]:
+        if retreatSignal and any(self.stateController.currentState.signal[x] for x in retreatSignal):
             message = self.messages.stage74bExistsSubmarineMessage()
             log(message, Types.verbose)
             self.stateController.transit(Transitions.retreatAtEnemyInfo)

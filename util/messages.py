@@ -4,12 +4,13 @@ class Messages:
     def __init__(self):
         pass
 
-    def enterStagePrompt(self, stages):
+    def enterStagePrompt(self):
         prompt = "Enter the stage number you want to level. \n"
         prompt += "Currently support stage are:\n"
         prompt += "1. 6-1a\n"
         prompt += "2. 7-1a\n"
         prompt += "3. 7-4b\n"
+        return prompt
 
     def invalidUserInput(self, taskNum):
         return f"The task number: {taskNum} is invalid"
@@ -28,6 +29,9 @@ class Messages:
 
     def startSelectStateMessage(self, stage, state):
         return f"Start selecting {stage}, at screen {str(state)[9:]}"
+
+    def startSupplyMessage(self):
+        return "Start to supply ships"
 
     def existsDamagedShipsWarning(self, damagedShips):
         verb = "is" if len(damagedShips) == 1 else "are"
@@ -67,4 +71,4 @@ class Messages:
         return "Retreat since the flag ship is seriously damaged"
 
     def selectFormation(self, formation):
-        return f"Select {formation[12:]} formation"
+        return f"Select {str(formation)[12:]} formation"

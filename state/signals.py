@@ -24,4 +24,6 @@ class Signals(IntEnum):
 	ship3NeedSupply = 20,
 	ship4NeedSupply = 21,
 	ship5NeedSupply = 22,
-	ship6NeedSupply = 23
+	ship6NeedSupply = 23,
+	stage61aExistsCVL = 24,
+	stage61aExistsCLT = 25
