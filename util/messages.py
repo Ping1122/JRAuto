@@ -5,13 +5,14 @@ class Messages:
         pass
 
     def enterStagePrompt(self, stages):
-        prompt = ["Enter the stage number you want to level. \nCurrently support stage are:\n"]
-        for index, stage in enumerate(stages):
-            prompt.append(f"{index+1}. {stage}\n")
-        return "".join(prompt)
+        prompt = "Enter the stage number you want to level. \n"
+        prompt += "Currently support stage are:\n"
+        prompt += "1. 6-1a\n"
+        prompt += "2. 7-1a\n"
+        prompt += "3. 7-4b\n"
 
-    def invalidUserInput(self, stageNum):
-        return f"{stageNum} is invalid"
+    def invalidUserInput(self, taskNum):
+        return f"The task number: {taskNum} is invalid"
 
     def invalidStageWarning(self, stage):
         return f"{stage} is not supported, please try again"
@@ -26,20 +27,11 @@ class Messages:
         return f"Completed the {stage} for {count} times. Used {int(timeUsed)} seconds"
 
     def startSelectStateMessage(self, stage, state):
-        return f"Start selecting {stage}, at screen {str(state)[7:]}"
-
-    def inspectRepairReplaceMessage(self, state):
-        return f"Start inspect, repair and replace, at screen {str(state)[7:]}"
+        return f"Start selecting {stage}, at screen {str(state)[9:]}"
 
     def existsDamagedShipsWarning(self, damagedShips):
         verb = "is" if len(damagedShips) == 1 else "are"
         return f"Ship {str(list(damagedShips))[1:-1]} {verb} damaged, quick repair it"
-
-    def startSupplyMessage(self, state):
-        return f"Start supply ships, at screen {str(state)[7:]}"
-
-    def startBattleMessage(self, stage, state):
-        return f"Start battle at {stage}, at screen {str(state)[7:]}"
 
     def stage74bExistsSubmarineMessage(self):
         return "There are enemy submarines at 7-4b, retreat"
@@ -52,3 +44,27 @@ class Messages:
 
     def existsCompletedExpiditionMessage(self):
         return "There exists one or more completed expidition, collecting the resource"
+
+    def analyzeEnemyInfo(self):
+        return "Analyzing enemy ships"
+
+    def collectAndRestartExpidition(self):
+        return "Collecting then restart the completed Expidition"
+
+    def decideChase(self):
+        return "Deciding whether to enter night battle"
+
+    def decideForward(self):
+        return "Deciding whether to move to next hold"
+
+    def inspect(self):
+        return "Inspecting ships to check demages"
+
+    def lockNewShip(self):
+        return "Obtained a new ship. Lock it"
+
+    def retreatFlagShipDamaged(self):
+        return "Retreat since the flag ship is seriously damaged"
+
+    def selectFormation(self, formation):
+        return f"Select {formation[12:]} formation"

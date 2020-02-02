@@ -44,6 +44,7 @@ class StateFactory:
 			StateKey.sailingOffExpidition : SailingOffExpidition,
 			StateKey.selectFormation : SelectFormation,
 			StateKey.continueExpidition: ContinueExpidition,
+			StateKey.flagShipSeriousDamaged : FlagShipSeriousDamaged,
 			StateKey.newShip : NewShip,
 			StateKey.unknown : Unknown,
 		}
@@ -64,8 +65,8 @@ class StateFactory:
 		return state
 
 	def debug(self, pos, data, color, state):
-		if state == Signals.stage74bExistsSubmarine:
-			print(data[pos[1]*IMG_RESOLUTION[0]+pos[0]], color)
+		#if state == Signals.stage74bExistsSubmarine:
+		#	print(data[pos[1]*IMG_RESOLUTION[0]+pos[0]], color)
 		return data[pos[1]*IMG_RESOLUTION[0]+pos[0]] in color
 
 	def setSignalByScreenshot(self, state, screenshot):

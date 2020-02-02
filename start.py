@@ -7,7 +7,7 @@ def main():
 	stageNum = 0
 	while True:
 		try:
-			log("Messages().enterStagePrompt(taskController.stages)", Types.info)
+			log(Messages().enterStagePrompt(), Types.info)
 			stageNum = int(input())
 		except:
 			log(Messages().invalidUserInput(stageNum), Types.info)

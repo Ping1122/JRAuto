@@ -5,7 +5,7 @@ from state.transitions import Transitions
 
 class SelectStage(TaskWorker):
     def work(self, status):
-        message = "self.messages.startSelectStateMessage(stage, self.stateController.currentState.key)"
+        message = self.messages.startSelectStateMessage(self.task.name, self.stateController.currentState.key)
         log(message, Types.verbose)
         self.stateController.transit(Transitions.selectStage)
         return Status.normal
