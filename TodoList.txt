@@ -1,4 +1,3 @@
-- 6-1 submarine
 - auto exercise
 - navigation
 - select stage
@@ -30,3 +29,4 @@ Completed:
 - auto repair
 - supply when need
 - auto campaign
+- 6-1 submarine

@@ -12,5 +12,5 @@ class SelectExpidition(TaskWorker):
 			log(message, Types.verbose)
 			if self.stateController.currentState.key != StateKey.sailingOffExpidition:
 				self.stateController.transit(Transitions.selectExpidition)
-			return Status.normal
-		return Status.final
+			return Status.repeat
+		return Status.normal

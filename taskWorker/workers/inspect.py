@@ -11,5 +11,5 @@ class Inspect(TaskWorker):
     def workCampaign(self, status):
         message = self.messages.inspect()
         log(message, Types.verbose)
-        damagedShip = self.stateController.currentState.getDamagedShips()
-        return (damagedShip, status)
+        damagedShips = self.stateController.currentState.getDamagedShips()
+        return (damagedShips, status)

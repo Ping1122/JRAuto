@@ -1,6 +1,7 @@
 from state.stateKey import StateKey
 from state.transitions import Transitions
 from state.behaviors import Behaviors
+from state.signals import Signals
 from state.states.sailingOff import SailingOff
 
 class SailingOffCampaign(SailingOff):

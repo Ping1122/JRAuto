@@ -7,7 +7,7 @@ from state.behaviors import Behaviors
 
 class Repair(TaskWorker):
     def workCombat(self, status):
-        return repairDamagedShips(status)
+        return self.repairDamagedShips(status)
 
     def workCampaign(self, status):
         self.repairDamagedShips(status[0])

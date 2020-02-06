@@ -21,6 +21,8 @@ from state.states.continueExpidition import ContinueExpidition
 from state.states.newShip import NewShip
 from state.states.flagShipSeriousDamaged import FlagShipSeriousDamaged
 from state.states.battleResult import BattleResult
+from state.states.slavagedShip import SlavagedShip
+from state.states.expiditionResult import ExpiditionResult
 from data.constants import IMG_RESOLUTION
 from state.signals import Signals
 
@@ -46,7 +48,9 @@ class StateFactory:
 		StateKey.continueExpidition: ContinueExpidition,
 		StateKey.flagShipSeriousDamaged : FlagShipSeriousDamaged,
 		StateKey.newShip : NewShip,
-		StateKey.battleResult: BattleResult,
+		StateKey.battleResult : BattleResult,
+		StateKey.slavagedShip : SlavagedShip,
+		StateKey.expiditionResult : ExpiditionResult,
 		StateKey.unknown : Unknown,
 	}
 
@@ -69,8 +73,8 @@ class StateFactory:
 		return state
 
 	def debug(self, pos, data, color, state):
-		#if state == Signals.sta:
-		#	print(data[pos[1]*IMG_RESOLUTION[0]+pos[0]], color)
+		if state == ExpiditionResult:
+			print(data[pos[1]*IMG_RESOLUTION[0]+pos[0]], color)
 		return data[pos[1]*IMG_RESOLUTION[0]+pos[0]] in color
 
 	def setSignalByScreenshot(self, state, screenshot):

@@ -5,6 +5,7 @@ from util.logger import log, Types
 from state.transitions import Transitions
 from state.behaviors import Behaviors
 from state.stateKey import StateKey
+from state.signals import Signals
 
 class SelectStage(TaskWorker):
     def workCombat(self, status):
@@ -18,11 +19,13 @@ class SelectStage(TaskWorker):
     def workCampaign(self, status):
         if self.stateController.currentState.key != StateKey.sailingOffCampaign:
             self.stateController.transit(Transitions.selectCampaign)
-        if self.stateController.currentState.signals[Signals.campaignNormalMode]:
+        message = self.messages.startSelectStateMessage(self.task.name, self.stateController.currentState.key)
+        log(message, Types.verbose)
+        if self.stateController.currentState.signal[Signals.campaignNormalMode]:
             self.stateController.behave(Behaviors.switchMode)
         if status == Status.normal:
             self.availableCampaign = list(range(5))
-        if status == Status.damaged:
+        if status == Status.damagedRepeat:
             self.availableCampaign.remove(self.stageIndex)
         if self.availableCampaign:
             self.stageIndex = choice(self.availableCampaign)

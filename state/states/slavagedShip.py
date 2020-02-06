@@ -13,10 +13,10 @@ class SlavagedShip(State):
 		super().__init__()
 		self.key = StateKey.slavagedShip
 		self.transition.update({
-			Transitions.continue : ({
+			Transitions.nextState : ({
                 StateKey.newShip,
                 StateKey.flagShipSeriousDamaged,
                 StateKey.forwardOrRetreat,
-                StateKey.SailingOffCombat,
+                StateKey.sailingOffCombat,
             }, (2348, 1327, 10)),
 		})

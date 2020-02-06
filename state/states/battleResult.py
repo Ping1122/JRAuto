@@ -4,15 +4,15 @@ from state.stateKey import StateKey
 from state.transitions import Transitions
 
 class BattleResult(State):
-	signature = {
-        (38, 39) : ((101, 112, 124, 255), ),
-        (342, 133) : ((255, 255, 255, 255), ),
-        (1139, 105) : ((255, 255, 255, 255), ),
-        (376, 139) : ((255, 255, 255, 255), ),
-	}
-	def __init__(self):
-		super().__init__()
-		self.key = StateKey.battleResult
+    signature = {
+        (1150, 84) : ((255, 255, 255, 255), ),
+        (1140, 128) : ((255, 255, 255, 255), ),
+        (1164, 82) : ((255, 255, 255, 255), ),
+        (1139, 128) : ((255, 255, 255, 255), ),
+    }
+    def __init__(self):
+        super().__init__()
+        self.key = StateKey.battleResult
         self.sign.update({
             Signals.noDamagedShip: {
                 (167, 373) : ((39, 174, 60, 255), ),
@@ -23,8 +23,8 @@ class BattleResult(State):
                 (175, 1376) : ((40, 175, 61, 255),(22, 44, 67, 255)),
             }
         })
-		self.transition.update({
-			Transitions.continue : ({
+        self.transition.update({
+            Transitions.nextState : ({
                 StateKey.slavagedShip,
                 StateKey.flagShipSeriousDamaged,
                 StateKey.forwardOrRetreat,
@@ -32,4 +32,4 @@ class BattleResult(State):
                 StateKey.sailingOffCampaign,
                 StateKey.sailingOffExercise,
             }, (2348, 1327, 10)),
-		})
+        })

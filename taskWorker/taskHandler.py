@@ -5,7 +5,7 @@ from taskWorker.workers.execute import Execute
 from taskWorker.workers.finalize import Finalize
 
 class TaskHandler(TaskWorker):
-    def initCombat(self):
+    def init(self):
         self.addTaskWorkers([
             Initialize,
             Execute,

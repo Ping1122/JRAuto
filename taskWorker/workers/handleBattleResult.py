@@ -9,7 +9,7 @@ class HandleBattleResult(TaskWorker):
         return self.handleBattleResult(status)
 
     def workCampaign(self, status):
-        if self.stateController.currentState.signal(Signals.noDamagedShip):
+        if self.stateController.currentState.signal[Signals.noDamagedShip]:
             status = Status.normal
         else:
             status = Status.damaged
@@ -17,9 +17,11 @@ class HandleBattleResult(TaskWorker):
         return status
 
     def handleBattleResult(self, status):
-        self.stateController.transit(Transitions.continue)
+        if self.stateController.currentState.key != StateKey.battleResult:
+            return status
+        self.stateController.transit(Transitions.nextState)
         if self.stateController.currentState.key == StateKey.slavagedShip:
-            self.stateController.transit(Transitions.continue)
+            self.stateController.transit(Transitions.nextState)
         if self.stateController.currentState.key == StateKey.newShip:
             message = self.messages.lockNewShip()
             log(message, Types.verbose)

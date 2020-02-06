@@ -12,4 +12,5 @@ class StartBattle(TaskWorker):
 		return self.battleIndex
 
 	def workCampaign(self, status):
+		self.stateController.transit(Transitions.startBattleAtCombatPreparation)
 		return status

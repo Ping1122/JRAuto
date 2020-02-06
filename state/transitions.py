@@ -42,4 +42,4 @@ class Transitions(IntEnum):
 	selectBattleShipCampaign = 38,
 	selectAricraftCarrierCampaign = 39,
 	selectSubmarineCampaign = 40,
-	continue = 41,
+	nextState = 41,

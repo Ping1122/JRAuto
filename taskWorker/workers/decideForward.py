@@ -14,4 +14,4 @@ class DecideForward(TaskWorker):
             self.stateController.transit(Transitions.retreatAtForwardOrRetreat)
             return Status.normal
         self.stateController.transit(Transitions.forward)
-        return Status.continue
+        return Status.repeat

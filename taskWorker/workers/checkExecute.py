@@ -12,11 +12,11 @@ class CheckExecute(TaskWorker):
         self.countExecute =+ 1
         if self.countExecute > self.task.maxRound:
             return Status.normal
-        return Status.continue
+        return Status.repeat
 
     def workCampaign(self, status):
         if status == Status.damaged:
-            return status
-        if self.stateController.currentState.signals[Signals.noMoreCampaignTrials]:
+            return status.damagedRepeat
+        if self.stateController.currentState.signal[Signals.noMoreCampaignTrials]:
             return Status.normal
-        return Status.continue
+        return Status.repeat

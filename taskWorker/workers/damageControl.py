@@ -8,7 +8,7 @@ class DamageControl(TaskWorker):
     def __init__(self, stateController, task):
         super(DamageControl, self).__init__(stateController, task)
 
-    def initCombat(self):
+    def init(self):
         self.addTaskWorkers([
             Inspect,
             Repair,

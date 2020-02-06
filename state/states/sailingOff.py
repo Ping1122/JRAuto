@@ -3,7 +3,7 @@ from state.stateKey import StateKey
 from state.signals import Signals
 from state.transitions import Transitions
 
-class SailingOff{State):
+class SailingOff(State):
 	signature = {
 		(17, 1419) : ((15, 23, 42, 255),),
 		(2421, 1405) : ((12, 28, 47, 255),),

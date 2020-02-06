@@ -14,10 +14,10 @@ class SailingOffExpidition(SailingOff):
 		self.key = StateKey.sailingOffExpidition
 		self.transition.pop(Transitions.selectExpidition, None)
 		self.transition.update({
-			Transitions.collectExpidition1 : ({StateKey.continueExpidition, }, (2311, 393, 8)),
-			Transitions.collectExpidition2 : ({StateKey.continueExpidition, }, (2311, 676, 8)),
-			Transitions.collectExpidition3 : ({StateKey.continueExpidition, }, (2311, 964, 8)),
-			Transitions.collectExpidition4 : ({StateKey.continueExpidition, }, (2311, 1249, 8)),
+			Transitions.collectExpidition1 : ({StateKey.expiditionResult, }, (2311, 393, 8)),
+			Transitions.collectExpidition2 : ({StateKey.expiditionResult, }, (2311, 676, 8)),
+			Transitions.collectExpidition3 : ({StateKey.expiditionResult, }, (2311, 964, 8)),
+			Transitions.collectExpidition4 : ({StateKey.expiditionResult, }, (2311, 1249, 8)),
 		})
 		self.sign.update({
 			Signals.expidition1Completed : {

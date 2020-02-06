@@ -23,4 +23,5 @@ class StateKey(IntEnum):
 	newShip = 19,
 	flagShipSeriousDamaged = 20,
 	battleResult = 21,
-	slavagedShip = 22
+	slavagedShip = 22,
+	expiditionResult = 23,

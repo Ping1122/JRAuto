@@ -92,7 +92,7 @@ class CombatPreparation(State):
 				StateKey.selectFormation,
 				StateKey.chaseOrGiveUp,
 				StateKey.battleResult,
-			}, (2234, 1317, 8), True),
+			}, (2234, 1317, 8)),
 		})
 		self.behavior.update({
 			Behaviors.selectSquardon1 : (272, 231, 8),

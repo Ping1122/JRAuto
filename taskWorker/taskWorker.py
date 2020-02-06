@@ -1,6 +1,7 @@
 from util.messages import Messages
 from taskWorker.status import Status
 from task.combat import Combat
+from task.campaign import Campaign
 
 class TaskWorker:
     def __init__(self, stateController, task):
@@ -9,12 +10,12 @@ class TaskWorker:
         self.messages = Messages()
         self.status = Status.normal
         self.workers = []
-        self.init(self)
+        self.init()
 
     def init(self):
-        if isinstance(task, Combat):
+        if isinstance(self.task, Combat):
             self.initCombat()
-        if isinstance(task, Campaign):
+        if isinstance(self.task, Campaign):
             self.initCampaign()
 
     def initCombat(self):
@@ -35,14 +36,14 @@ class TaskWorker:
                 status = worker.dispatch(status)
                 if status == Status.terminate:
                     return status
-            if status not in (Status.continue, Status.damaged):
+            if status not in (Status.repeat, Status.damagedRepeat):
                 break
         return status
 
     def work(self, status):
-        if isinstance(task, Combat):
+        if isinstance(self.task, Combat):
             return self.workCombat(status)
-        if isinstance(task, Campaign):
+        if isinstance(self.task, Campaign):
             return self.workCampaign(status)
 
     def workCombat(self, status):
