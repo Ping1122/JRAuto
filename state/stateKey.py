@@ -21,5 +21,6 @@ class StateKey(IntEnum):
 	selectFormation = 17,
 	continueExpidition = 18,
 	newShip = 19,
-	flagShipSeriousDamaged = 20
-
+	flagShipSeriousDamaged = 20,
+	battleResult = 21,
+	slavagedShip = 22

@@ -26,4 +26,8 @@ class Signals(IntEnum):
 	ship5NeedSupply = 22,
 	ship6NeedSupply = 23,
 	stage61aExistsCVL = 24,
-	stage61aExistsCLT = 25
+	stage61aExistsCLT = 25,
+	campaignNormalMode = 26,
+	campaignHardMode = 27,
+	noMoreCampaignTrials = 28,
+	noDamagedShip = 29

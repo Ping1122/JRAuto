@@ -13,4 +13,4 @@ class Supply(TaskWorker):
 	        if self.stateController.currentState.key !=  StateKey.combatPreparationQuickSupply:
 	            self.stateController.transit(Transitions.selectQuickSupply)
 	        self.stateController.behave(Behaviors.supplyAllShips)
-        return status.normal
+        return status

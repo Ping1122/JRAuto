@@ -13,5 +13,8 @@ class Login(State):
 		super().__init__()
 		self.key = StateKey.login
 		self.transition.update({
-			Transitions.login : ((StateKey.home, StateKey.newsAndAnnouncement), (2270, 1234, 10), False)
+			Transitions.login : ({
+				StateKey.home,
+				StateKey.newsAndAnnouncement
+			}, (2270, 1234, 10))
 		})

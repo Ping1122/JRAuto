@@ -1,12 +1,7 @@
 from enum import IntEnum
 
 class Status(IntEnum):
-    initial = 0,
-    final = 1,
-    normal = 2,
-    firstBattle = 3,
-    secondBattle = 4,
-    thirdBattle = 5,
-    forthBattle = 6,
-    fifthBattle = 7,
-    terminate = 8
+    normal = 0,
+    continue = 1,
+    terminate = 2,
+    damaged = 3,

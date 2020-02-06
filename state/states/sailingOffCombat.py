@@ -13,5 +13,5 @@ class SailingOffCombat(SailingOff):
 		self.key = StateKey.sailingOffCombat
 		self.transition.pop(Transitions.selectCombat, None)
 		self.transition.update({
-			Transitions.selectStage : ((StateKey.combatPreparationStatistic,), (1628, 750, 20), False),
+			Transitions.selectStage : ({StateKey.combatPreparationStatistic, }, (1628, 750, 20)),
 		})

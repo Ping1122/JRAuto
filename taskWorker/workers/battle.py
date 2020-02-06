@@ -3,7 +3,7 @@ from taskWorker.workers.startBattle import StartBattle
 from taskWorker.workers.analyzeEnemyInfo import AnalyzeEnemyInfo
 from taskWorker.workers.selectFormation import SelectFormation
 from taskWorker.workers.decideChase import DecideChase
-from taskWorker.workers.lockNewShip import LockNewShip
+from taskWorker.workers.handleBattleResult import HandleBattleResult
 from taskWorker.workers.retreatFlagShipDamaged import RetreatFlagShipDamaged
 from taskWorker.workers.decideForward import DecideForward
 from taskWorker.workers.checkBattleState import CheckBattleState
@@ -16,9 +16,7 @@ class Battle(TaskWorker):
             AnalyzeEnemyInfo,
             SelectFormation,
             DecideChase,
-            LockNewShip,
+            HandleBattleResult,
             RetreatFlagShipDamaged,
             DecideForward,
-            CheckBattleState,
         ])
-        self.status = Status.normal

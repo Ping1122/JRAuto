@@ -13,5 +13,5 @@ class Attendence(State):
 		super().__init__()
 		self.key = StateKey.attendence
 		self.transition.update({
-			Transitions.confirm : ((StateKey.obtainLoginResource,), (1280, 929, 6), False),
+			Transitions.confirm : ({StateKey.obtainLoginResource,}, (1280, 929, 6)),
 		})

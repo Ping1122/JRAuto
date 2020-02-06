@@ -13,6 +13,5 @@ class Behaviors(IntEnum):
 	repairShip3 = 9,
 	repairShip4 = 10,
 	repairShip5 = 11,
-	repairShip6 = 12
-	
-
+	repairShip6 = 12,
+	switchMode = 13

@@ -43,6 +43,10 @@ class EnemyInfo(State):
 		})
 		self.key = StateKey.enemyInfo
 		self.transition.update({
-			Transitions.retreatAtEnemyInfo : ((StateKey.sailingOffCombat,), (1883, 1333, 8), False),
-			Transitions.startBattleAtEnemyInfo : ((StateKey.selectFormation,), (2312, 1333, 8), False),
+			Transitions.retreatAtEnemyInfo : ({StateKey.sailingOffCombat, }, (1883, 1333, 8)),
+			Transitions.startBattleAtEnemyInfo : ({
+				StateKey.selectFormation,
+				StateKey.chaseOrGiveUp,
+				StateKey.battleResult,
+			}, (2312, 1333, 8)),
 		})

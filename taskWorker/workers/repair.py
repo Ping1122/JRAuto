@@ -6,8 +6,14 @@ from state.transitions import Transitions
 from state.behaviors import Behaviors
 
 class Repair(TaskWorker):
-    def work(self, status):
-        damagedShips = status
+    def workCombat(self, status):
+        return repairDamagedShips(status)
+
+    def workCampaign(self, status):
+        self.repairDamagedShips(status[0])
+        return status[1]
+
+    def repairDamagedShips(self, damagedShips):
         if damagedShips:
             message = self.messages.existsDamagedShipsWarning(damagedShips)
             log(message, Types.warning)
@@ -18,4 +24,4 @@ class Repair(TaskWorker):
             return Status.normal
         message = self.messages.noDamagedShipsMessage()
         log(message, Types.verbose)
-        return Status.final
+        return Status.normal

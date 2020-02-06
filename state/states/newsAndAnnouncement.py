@@ -14,7 +14,7 @@ class NewsAndAnnouncement(State):
 		super().__init__()
 		self.key = StateKey.NewsAndAnnouncement
 		self.transition.update({
-			Transitions.close : ((StateKey.attendence,), (79, 75, 8), False),	
+			Transitions.close : ({StateKey.attendence, }, (79, 75, 8)),
 		})
 		self.behavior.update({
 			Behaviors.checkNoNewsToday: (156, 1339, 8),

@@ -12,7 +12,10 @@ class ChaseOrGiveUp(State):
 	def __init__(self):
 		super().__init__()
 		self.key = StateKey.chaseOrGiveUp
+		resultStates = {
+			StateKey.battleResult,
+		}
 		self.transition.update({
-			Transitions.chase : ((StateKey.forwardOrRetreat, StateKey.newShip, StateKey.sailingOffCombat), (885, 938, 7), True),
-			Transitions.giveUp : ((StateKey.forwardOrRetreat, StateKey.newShip, StateKey.sailingOffCombat), (1677, 938, 7), True),
+			Transitions.chase : (resultStates, (885, 938, 7)),
+			Transitions.giveUp : (resultStates, (1677, 938, 7)),
 		})

@@ -11,7 +11,7 @@ class GameClosed(State):
 	}
 	def __init__(self):
 		super().__init__()
-		self.key = StateKey.gameClosed	
+		self.key = StateKey.gameClosed
 		self.transition.update({
-			Transitions.startGame : ((StateKey.login,), (1286, 310, 10), False), 
+			Transitions.startGame : ({StateKey.login, }, (1286, 310, 10)),
 		})

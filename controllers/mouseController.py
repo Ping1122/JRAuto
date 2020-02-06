@@ -10,7 +10,7 @@ class MouseController:
         self.stateController = stateController
         seed(datetime.now())
 
-    def clickAndWaitUntilStateChange(self, clickInfo, fromState, toStates, clickWhileWaiting):
+    def clickAndWaitUntilStateChange(self, clickInfo, fromState, toStates):
         self.normalSleep()
         while True:
             self.mouse.simulateClick(clickInfo)
@@ -19,12 +19,7 @@ class MouseController:
             if currentState != fromState:
                 break
         while currentState not in toStates:
-            if clickWhileWaiting:
-                for _ in range(NUM_CLICKS_BEFORE_UPDATE):
-                    self.mouse.simulateClick(WAITING_CLICK_INFO)
-                    self.shortSleep()
-            else:
-                self.normalSleep()
+            self.normalSleep()
             currentState = self.stateController.updateState()
 
     def clickAndNoStageChange(self, clickInfo):

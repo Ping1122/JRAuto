@@ -8,7 +8,7 @@ from taskWorker.workers.handleExpidition import HandleExpidition
 from taskWorker.status import Status
 
 class Execute(TaskWorker):
-    def initCombat(self):
+    def init(self):
         self.addTaskWorkers([
         	HandleExpidition,
             SelectStage,

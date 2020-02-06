@@ -36,8 +36,10 @@ class Transitions(IntEnum):
 	collectExpidition4 = 32,
 	confirmAtNewShip = 33,
 	cancelAtNewShip = 34,
-	retreatAtFlagShipSeriousDamaged = 35
-
-
-
-
+	retreatAtFlagShipSeriousDamaged = 35,
+	selectDestroyerCampaign = 36,
+	selectCuriserCampaign = 37,
+	selectBattleShipCampaign = 38,
+	selectAricraftCarrierCampaign = 39,
+	selectSubmarineCampaign = 40,
+	continue = 41,

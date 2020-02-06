@@ -13,5 +13,8 @@ class Home(State):
 		super().__init__()
 		self.key = StateKey.home
 		self.transition.update({
-			Transitions.sailingOff : ((StateKey.sailingOffCombat, StateKey.sailingOffExpidition), (2400, 1298, 10), False),
+			Transitions.sailingOff : ({
+				StateKey.sailingOffCombat,
+				StateKey.sailingOffExpidition
+			}, (2400, 1298, 10)),
 		})

@@ -52,16 +52,16 @@ class CombatPreparation(State):
 				(860, 729) : ((49, 93, 123, 255), ),
 			},
 			Signals.slot4Empty: {
-				(1159, 644) : ((188, 192, 195, 255), ),
-				(1157, 722) : ((49, 91, 124, 255), ),
+				(1159, 644) : ((188, 192, 195, 255), (235, 240, 244, 255),),
+				(1157, 722) : ((49, 91, 124, 255), (61, 114, 155, 255),),
 			},
 			Signals.slot5Empty : {
-				(1459, 647) : ((188, 192, 195, 255), ),
-				(1459, 716) : ((49, 91, 123, 255), ),
+				(1459, 647) : ((188, 192, 195, 255), (235, 240, 244, 255),),
+				(1459, 716) : ((49, 91, 123, 255), (61, 113, 153, 255), ),
 			},
 			Signals.slot6Empty: {
-				(1758, 646) : ((188, 192, 194, 255), ),
-				(1757, 732) : ((50, 94, 125, 255), )
+				(1758, 646) : ((188, 192, 194, 255), (235, 240, 243, 255),),
+				(1757, 732) : ((50, 94, 125, 255), (62, 117, 156, 255),)
 			},
 			Signals.ship1NeedSupply : {
 				(379, 996) : ((160, 160, 160, 255), ),
@@ -83,11 +83,16 @@ class CombatPreparation(State):
 			},
 		})
 		self.transition.update({
-			Transitions.selectStatistic : ((StateKey.combatPreparationStatistic,), (447, 1133, 8), False),
-			Transitions.selectQuickSupply : ((StateKey.combatPreparationQuickSupply,), (789, 1133, 8), False),
-			Transitions.selectQuickRepair : ((StateKey.combatPreparationQuickRepair,), (1138, 1133, 8), False),
-			Transitions.backAtCombatPreparation : ((StateKey.sailingOffCombat,), (77, 74, 8), False),
-			Transitions.startBattleAtCombatPreparation : ((StateKey.enemyInfo, StateKey.selectFormation), (2234, 1317, 8), True),
+			Transitions.selectStatistic : ({StateKey.combatPreparationStatistic, }, (447, 1133, 8)),
+			Transitions.selectQuickSupply : ({StateKey.combatPreparationQuickSupply, }, (789, 1133, 8)),
+			Transitions.selectQuickRepair : ({StateKey.combatPreparationQuickRepair, }, (1138, 1133, 8)),
+			Transitions.backAtCombatPreparation : ({StateKey.sailingOffCombat, }, (77, 74, 8)),
+			Transitions.startBattleAtCombatPreparation : ({
+				StateKey.enemyInfo,
+				StateKey.selectFormation,
+				StateKey.chaseOrGiveUp,
+				StateKey.battleResult,
+			}, (2234, 1317, 8), True),
 		})
 		self.behavior.update({
 			Behaviors.selectSquardon1 : (272, 231, 8),

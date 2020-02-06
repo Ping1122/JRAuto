@@ -13,6 +13,11 @@ class ForwardOrRetreat(State):
 		super().__init__()
 		self.key = StateKey.forwardOrRetreat
 		self.transition.update({
-			Transitions.forward : ((StateKey.enemyInfo, StateKey.selectFormation), (885, 938, 7), True),
-			Transitions.retreatAtForwardOrRetreat : ((StateKey.sailingOffCombat,), (1677, 938, 7), False),
+			Transitions.forward : ({
+				StateKey.enemyInfo,
+				StateKey.selectFormation,
+				StateKey.chaseOrGiveUp,
+				StateKey.battleResult,
+			}, (885, 938, 7)),
+			Transitions.retreatAtForwardOrRetreat : ({StateKey.sailingOffCombat,}, (1677, 938, 7)),
 		})

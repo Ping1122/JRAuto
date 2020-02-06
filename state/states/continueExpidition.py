@@ -13,8 +13,6 @@ class ContinueExpidition(State):
 		super().__init__()
 		self.key = StateKey.continueExpidition
 		self.transition.update({
-			Transitions.confirmAtContinueExpidition : ((StateKey.sailingOffExpidition,), (983, 906, 8), False),
-			Transitions.cancelAtContinueExpidition : ((StateKey.sailingOffExpidition,), (1588, 906, 8), False),
+			Transitions.confirmAtContinueExpidition : ({StateKey.sailingOffExpidition, }, (983, 906, 8)),
+			Transitions.cancelAtContinueExpidition : ({StateKey.sailingOffExpidition, }, (1588, 906, 8)),
 		})
-
-

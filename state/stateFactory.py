@@ -20,34 +20,38 @@ from state.states.selectFormation import SelectFormation
 from state.states.continueExpidition import ContinueExpidition
 from state.states.newShip import NewShip
 from state.states.flagShipSeriousDamaged import FlagShipSeriousDamaged
+from state.states.battleResult import BattleResult
 from data.constants import IMG_RESOLUTION
 from state.signals import Signals
 
 class StateFactory:
+	keyStateMap = {
+		StateKey.attendence : Attendence,
+		StateKey.chaseOrGiveUp : ChaseOrGiveUp,
+		StateKey.combatPreparationQuickRepair : CombatPreparationQuickRepair,
+		StateKey.combatPreparationQuickSupply : CombatPreparationQuickSupply,
+		StateKey.combatPreparationStatistic : CombatPreparationStatistic,
+		StateKey.enemyInfo : EnemyInfo,
+		StateKey.forwardOrRetreat : ForwardOrRetreat,
+		StateKey.gameClosed : GameClosed,
+		StateKey.home : Home,
+		StateKey.login : Login,
+		StateKey.newsAndAnnouncement : NewsAndAnnouncement,
+		StateKey.obtainLoginResource : ObtainLoginResource,
+		StateKey.sailingOffCampaign : SailingOffCampaign,
+		StateKey.sailingOffCombat : SailingOffCombat,
+		StateKey.sailingOffExercise : SailingOffExercise,
+		StateKey.sailingOffExpidition : SailingOffExpidition,
+		StateKey.selectFormation : SelectFormation,
+		StateKey.continueExpidition: ContinueExpidition,
+		StateKey.flagShipSeriousDamaged : FlagShipSeriousDamaged,
+		StateKey.newShip : NewShip,
+		StateKey.battleResult: BattleResult,
+		StateKey.unknown : Unknown,
+	}
+
 	def __init__(self):
-		self.keyStateMap = {
-			StateKey.attendence : Attendence,
-			StateKey.chaseOrGiveUp : ChaseOrGiveUp,
-			StateKey.combatPreparationQuickRepair : CombatPreparationQuickRepair,
-			StateKey.combatPreparationQuickSupply : CombatPreparationQuickSupply,
-			StateKey.combatPreparationStatistic : CombatPreparationStatistic,
-			StateKey.enemyInfo : EnemyInfo,
-			StateKey.forwardOrRetreat : ForwardOrRetreat,
-			StateKey.gameClosed : GameClosed,
-			StateKey.home : Home,
-			StateKey.login : Login,
-			StateKey.newsAndAnnouncement : NewsAndAnnouncement,
-			StateKey.obtainLoginResource : ObtainLoginResource,
-			StateKey.sailingOffCampaign : SailingOffCampaign,
-			StateKey.sailingOffCombat : SailingOffCombat,
-			StateKey.sailingOffExercise : SailingOffExercise,
-			StateKey.sailingOffExpidition : SailingOffExpidition,
-			StateKey.selectFormation : SelectFormation,
-			StateKey.continueExpidition: ContinueExpidition,
-			StateKey.flagShipSeriousDamaged : FlagShipSeriousDamaged,
-			StateKey.newShip : NewShip,
-			StateKey.unknown : Unknown,
-		}
+		pass
 
 	def makeStateByScreenshot(self, screenshot):
 		data = screenshot.getdata()

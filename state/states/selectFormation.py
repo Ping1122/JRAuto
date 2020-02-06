@@ -12,16 +12,14 @@ class SelectFormation(State):
 	def __init__(self):
 		super().__init__()
 		self.key = StateKey.selectFormation
-		resultStates = (
+		resultStates = {
 			StateKey.chaseOrGiveUp,
-			StateKey.forwardOrRetreat,
-			StateKey.newShip,
-			StateKey.sailingOffCombat
-		)
+			StateKey.battleResult,
+		}
 		self.transition.update({
-			Transitions.selectSingleVertical : (resultStates, (1496, 327, 10), True),
-			Transitions.selectDoubleVertical : (resultStates, (1430, 564, 10), True),
-			Transitions.selectWheelShape : (resultStates, (1392, 805, 10), True),
-			Transitions.selectTrapezoidShape : (resultStates, (1347, 1052, 10), True),
-			Transitions.selectSingleHorizontal : (resultStates, (1309, 1295, 10), True),
+			Transitions.selectSingleVertical : (resultStates, (1496, 327, 10)),
+			Transitions.selectDoubleVertical : (resultStates, (1430, 564, 10)),
+			Transitions.selectWheelShape : (resultStates, (1392, 805, 10)),
+			Transitions.selectTrapezoidShape : (resultStates, (1347, 1052, 10)),
+			Transitions.selectSingleHorizontal : (resultStates, (1309, 1295, 10)),
 		})

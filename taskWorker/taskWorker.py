@@ -9,10 +9,18 @@ class TaskWorker:
         self.messages = Messages()
         self.status = Status.normal
         self.workers = []
+        self.init(self)
+
+    def init(self):
         if isinstance(task, Combat):
             self.initCombat()
+        if isinstance(task, Campaign):
+            self.initCampaign()
 
     def initCombat(self):
+        pass
+
+    def initCampaign(self):
         pass
 
     def addTaskWorkers(self, taskWorkers):
@@ -22,15 +30,23 @@ class TaskWorker:
     def dispatch(self, status):
         if not self.workers:
             return self.work(status)
-        status = Status.initial
-        while status != Status.final:
+        while True:
             for worker in self.workers:
                 status = worker.dispatch(status)
-                if status == Status.final:
-                    break
-        if status == Status.terminate:
-            return status
-        return self.status
+                if status == Status.terminate:
+                    return status
+            if status not in (Status.continue, Status.damaged):
+                break
+        return status
 
     def work(self, status):
-        pass
+        if isinstance(task, Combat):
+            return self.workCombat(status)
+        if isinstance(task, Campaign):
+            return self.workCampaign(status)
+
+    def workCombat(self, status):
+        return status
+
+    def workCampaign(self, status):
+        return status

@@ -3,4 +3,4 @@ from taskWorker.status import Status
 
 class Finalize(TaskWorker):
     def work(self, status):
-        return Status.final
+        return Status.normal

@@ -13,5 +13,5 @@ class ObtainLoginResource(State):
 		super().__init__()
 		self.key = StateKey.obtainLoginResource
 		self.transition.update({
-			Transitions.obtainResource : ((StateKey.home,), (1282, 800, 6), False),
+			Transitions.obtainResource : ({StateKey.home, }, (1282, 800, 6)),
 		})

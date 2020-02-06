@@ -13,4 +13,4 @@ class TaskHandler(TaskWorker):
         ])
 
     def start(self):
-        self.dispatch(Status.initial)
+        self.dispatch(Status.normal)

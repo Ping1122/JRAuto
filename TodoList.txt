@@ -1,8 +1,9 @@
-- auto campaign
+- 6-1 submarine
 - auto exercise
-- extract stage into stage class
+- navigation
 - select stage
-- refactor retreatFlagShipDamaged
+- extract expidition
+- task schedualer
 - auto mission complete
 - 6-1
 - auto tir down
@@ -28,3 +29,4 @@ Completed:
 - auto expidition
 - auto repair
 - supply when need
+- auto campaign

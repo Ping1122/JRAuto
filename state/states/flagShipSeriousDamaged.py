@@ -14,6 +14,5 @@ class FlagShipSeriousDamaged(State):
 		super().__init__()
 		self.key = StateKey.flagShipSeriousDamaged
 		self.transition.update({
-			Transitions.retreatAtFlagShipSeriousDamaged : ((StateKey.home, ), (1755, 882, 8), False),
+			Transitions.retreatAtFlagShipSeriousDamaged : ({StateKey.home, }, (1755, 882, 8)),
 		})
-

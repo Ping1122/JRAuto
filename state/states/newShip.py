@@ -13,6 +13,14 @@ class NewShip(State):
 		super().__init__()
 		self.key = StateKey.newShip
 		self.transition.update({
-			Transitions.confirmAtNewShip : ((StateKey.forwardOrRetreat, StateKey.SailingOffCombat), (982, 909, 7), True),
-			Transitions.cancelAtNewShip : ((StateKey.forwardOrRetreat, StateKey.SailingOffCombat), (1587, 909, 7), False),
+			Transitions.confirmAtNewShip : ({
+				StateKey.forwardOrRetreat,
+				StateKey.flagShipSeriousDamaged,
+				StateKey.SailingOffCombat,
+			}, (982, 909, 7)),
+			Transitions.cancelAtNewShip : ({
+				StateKey.forwardOrRetreat,
+				StateKey.flagShipSeriousDamaged,
+				StateKey.SailingOffCombat,
+			}, (1587, 909, 7)),
 		})
