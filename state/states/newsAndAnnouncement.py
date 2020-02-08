@@ -12,7 +12,7 @@ class NewsAndAnnouncement(State):
 	}
 	def __init__(self):
 		super().__init__()
-		self.key = StateKey.NewsAndAnnouncement
+		self.key = StateKey.newsAndAnnouncement
 		self.transition.update({
 			Transitions.close : ({StateKey.attendence, }, (79, 75, 8)),
 		})
