@@ -27,6 +27,7 @@ class SelectStage(TaskWorker):
             self.availableCampaign = list(range(5))
         if status == Status.damagedRepeat:
             self.availableCampaign.remove(self.stageIndex)
+            log("There was ship damaged selecting from" + str(self.availableCampaign), Types.verbose)
         if self.availableCampaign:
             self.stageIndex = choice(self.availableCampaign)
         else:

@@ -39,6 +39,12 @@ class EnemyInfo(State):
 				(853, 695) : ((196, 127, 169, 255), ),
 				(115, 917) : ((171, 172, 171, 255), ),
 				(428, 1003) : ((250, 238, 237, 255), ),
+			},
+			Signals.stage55bossSquardAtA : {
+				(2080, 1190) : ((61, 59, 32, 255), ),
+			},
+			Signals.stage55bossSquardAtB : {
+				(1851, 882) : ((62, 59, 33, 255), ),
 			}
 		})
 		self.key = StateKey.enemyInfo

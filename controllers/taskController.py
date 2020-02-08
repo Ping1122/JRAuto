@@ -1,3 +1,4 @@
+from task.combat55boss import Combat55boss
 from task.combat61aAntiSubmarine import Combat61aAntiSubmarine
 from task.combat61aSubmarine import Combat61aSubmarine
 from task.combat71a import Combat71a
@@ -8,7 +9,14 @@ from controllers.stateController import StateController
 
 class TaskController:
     def __init__(self):
-        self.tasks = [Combat61aSubmarine(), Combat61aAntiSubmarine(), Combat71a(), Combat74b(), Campaign()]
+        self.tasks = [
+        	Combat55boss(), 
+        	Combat61aSubmarine(), 
+        	Combat61aAntiSubmarine(), 
+        	Combat71a(), 
+        	Combat74b(), 
+        	Campaign(),
+        ]
         self.stateController = StateController()
 
     def startTask(self, taskNum):

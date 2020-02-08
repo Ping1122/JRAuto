@@ -30,4 +30,8 @@ class Signals(IntEnum):
 	campaignNormalMode = 26,
 	campaignHardMode = 27,
 	noMoreCampaignTrials = 28,
-	noDamagedShip = 29
+	noDamagedShip = 29,
+	stage55bossSquardAtA = 30,
+	stage55bossSquardAtB = 31,
+	existsSeriouslyDamagedShip = 32
+

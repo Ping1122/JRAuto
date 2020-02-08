@@ -7,11 +7,12 @@ class Messages:
     def enterStagePrompt(self):
         prompt = "Enter the stage number you want to level. \n"
         prompt += "Currently support stage are:\n"
-        prompt += "1. 6-1a submarines\n"
-        prompt += "2. 6-1a anti submarines\n"
-        prompt += "3. 7-1a\n"
-        prompt += "4. 7-4b\n"
-        prompt += "5. Campaign"
+        prompt += "1. 5-5boss\n"
+        prompt += "2. 6-1a submarines\n"
+        prompt += "3. 6-1a anti submarines\n"
+        prompt += "4. 7-1a\n"
+        prompt += "5. 7-4b\n"
+        prompt += "6. Campaign"
         return prompt
 
     def invalidUserInput(self, taskNum):

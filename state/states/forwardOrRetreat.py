@@ -1,4 +1,5 @@
 from state.state import State
+from state.signals import Signals
 from state.stateKey import StateKey
 from state.transitions import Transitions
 
@@ -12,6 +13,11 @@ class ForwardOrRetreat(State):
 	def __init__(self):
 		super().__init__()
 		self.key = StateKey.forwardOrRetreat
+		self.sign.update({
+			Signals.existsSeriouslyDamagedShip : {
+				(811, 504) : ((255, 201, 70, 255), ),
+			}
+		})
 		self.transition.update({
 			Transitions.forward : ({
 				StateKey.enemyInfo,
