@@ -1,4 +1,4 @@
-from navigation.navigation import Navigation
+from pilot.navigation import Navigation
 from state.stateKey import StateKey
 
 navigator = Navigation()

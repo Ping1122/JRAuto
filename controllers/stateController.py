@@ -1,6 +1,7 @@
 from state.stateFactory import StateFactory
 from controllers.mouseController import MouseController
 from components.monitor import Monitor
+from pilot.navigation import Navigation
 from util.messages import Messages
 from util.logger import log, Types
 
@@ -10,6 +11,7 @@ class StateController:
         self.monitor = Monitor()
         self.mouseController = MouseController(self)
         self.stateFactory = StateFactory()
+        self.navigation = Navigation()
         self.updateState()
 
     def updateState(self):
@@ -38,3 +40,12 @@ class StateController:
         clickInfo = self.currentState.behavior[key]
         self.mouseController.clickAndNoStageChange(clickInfo)
         self.updateState()
+
+    def direct(self, targetState):
+        if self.currentState.key == targetState:
+            return
+        path = self.navigation.navigate(self.currentState, targetState)
+        for transitionKey, nextStateKey in path:
+            self.transit(transitionKey)
+            if self.currentState.key != nextStateKey:
+                self.direct(targetState)
