@@ -5,7 +5,7 @@ class Combat61aSubmarine(Combat):
     def __init__(self):
         super().__init__()
         self.name += "6-1a Submarine"
-        self.nightBattle = [True, ]
+        self.nightBattle = [False, ]
         self.formation = [3, ]
         self.retreatSignal = [None, ]
         self.maxRound = 1000

@@ -11,6 +11,7 @@ class CollectAndRestartExpidition(TaskWorker):
 		for i in range(4):
 			if self.stateController.currentState.signal[Signals(i+8)]:
 				self.stateController.transit(Transitions(i+29))
-				self.stateController.transit(Transitions.nextState)
+				if self.stateController.currentState.key == StateKey.expiditionResult:
+					self.stateController.transit(Transitions.nextState)
 				self.stateController.transit(Transitions.confirmAtContinueExpidition)
 		return Status.repeat
