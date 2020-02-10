@@ -32,6 +32,10 @@ class StateController:
             resultStates,
         )
 
+    def multipleTransit(self, keys):
+        for key in keys:
+            self.transit(key)
+
     def behave(self, key):
         if key not in self.currentState.behavior:
             message = self.messages.invalidTransitionOrBehavior(key)
@@ -40,6 +44,10 @@ class StateController:
         clickInfo = self.currentState.behavior[key]
         self.mouseController.clickAndNoStageChange(clickInfo)
         self.updateState()
+
+    def multipleBehave(self, keys):
+        for key in keys:
+            self.behave(key)
 
     def direct(self, targetState):
         if self.currentState.key == targetState:

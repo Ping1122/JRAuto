@@ -1,18 +1,17 @@
-- navigation
-- select stage
 - fault recover
 - default behavior for state
-- refactor behavior and transition
-- refactor signatures
 - auto exercise
 - extract expidition
 - task schedualer
+- Make this multiple threaded server
 - auto mission complete
 - auto tir down
 - statistic recorder
-- signal handler
+- refactor behavior and transition
+- refactor signatures
 - daily mission
 - weekly mission
+- add front end
 - make it machine independent
 
 
@@ -34,3 +33,5 @@ Completed:
 - auto campaign
 - 6-1 submarine
 - 5-5 boss
+- navigation
+- select stage

@@ -16,7 +16,7 @@ class SailingOff(State):
 			Signals.existsCompletedExpidition : {
 				(1254, 25) : ((255, 254, 254, 255),),
 				(1241, 26) : ((255, 44, 28, 255),),
-			}
+			},
 		})
 		self.transition.update({
 			Transitions.backAtSailingOff : ({StateKey.home, }, (81, 74, 7)),

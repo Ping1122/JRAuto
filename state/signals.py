@@ -33,5 +33,12 @@ class Signals(IntEnum):
 	noDamagedShip = 29,
 	stage55bossSquardAtA = 30,
 	stage55bossSquardAtB = 31,
-	existsSeriouslyDamagedShip = 32
-
+	existsSeriouslyDamagedShip = 32,
+	stage1Selected = 33,
+	stage2Selected = 34,
+	stage3Selected = 35,
+	stage4Selected = 36,
+	stage5Selected = 37,
+	stage6Selected = 38,
+	stage7Selected = 39,
+	stage8Selected = 40
