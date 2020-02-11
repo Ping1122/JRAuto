@@ -1,4 +1,5 @@
 - strategy select strategy
+- select squardon
 - fault recover
 - default behavior for state
 

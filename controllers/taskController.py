@@ -24,5 +24,5 @@ class TaskController:
     def startTask(self, taskNum):
         self.currentTask = self.tasks[taskNum-1]
         taskHandler = TaskHandler(self.stateController, self.currentTask)
-        self.stateController.setTask(self.currentTask)
+        self.stateController.setCurrentTask(self.currentTask)
         taskHandler.start()

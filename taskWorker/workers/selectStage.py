@@ -17,8 +17,8 @@ class SelectStage(TaskWorker):
         return Status.normal
 
     def workCampaign(self, status):
-        if self.stateController.currentState.key != StateKey.sailingOffCampaign:
-            self.stateController.transit(Transitions.selectCampaign)
+        # if self.stateController.currentState.key != StateKey.sailingOffCampaign:
+        #     self.stateController.transit(Transitions.selectCampaign)
         message = self.messages.startSelectStateMessage(self.task.name, self.stateController.currentState.key)
         log(message, Types.verbose)
         if self.stateController.currentState.signal[Signals.campaignNormalMode]:

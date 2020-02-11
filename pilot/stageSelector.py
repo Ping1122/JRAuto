@@ -5,7 +5,7 @@ class StageSelector:
         pass
 
     def selectStageAndMap(self, state, targetStage, map):
-        return self.selectStage(targetStage) + self.selectMap(map)
+        return self.selectStage(state, targetStage) + self.selectMap(map)
 
     def selectStage(self, state, targetStage):
         procedure = []

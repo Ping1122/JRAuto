@@ -1,3 +1,4 @@
+from state.keyStateMap import keyStateMap
 from state.stateKey import StateKey
 from data.constants import IMG_RESOLUTION
 from state.signals import Signals
@@ -24,7 +25,7 @@ class StateFactory:
 		return state
 
 	def debug(self, pos, data, color, state):
-		if state == Signals.stage55bossSquardAtB or state == Signals.stage55bossSquardAtA:
+		if state == keyStateMap[StateKey.login]:
 			print(data[pos[1]*IMG_RESOLUTION[0]+pos[0]], color)
 		return data[pos[1]*IMG_RESOLUTION[0]+pos[0]] in color
 

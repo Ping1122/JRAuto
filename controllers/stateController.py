@@ -1,4 +1,6 @@
 from state.stateFactory import StateFactory
+from state.behaviors import Behaviors
+from state.transitions import Transitions
 from controllers.mouseController import MouseController
 from components.monitor import Monitor
 from pilot.navigation import Navigation
@@ -59,8 +61,9 @@ class StateController:
     def direct(self, targetState):
         if self.currentState.key == targetState:
             return
-        path = self.navigation.navigate(self.currentState, targetState)
+        path = self.navigation.navigate(self.currentState.key, targetState)
         for transitionKey, nextStateKey in path:
             self.transit(transitionKey)
             if self.currentState.key != nextStateKey:
                 self.direct(targetState)
+                break

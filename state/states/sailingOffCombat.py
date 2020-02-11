@@ -1,4 +1,6 @@
+from state.signals import Signals
 from state.stateKey import StateKey
+from state.behaviors import Behaviors
 from state.transitions import Transitions
 from state.states.sailingOff import SailingOff
 
