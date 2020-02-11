@@ -41,10 +41,15 @@ class TaskWorker:
         return status
 
     def work(self, status):
+        resultStatus = self.workDefault(status)
         if isinstance(self.task, Combat):
-            return self.workCombat(status)
-        if isinstance(self.task, Campaign):
-            return self.workCampaign(status)
+            resultStatus = self.workCombat(status)
+        elif isinstance(self.task, Campaign):
+            resultStatus = self.workCampaign(status)
+        return resultStatus
+
+    def workDefault(self, status):
+        return status
 
     def workCombat(self, status):
         return status

@@ -1,4 +1,5 @@
 from task.task import Task
+from state.stateKey import StateKey
 
 class Combat(Task):
     def __init__(self):
@@ -8,3 +9,4 @@ class Combat(Task):
         self.formation = [1, ]
         self.retreatSignal = [None, ]
         self.maxRound = 200
+        self.targetState = StateKey.sailingOffCombat

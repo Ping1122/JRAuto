@@ -53,7 +53,7 @@ class SailingOffCombat(SailingOff):
 			Behaviors.incrementStage : (292, 957, 6),
 			Behaviors.decrementStage : (292, 550, 6),
 			Behaviors.nextMap : (2496, 740, 4),
-			Behaviors.prevMap : (671，738，4),
+			Behaviors.prevMap : (671, 738, 4),
 		})
 
 	def getStage(self):

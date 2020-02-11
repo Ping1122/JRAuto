@@ -1,8 +1,12 @@
+- strategy select strategy
 - fault recover
 - default behavior for state
+- replace
+- 8-2
 - auto exercise
-- extract expidition
+- add map class with signature for initializor
 - task schedualer
+- extract expidition
 - Make this multiple threaded server
 - auto mission complete
 - auto tir down
@@ -35,3 +39,4 @@ Completed:
 - 5-5 boss
 - navigation
 - select stage
+- direct target state before task

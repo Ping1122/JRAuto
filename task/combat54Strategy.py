@@ -1,5 +1,6 @@
 from task.combat import Combat
 from state.signals import Signals
+from state.stateKey import StateKey
 
 class Combat54Strategy(Combat):
     def __init__(self):
@@ -10,3 +11,5 @@ class Combat54Strategy(Combat):
         self.formation = [1, 1, 1]
         self.retreatSignal = [None, None, None]
         self.maxRound = 10
+        self.targetStage = 4
+        self.targetMap = 3

@@ -16,11 +16,11 @@ class NewShip(State):
 			Transitions.confirmAtNewShip : ({
 				StateKey.forwardOrRetreat,
 				StateKey.flagShipSeriousDamaged,
-				StateKey.SailingOffCombat,
+				StateKey.sailingOffCombat,
 			}, (982, 909, 7)),
 			Transitions.cancelAtNewShip : ({
 				StateKey.forwardOrRetreat,
 				StateKey.flagShipSeriousDamaged,
-				StateKey.SailingOffCombat,
+				StateKey.sailingOffCombat,
 			}, (1587, 909, 7)),
 		})

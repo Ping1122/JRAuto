@@ -12,15 +12,17 @@ class TaskController:
     def __init__(self):
         self.tasks = [
         	Combat54Strategy(),
-        	Combat55boss(), 
-        	Combat61aSubmarine(), 
-        	Combat61aAntiSubmarine(), 
-        	Combat71a(), 
-        	Combat74b(), 
+        	Combat55boss(),
+        	Combat61aSubmarine(),
+        	Combat61aAntiSubmarine(),
+        	Combat71a(),
+        	Combat74b(),
         	Campaign(),
         ]
         self.stateController = StateController()
 
     def startTask(self, taskNum):
-        taskHandler = TaskHandler(self.stateController, self.tasks[taskNum-1])
+        self.currentTask = self.tasks[taskNum-1]
+        taskHandler = TaskHandler(self.stateController, self.currentTask)
+        self.stateController.setTask(self.currentTask)
         taskHandler.start()

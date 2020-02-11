@@ -13,5 +13,6 @@ def main():
 			log(Messages().invalidUserInput(stageNum), Types.info)
 			continue
 		taskController.startTask(stageNum)
+		
 if __name__== "__main__":
 	main()
