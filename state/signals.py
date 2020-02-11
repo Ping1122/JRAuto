@@ -41,4 +41,10 @@ class Signals(IntEnum):
 	stage5Selected = 37,
 	stage6Selected = 38,
 	stage7Selected = 39,
-	stage8Selected = 40
+	stage8Selected = 40,
+	ship1Repairing = 41,
+	ship2Repairing = 42,
+	ship3Repairing = 43,
+	ship4Repairing = 44,
+	ship5Repairing = 45,
+	ship6Repairing = 46

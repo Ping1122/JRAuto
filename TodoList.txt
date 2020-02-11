@@ -1,13 +1,15 @@
 - strategy select strategy
 - fault recover
 - default behavior for state
-- replace
-- 8-2
+
 - auto exercise
 - add map class with signature for initializor
 - task schedualer
 - extract expidition
 - Make this multiple threaded server
+- replace
+- 8-2
+- configureable campaign type
 - auto mission complete
 - auto tir down
 - statistic recorder
@@ -40,3 +42,4 @@ Completed:
 - navigation
 - select stage
 - direct target state before task
+- campaign quick repair if under repair

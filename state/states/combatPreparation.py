@@ -43,6 +43,30 @@ class CombatPreparation(State):
 				(261, 649) : ((188, 191, 194, 255), ),
 				(262, 719) : ((47, 86, 117, 255), ),
 			},
+			Signals.ship1Repairing : {
+				(215, 597) : ((251, 241, 182, 255), ),
+				(270, 601) : ((251, 241, 182, 255), ),
+			},
+			Signals.ship2Repairing : {
+				(512, 597) : ((251, 241, 182, 255), ),
+				(568, 600) : ((251, 241, 182, 255), ),
+			},
+			Signals.ship3Repairing : {
+				(812, 596) : ((251, 239, 181, 255), ),
+				(867, 600) : ((251, 241, 182, 255), ),
+			},
+			Signals.ship4Repairing : {
+				(1108, 598) : ((251, 241, 182, 255), ),
+				(1163, 601) : ((251, 241, 182, 255), ),
+			},
+			Signals.ship5Repairing : {
+				(1406, 597) : ((251, 241, 182, 255), ),
+				(1462, 601) : ((251, 241, 182, 255), ),
+			},
+			Signals.ship6Repairing : {
+				(1704, 597) : ((251, 241, 182, 255), ),
+				(1760, 601) : ((251, 241, 182, 255), ),
+			},
 			Signals.slot2Empty: {
 				(560, 672) : ((188, 193, 194, 255), ),
 				(562, 721) : ((50, 90, 122, 255), ),
@@ -105,6 +129,8 @@ class CombatPreparation(State):
 		damagedShips = []
 		for i in range(6):
 			if not self.signal[Signals(i)] and not self.signal[Signals(i+12)]:
+				damagedShips.append(i+1)
+			if self.signal[Signals(i+41)]:
 				damagedShips.append(i+1)
 		return damagedShips
 

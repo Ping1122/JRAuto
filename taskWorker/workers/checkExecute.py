@@ -7,9 +7,9 @@ class CheckExecute(TaskWorker):
     def __init__(self, stateController, task):
         super(CheckExecute, self).__init__(stateController, task)
         self.countExecute = 0;
-        
+
     def workCombat(self, status):
-        self.countExecute =+ 1
+        self.countExecute += 1
         if self.countExecute > self.task.maxRound:
             return Status.normal
         return Status.repeat
