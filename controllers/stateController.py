@@ -17,18 +17,25 @@ class StateController:
         self.navigation = Navigation()
         self.stateDefaultAction = StateDefaultAction()
         self.currentTask = None
-        self.updateState()
+        self.handleStateChange()
 
     def setCurrentTask(self, task):
         self.currentTask = task
 
-    def updateState(self):
+    def handleStateChange(self):
+        self.checkAndUpdateState()
+        self.performDefaultActions()
+        return self.currentState.key
+
+    def checkAndUpdateState(self):
         screenshot = self.monitor.takeScreenshot()
-        self.currentState = self.stateFactory.makeStateByScreenshot(screenshot)
+        state = self.stateFactory.makeStateByScreenshot(screenshot)
+        self.currentState = state
+        log(str(self.currentState), Types.debug)
+
+    def performDefaultActions(self):
         actions = self.stateDefaultAction.getDefaultAction(self.currentState, self.currentTask)
         self.performActions(actions)
-        log(str(self.currentState), Types.debug)
-        return self.currentState.key
 
     def transit(self, key):
         if key not in self.currentState.transition:
@@ -49,7 +56,7 @@ class StateController:
             exit(1)
         clickInfo = self.currentState.behavior[key]
         self.mouseController.clickAndNoStageChange(clickInfo)
-        self.updateState()
+        self.checkAndUpdateState()
 
     def performActions(self, keys):
         for key in keys:

@@ -1,15 +1,15 @@
-- strategy select strategy
-- select squardon
-- fault recover
+- Game close recover
 - default behavior for state
-
 - auto exercise
 - add map class with signature for initializor
+- close game
+- add quitgame keyboard transition in state
 - task schedualer
 - extract expidition
 - Make this multiple threaded server
 - replace
 - 8-2
+- unintended state recover
 - configureable campaign type
 - auto mission complete
 - auto tir down
@@ -44,3 +44,5 @@ Completed:
 - select stage
 - direct target state before task
 - campaign quick repair if under repair
+- strategy select strategy
+- select squardon

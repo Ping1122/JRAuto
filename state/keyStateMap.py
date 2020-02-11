@@ -24,8 +24,10 @@ from state.states.battleResult import BattleResult
 from state.states.slavagedShip import SlavagedShip
 from state.states.expiditionResult import ExpiditionResult
 from state.states.strategy import Strategy
+from state.states.quitGame import QuitGame
 
 keyStateMap = {
+    StateKey.quitGame : QuitGame,
     StateKey.attendence : Attendence,
     StateKey.chaseOrGiveUp : ChaseOrGiveUp,
     StateKey.combatPreparationQuickRepair : CombatPreparationQuickRepair,
