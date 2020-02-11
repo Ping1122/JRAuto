@@ -25,3 +25,4 @@ class StateKey(IntEnum):
 	battleResult = 21,
 	slavagedShip = 22,
 	expiditionResult = 23,
+	strategy = 24

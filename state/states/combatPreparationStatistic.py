@@ -1,4 +1,5 @@
 from state.stateKey import StateKey
+from state.signals import Signals
 from state.transitions import Transitions
 from state.states.combatPreparation import CombatPreparation
 
@@ -10,5 +11,19 @@ class CombatPreparationStatistic(CombatPreparation):
 	}
 	def __init__(self):
 		super().__init__()
+		self.sign.update({
+			Signals.strategyEnabled: {
+				(1644, 260) : ((235, 175, 44, 255), ),
+			},
+			Signals.strategyDisabled: {
+				(1644, 266) : ((39, 149, 253, 255), ),
+			},
+			Signals.strategyExhausted: {
+				(1644, 266) : ((123, 149, 253, 255), ),
+			}
+		})
 		self.key = StateKey.combatPreparationStatistic
 		self.transition.pop(Transitions.selectStatistic, None)
+		self.transition.update({
+			Transitions.selectStrategy: ({StateKey.strategy, }, (1675, 237, 5)),
+		})

@@ -18,4 +18,6 @@ class Behaviors(IntEnum):
 	incrementStage = 14,
 	decrementStage = 15,
 	nextMap = 16,
-	prevMap = 17
+	prevMap = 17,
+	switchStrategy = 18
+

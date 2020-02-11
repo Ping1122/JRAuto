@@ -1,4 +1,4 @@
-from task.combat54Strategy import Combat54Strategy
+from task.combatStrategy import CombatStrategy
 from task.combat55boss import Combat55boss
 from task.combat61aAntiSubmarine import Combat61aAntiSubmarine
 from task.combat61aSubmarine import Combat61aSubmarine
@@ -11,7 +11,7 @@ from controllers.stateController import StateController
 class TaskController:
     def __init__(self):
         self.tasks = [
-        	Combat54Strategy(),
+        	CombatStrategy(),
         	Combat55boss(),
         	Combat61aSubmarine(),
         	Combat61aAntiSubmarine(),

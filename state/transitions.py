@@ -44,3 +44,6 @@ class Transitions(IntEnum):
 	selectSubmarineCampaign = 40,
 	nextState = 41,
 	login = 42,
+	backToCombatPreparation = 43,
+	selectStrategy = 44
+

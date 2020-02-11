@@ -105,6 +105,18 @@ class CombatPreparation(State):
 			Signals.ship6NeedSupply : {
 				(1867, 943) : ((160, 160, 160, 255), ),
 			},
+			Signals.squardon4Selected: {
+				(1342, 254) : ((14, 131, 232, 255), ),
+			},
+			Signals.squardon3Selected: {
+				(863, 232) : ((27, 48, 77, 255), ),
+			},
+			Signals.squardon2Selected: {
+				(513, 234) : ((15, 132, 229, 255), )
+			},
+			Signals.squardon1Selected: {
+				(351, 234) : ((22, 38, 59, 255), ),
+			},
 		})
 		self.transition.update({
 			Transitions.selectStatistic : ({StateKey.combatPreparationStatistic, }, (447, 1133, 8)),

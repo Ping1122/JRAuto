@@ -23,6 +23,7 @@ from state.states.flagShipSeriousDamaged import FlagShipSeriousDamaged
 from state.states.battleResult import BattleResult
 from state.states.slavagedShip import SlavagedShip
 from state.states.expiditionResult import ExpiditionResult
+from state.states.strategy import Strategy
 
 keyStateMap = {
     StateKey.attendence : Attendence,
@@ -48,5 +49,6 @@ keyStateMap = {
     StateKey.battleResult : BattleResult,
     StateKey.slavagedShip : SlavagedShip,
     StateKey.expiditionResult : ExpiditionResult,
+    StateKey.strategy : Strategy,
     StateKey.unknown : Unknown,
 }

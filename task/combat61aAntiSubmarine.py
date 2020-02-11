@@ -12,3 +12,4 @@ class Combat61aAntiSubmarine(Combat):
         self.maxRound = 1000
         self.targetStage = 5
         self.targetMap = 0
+        self.squardon = 3

@@ -10,3 +10,5 @@ class Combat(Task):
         self.retreatSignal = [None, ]
         self.maxRound = 200
         self.targetState = StateKey.sailingOffCombat
+        self.strategy = False
+        self.squardon = 0

@@ -47,4 +47,11 @@ class Signals(IntEnum):
 	ship3Repairing = 43,
 	ship4Repairing = 44,
 	ship5Repairing = 45,
-	ship6Repairing = 46
+	ship6Repairing = 46,
+	squardon1Selected = 47,
+	squardon2Selected = 48,
+	squardon3Selected = 49,
+	squardon4Selected = 50,
+	strategyEnabled = 51,
+	strategyDisabled = 52,
+	strategyExhausted = 53

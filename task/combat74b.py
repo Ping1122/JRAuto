@@ -12,3 +12,4 @@ class Combat74b(Combat):
         self.retreatSignal = [(Signals.stage74bExistsSubmarine, ), ]
         self.targetStage = 6
         self.targetMap = 3
+        self.squardon = 2

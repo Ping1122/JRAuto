@@ -17,3 +17,4 @@ class Combat55boss(Combat):
         self.maxRound = 10
         self.targetStage = 4
         self.targetMap = 4
+        self.squardon = 0
