@@ -7,6 +7,8 @@ from task.combat74b import Combat74b
 from task.campaign import Campaign
 from taskWorker.taskHandler import TaskHandler
 from controllers.stateController import StateController
+from error.unexpectedGameCloseError import UnexpectedGameCloseError
+from util.logger import log, Types
 
 class TaskController:
     def __init__(self):
@@ -25,4 +27,8 @@ class TaskController:
         self.currentTask = self.tasks[taskNum-1]
         taskHandler = TaskHandler(self.stateController, self.currentTask)
         self.stateController.setCurrentTask(self.currentTask)
-        taskHandler.start()
+        try:
+            taskHandler.start()
+        except UnexpectedGameCloseError:
+            log("UnexpectedGameCloseError, restart task", Types.error)
+            taskHandler.start()

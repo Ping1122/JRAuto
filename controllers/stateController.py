@@ -1,4 +1,5 @@
 from state.stateFactory import StateFactory
+from state.stateKey import StateKey
 from state.behaviors import Behaviors
 from state.transitions import Transitions
 from controllers.mouseController import MouseController
@@ -7,6 +8,7 @@ from pilot.navigation import Navigation
 from pilot.stateDefaultAction import StateDefaultAction
 from util.messages import Messages
 from util.logger import log, Types
+from error.unexpectedGameCloseError import UnexpectedGameCloseError
 
 class StateController:
     def __init__(self):
@@ -30,11 +32,13 @@ class StateController:
     def checkAndUpdateState(self):
         screenshot = self.monitor.takeScreenshot()
         state = self.stateFactory.makeStateByScreenshot(screenshot)
+        if state == StateKey.gameClosed and self.currentState != StateKey.quitGame:
+            raise UnexpectedGameCloseError
         self.currentState = state
         log(str(self.currentState), Types.debug)
 
     def performDefaultActions(self):
-        actions = self.stateDefaultAction.getDefaultAction(self.currentState, self.currentTask)
+        actions = self.stateDefaultAction.getDefaultAction(self.currentState)
         self.performActions(actions)
 
     def transit(self, key):
