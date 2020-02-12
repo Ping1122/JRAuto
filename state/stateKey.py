@@ -26,4 +26,5 @@ class StateKey(IntEnum):
 	slavagedShip = 22,
 	expiditionResult = 23,
 	strategy = 24,
-	quitGame = 25
+	quitGame = 25,
+	networkDisconnected = 26

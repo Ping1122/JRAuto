@@ -28,6 +28,7 @@ from state.states.quitGame import QuitGame
 
 keyStateMap = {
     StateKey.quitGame : QuitGame,
+    StateKey.networkDisconnected : NetWorkDisconnected,
     StateKey.attendence : Attendence,
     StateKey.chaseOrGiveUp : ChaseOrGiveUp,
     StateKey.combatPreparationQuickRepair : CombatPreparationQuickRepair,

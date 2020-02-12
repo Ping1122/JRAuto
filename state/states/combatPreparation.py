@@ -109,13 +109,13 @@ class CombatPreparation(State):
 				(1342, 254) : ((14, 131, 232, 255), ),
 			},
 			Signals.squardon3Selected: {
-				(863, 232) : ((27, 48, 77, 255), ),
+				(863, 232) : ((15, 132, 229, 255), ),
 			},
 			Signals.squardon2Selected: {
 				(513, 234) : ((15, 132, 229, 255), )
 			},
 			Signals.squardon1Selected: {
-				(351, 234) : ((22, 38, 59, 255), ),
+				(351, 234) : ((15, 132, 229, 255), )
 			},
 		})
 		self.transition.update({
