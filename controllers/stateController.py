@@ -19,6 +19,7 @@ class StateController:
         self.navigation = Navigation()
         self.popStateHandler = popStateHandler()
         self.currentTask = None
+        self.currentState = None
         self.handleStateChange()
 
     def setCurrentTask(self, task):
@@ -31,10 +32,15 @@ class StateController:
 
     def checkAndUpdateState(self):
         screenshot = self.monitor.takeScreenshot()
-        state = self.stateFactory.makeStateByScreenshot(screenshot)
-        if state == StateKey.gameClosed and self.currentState != StateKey.quitGame:
+        previousState = self.currentState
+        self.currentState = self.stateFactory.makeStateByScreenshot(screenshot)
+        if (
+            self.currentState.key == StateKey.gameClosed and 
+            previousState and 
+            previousState.key != StateKey.quitGame and
+            previousState.key != StateKey.gameClosed
+        ):
             raise UnexpectedGameCloseError
-        self.currentState = state
         log(str(self.currentState), Types.debug)
 
     def handlePopState(self):

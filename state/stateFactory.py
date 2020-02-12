@@ -25,7 +25,7 @@ class StateFactory:
 		return state
 
 	def debug(self, pos, data, color, state):
-		if state == keyStateMap[StateKey.login]:
+		if state == keyStateMap[StateKey.newsAndAnnouncement]:
 			print(data[pos[1]*IMG_RESOLUTION[0]+pos[0]], color)
 		return data[pos[1]*IMG_RESOLUTION[0]+pos[0]] in color
 
