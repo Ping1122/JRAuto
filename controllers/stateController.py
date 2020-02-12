@@ -5,7 +5,7 @@ from state.transitions import Transitions
 from controllers.mouseController import MouseController
 from components.monitor import Monitor
 from pilot.navigation import Navigation
-from pilot.stateDefaultAction import StateDefaultAction
+from pilot.popStateHandler import PopStateHandler
 from util.messages import Messages
 from util.logger import log, Types
 from error.unexpectedGameCloseError import UnexpectedGameCloseError
@@ -17,7 +17,7 @@ class StateController:
         self.mouseController = MouseController(self)
         self.stateFactory = StateFactory()
         self.navigation = Navigation()
-        self.stateDefaultAction = StateDefaultAction()
+        self.popStateHandler = popStateHandler()
         self.currentTask = None
         self.handleStateChange()
 
@@ -26,7 +26,7 @@ class StateController:
 
     def handleStateChange(self):
         self.checkAndUpdateState()
-        self.performDefaultActions()
+        self.handlePopState()
         return self.currentState.key
 
     def checkAndUpdateState(self):
@@ -37,8 +37,8 @@ class StateController:
         self.currentState = state
         log(str(self.currentState), Types.debug)
 
-    def performDefaultActions(self):
-        actions = self.stateDefaultAction.getDefaultAction(self.currentState)
+    def handlePopState(self):
+        actions = self.popStateHandler.handlePopState(self.currentState)
         self.performActions(actions)
 
     def transit(self, key):

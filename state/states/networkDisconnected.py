@@ -1,6 +1,6 @@
 from state.state import State
 from state.stateKey import StateKey
-from state.transitions import Transitions
+from state.behaviors import Behaviors
 
 class NetworkDisconnected(State):
 	signature = {
