@@ -1,5 +1,5 @@
 - Game close recover
-- default behavior for state
+- default behavior for pop up state
 - auto exercise
 - add map class with signature for initializor
 - close game

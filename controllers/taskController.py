@@ -27,8 +27,10 @@ class TaskController:
         self.currentTask = self.tasks[taskNum-1]
         taskHandler = TaskHandler(self.stateController, self.currentTask)
         self.stateController.setCurrentTask(self.currentTask)
-        try:
-            taskHandler.start()
-        except UnexpectedGameCloseError:
-            log("UnexpectedGameCloseError, restart task", Types.error)
-            taskHandler.start()
+        while True:
+	        try:
+	            taskHandler.start()
+	        except UnexpectedGameCloseError:
+	            log("UnexpectedGameCloseError, restart task", Types.error)
+	        else:
+	        	break

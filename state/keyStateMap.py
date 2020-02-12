@@ -25,10 +25,11 @@ from state.states.slavagedShip import SlavagedShip
 from state.states.expiditionResult import ExpiditionResult
 from state.states.strategy import Strategy
 from state.states.quitGame import QuitGame
+from state.states.networkDisconnected import NetworkDisconnected
 
 keyStateMap = {
     StateKey.quitGame : QuitGame,
-    StateKey.networkDisconnected : NetWorkDisconnected,
+    StateKey.networkDisconnected : NetworkDisconnected,
     StateKey.attendence : Attendence,
     StateKey.chaseOrGiveUp : ChaseOrGiveUp,
     StateKey.combatPreparationQuickRepair : CombatPreparationQuickRepair,
