@@ -1,5 +1,4 @@
-- sailing off exercise signature
-- implement scroll up
+
 - login attendence signature
 - obtain combat resource state
 - default behavior for state
@@ -51,3 +50,5 @@ Completed:
 - strategy select strategy
 - select squardon
 - Game close recover
+- sailing off exercise signature
+- implement scroll up

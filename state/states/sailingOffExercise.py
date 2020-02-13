@@ -15,16 +15,26 @@ class SailingOffExercise(SailingOff):
 		self.key = StateKey.sailingOffExercise
 		self.sign.update({
 			Signals.noMoreExerciseTrials : {
-				(2104, 308) : ( (206, 226, 236, 255), ),
-				(2104, 604) : ( (206, 226, 236, 255), ),
-				(2104, 900) : ( (206, 226, 236, 255), ),
-				(2104, 1195) : ( (227, 233, 237, 255), ),
+				(2104, 308) : ((206, 226, 236, 255), ),
+				(2104, 604) : ((206, 226, 236, 255), ),
+				(2104, 900) : ((206, 226, 236, 255), ),
+				(2104, 1195) : ((227, 233, 237, 255), ),
 			},
-			Signals.opponent1Available : {},
-			Signals.opponent2Available : {},
-			Signals.opponent3Available : {},
-			Signals.opponent4Available : {},
-			Signals.opponent5Available : {},
+			Signals.opponent1Available : {
+				(1986, 377) : ((25, 128, 223, 255), ),
+			},
+			Signals.opponent2Available : {
+				(1992, 672) : ((25, 128, 224, 255), ),
+			},
+			Signals.opponent3Available : {
+				(1995, 963) : ((26, 129, 226, 255), ),
+			},
+			Signals.opponent4Available : {
+				(1995, 1261) : ((26, 129, 225, 255), ),
+			},
+			Signals.opponent5Available : {
+				(1992, 1198) : ((27, 129, 226, 255), ),
+			},
 		})
 		self.transition.pop(Transitions.selectExercise, None)
 		self.transition.update({

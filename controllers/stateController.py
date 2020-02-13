@@ -68,8 +68,11 @@ class StateController:
             message = self.messages.invalidTransitionOrBehavior(key)
             log(message, Types.error)
             exit(1)
-        clickInfo = self.currentState.behavior[key]
-        self.mouseController.clickAndNoStageChange(clickInfo)
+        mouseInfo = self.currentState.behavior[key]
+        if len(mouseInfo) == 3:
+            self.mouseController.clickAndNoStageChange(clickInfo)
+        elif len(mouseInfo) == 2:
+            self.mouseController.scrollAndNoStageChange(clickInfo)
         self.handleStateChange()
 
     def performActions(self, keys):
