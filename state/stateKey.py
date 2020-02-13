@@ -28,4 +28,5 @@ class StateKey(IntEnum):
 	strategy = 24,
 	quitGame = 25,
 	networkDisconnected = 26,
-	exerciseOpponentDetail = 27
+	exerciseOpponentDetail = 27,
+	obtainCombatResource = 28

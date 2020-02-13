@@ -1,4 +1,5 @@
 from task.combatStrategy import CombatStrategy
+from task.combat31Ammunition import Combat31Ammunition
 from task.combat55boss import Combat55boss
 from task.combat61aAntiSubmarine import Combat61aAntiSubmarine
 from task.combat61aSubmarine import Combat61aSubmarine
@@ -16,6 +17,7 @@ class TaskController:
     def __init__(self):
         self.tasks = [
         	CombatStrategy(),
+            Combat31Ammunition(),
         	Combat55boss(),
         	Combat61aSubmarine(),
         	Combat61aAntiSubmarine(),

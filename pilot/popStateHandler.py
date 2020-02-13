@@ -9,13 +9,14 @@ class PopStateHandler:
             StateKey.newsAndAnnouncement : self.handleNewsAndAnnouncement,
             StateKey.obtainLoginResource : self.handleObtainLoginResource,
             StateKey.attendence : self.handleAttendence,
+            StateKey.obtainCombatResource : self.handleObtainCombatResource,
         }
 
     def handlePopState(self, state):
         if state.key not in self.stateActionMap:
             return []
         self.state = state
-        return self.stateActionsMap[state.key]()
+        return self.stateActionMap[state.key]()
 
     def handleNetworkDisconnected(self):
         return [Behaviors.confirm, ]
@@ -27,4 +28,7 @@ class PopStateHandler:
         return [Transitions.obtainResource, ]
 
     def handleAttendence(self):
+        return [Transitions.confirm, ]
+
+    def handleObtainCombatResource(self):
         return [Transitions.confirm, ]

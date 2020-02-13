@@ -12,3 +12,4 @@ class Combat(Task):
         self.targetState = StateKey.sailingOffCombat
         self.strategy = False
         self.squardon = 0
+        self.resource = False

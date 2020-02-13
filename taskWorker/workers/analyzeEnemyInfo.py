@@ -8,6 +8,9 @@ class AnalyzeEnemyInfo(TaskWorker):
     def workCombat(self, status):
         if self.stateController.currentState.key != StateKey.enemyInfo:
             return status
+        if status >= self.task.totalBattle:
+            self.stateController.transit(Transitions.retreatAtEnemyInfo)
+            return Status.normal
         retreatSignal = self.task.retreatSignal[status]
         if retreatSignal and any(self.stateController.currentState.signal[x] for x in retreatSignal):
             message = self.messages.stage74bExistsSubmarineMessage()

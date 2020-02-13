@@ -27,6 +27,7 @@ from state.states.strategy import Strategy
 from state.states.quitGame import QuitGame
 from state.states.exerciseOpponentDetail import ExerciseOpponentDetail
 from state.states.networkDisconnected import NetworkDisconnected
+from state.states.obtainCombatResource import ObtainCombatResource 
 
 keyStateMap = {
     StateKey.quitGame : QuitGame,
@@ -56,5 +57,6 @@ keyStateMap = {
     StateKey.expiditionResult : ExpiditionResult,
     StateKey.strategy : Strategy,
     StateKey.exerciseOpponentDetail : ExerciseOpponentDetail,
+    StateKey.obtainCombatResource : ObtainCombatResource,
     StateKey.unknown : Unknown,
 }

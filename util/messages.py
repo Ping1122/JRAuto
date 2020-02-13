@@ -8,14 +8,15 @@ class Messages:
         prompt = "Enter the stage number you want to level. \n"
         prompt += "Currently support stage are:\n"
         prompt += "1. Strategy\n"
-        prompt += "2. 5-5boss\n"
-        prompt += "3. 6-1a submarines\n"
-        prompt += "4. 6-1a anti submarines\n"
-        prompt += "5. 7-1a\n"
-        prompt += "6. 7-4b\n"
-        prompt += "7. 8-2c\n"
-        prompt += "8. Campaign\n"
-        prompt += "9. Exercise\n"
+        prompt += "2. 3-1 Ammunition\n"
+        prompt += "3. 5-5boss\n"
+        prompt += "4. 6-1a submarines\n"
+        prompt += "5. 6-1a anti submarines\n"
+        prompt += "6. 7-1a\n"
+        prompt += "7. 7-4b\n"
+        prompt += "8. 8-2c\n"
+        prompt += "9. Campaign\n"
+        prompt += "10. Exercise\n"
         return prompt
 
     def invalidUserInput(self, taskNum):

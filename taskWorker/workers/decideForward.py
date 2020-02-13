@@ -14,7 +14,7 @@ class DecideForward(TaskWorker):
         if self.stateController.currentState.signal[Signals.existsSeriouslyDamagedShip]:
             self.stateController.transit(Transitions.retreatAtForwardOrRetreat)
             return Status.normal
-        if (status >= self.task.totalBattle - 1):
+        if status >= self.task.totalBattle-1 and not self.task.resource:
             self.stateController.transit(Transitions.retreatAtForwardOrRetreat)
             return Status.normal
         self.stateController.transit(Transitions.forward)

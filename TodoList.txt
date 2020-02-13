@@ -1,20 +1,17 @@
 - login attendence signature
-- obtain combat resource state
-- news checked signal
-- add map class with signature for initializor
-- close game
-- add quitgame keyboard transition in state
+- task Queue
 - task schedualer
+- implement quit game
 - extract expidition
 - Make this multiple threaded server
 - replace
-- 8-2
 - unintended state recover
 - configureable campaign type
 - auto mission complete
 - auto tir down
 - statistic recorder
-- refactor behavior and transition
+- refactor behavior and transition to action
+	- action can have a impact of different kinds 1. no impact 2. state change 3. signal change
 - refactor signatures
 - daily mission
 - weekly mission
@@ -52,3 +49,5 @@ Completed:
 - 8-2c
 - auto exercise
 - default behavior for state
+- 3-1 ammunition
+- obtain combat resource state
