@@ -13,3 +13,9 @@ class Inspect(TaskWorker):
         log(message, Types.verbose)
         damagedShips = self.stateController.currentState.getDamagedShips()
         return (damagedShips, status)
+
+    def workExercise(self, status):
+        message = self.messages.inspect()
+        log(message, Types.verbose)
+        damagedShips = self.stateController.currentState.getDamagedShips()
+        return (damagedShips, status)

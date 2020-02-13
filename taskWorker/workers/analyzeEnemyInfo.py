@@ -22,3 +22,9 @@ class AnalyzeEnemyInfo(TaskWorker):
             return status
         self.stateController.transit(Transitions.startBattleAtEnemyInfo)
         return status
+
+    def workExercise(self, status):
+        if self.stateController.currentState.key != StateKey.enemyInfo:
+            return status
+        self.stateController.transit(Transitions.startBattleAtEnemyInfo)
+        return status

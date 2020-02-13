@@ -20,3 +20,8 @@ class CheckExecute(TaskWorker):
         if self.stateController.currentState.signal[Signals.noMoreCampaignTrials]:
             return Status.normal
         return Status.repeat
+
+    def workExercise(self, status):
+        if status == 4:
+            return Status.normal
+        return Status.repeat

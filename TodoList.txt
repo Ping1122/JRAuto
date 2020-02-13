@@ -1,9 +1,6 @@
-
 - login attendence signature
 - obtain combat resource state
-- default behavior for state
 - news checked signal
-- auto exercise
 - add map class with signature for initializor
 - close game
 - add quitgame keyboard transition in state
@@ -52,3 +49,6 @@ Completed:
 - Game close recover
 - sailing off exercise signature
 - implement scroll up
+- 8-2c
+- auto exercise
+- default behavior for state

@@ -13,7 +13,8 @@ class Messages:
         prompt += "4. 6-1a anti submarines\n"
         prompt += "5. 7-1a\n"
         prompt += "6. 7-4b\n"
-        prompt += "7. Campaign"
+        prompt += "7. 8-2c\n"
+        prompt += "8. Campaign"
         return prompt
 
     def invalidUserInput(self, taskNum):

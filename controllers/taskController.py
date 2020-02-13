@@ -4,6 +4,7 @@ from task.combat61aAntiSubmarine import Combat61aAntiSubmarine
 from task.combat61aSubmarine import Combat61aSubmarine
 from task.combat71a import Combat71a
 from task.combat74b import Combat74b
+from task.combat82c import Combat82c
 from task.campaign import Campaign
 from taskWorker.taskHandler import TaskHandler
 from controllers.stateController import StateController
@@ -19,6 +20,7 @@ class TaskController:
         	Combat61aAntiSubmarine(),
         	Combat71a(),
         	Combat74b(),
+            Combat82c(),
         	Campaign(),
         ]
         self.stateController = StateController()

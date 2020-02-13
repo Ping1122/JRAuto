@@ -16,6 +16,10 @@ class HandleBattleResult(TaskWorker):
         self.handleBattleResult(status)
         return status
 
+    def workExercise(self, status):
+        self.handleBattleResult(status)
+        return status
+
     def handleBattleResult(self, status):
         if self.stateController.currentState.key != StateKey.battleResult:
             return status

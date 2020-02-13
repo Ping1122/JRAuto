@@ -30,3 +30,13 @@ class Execute(TaskWorker):
             Battle,
             CheckExecute,
         ])
+
+    def initExercise(self):
+        self.addTaskWorkers([
+            SelectStage,
+            SelectSquardon,
+            DamageControl,
+            Supply,
+            Battle,
+            CheckExecute,
+        ])

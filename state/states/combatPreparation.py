@@ -122,7 +122,11 @@ class CombatPreparation(State):
 			Transitions.selectStatistic : ({StateKey.combatPreparationStatistic, }, (447, 1133, 8)),
 			Transitions.selectQuickSupply : ({StateKey.combatPreparationQuickSupply, }, (789, 1133, 8)),
 			Transitions.selectQuickRepair : ({StateKey.combatPreparationQuickRepair, }, (1138, 1133, 8)),
-			Transitions.backAtCombatPreparation : ({StateKey.sailingOffCombat, }, (77, 74, 8)),
+			Transitions.backAtCombatPreparation : ({
+				StateKey.sailingOffCombat,
+				StateKey.sailingOffCampaign,
+				StateKey.sailingOffExercise
+			}, (77, 74, 8)),
 			Transitions.startBattleAtCombatPreparation : ({
 				StateKey.enemyInfo,
 				StateKey.selectFormation,

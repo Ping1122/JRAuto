@@ -45,5 +45,5 @@ class SailingOffExercise(SailingOff):
 			Transitions.selectopponent5 : ({StateKey.exerciseOpponentDetail, }, (714, 1157, 10)),
 		})
 		self.behavior.update({
-			Behaviors.scrollUp : ()
+			Behaviors.scrollUp : ((2428, 1248, 5), (2426, 406, 5))
 		})

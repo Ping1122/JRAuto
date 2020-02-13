@@ -35,3 +35,16 @@ class SelectStage(TaskWorker):
             self.availableCampaign.append(self.stageIndex)
         self.stateController.transit(Transitions(36+self.stageIndex))
         return self.stageIndex
+
+    def workExercise(self, status):
+        stageIndex = -1;
+        for i in range(4):
+            if self.stateController.currentState.signal[Signals(55+i)]:
+                stageIndex = i
+                break
+        if stageIndex != -1:
+            return stageIndex
+        self.stateController.behave(Behaviors.scrollUp)
+        if self.stageController.currentState.signal[Signals.opponent5Available]:
+            return 4
+        return Status.terminate

@@ -13,6 +13,10 @@ class Repair(TaskWorker):
         self.repairDamagedShips(status[0])
         return status[1]
 
+    def workExercise(self, status):
+        self.repairDamagedShips(status[0])
+        return status[1]
+
     def repairDamagedShips(self, damagedShips):
         if damagedShips:
             message = self.messages.existsDamagedShipsWarning(damagedShips)
