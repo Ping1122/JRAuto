@@ -42,9 +42,14 @@ class SelectStage(TaskWorker):
             if self.stateController.currentState.signal[Signals(55+i)]:
                 stageIndex = i
                 break
+        print (stageIndex)
         if stageIndex != -1:
+            self.stateController.transit(Transitions(45+i))
+            self.stateController.transit(Transitions.challenge)
             return stageIndex
         self.stateController.behave(Behaviors.scrollUp)
-        if self.stageController.currentState.signal[Signals.opponent5Available]:
+        if self.stateController.currentState.signal[Signals.opponent5Available]:
+            self.stateController.transit(Transitions(49))
+            self.stateController.transit(Transitions.challenge)
             return 4
         return Status.terminate

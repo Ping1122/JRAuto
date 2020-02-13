@@ -60,4 +60,4 @@ class Signals(IntEnum):
 	opponent2Available = 56,
 	opponent3Available = 57,
 	opponent4Available = 58,
-	opponent5Available = 58,
+	opponent5Available = 59,

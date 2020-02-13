@@ -50,4 +50,5 @@ class Transitions(IntEnum):
 	selectopponent2 = 46,
 	selectopponent3 = 47,
 	selectopponent4 = 48,
-	selectopponent5 = 49
+	selectopponent5 = 49,
+	challenge = 50

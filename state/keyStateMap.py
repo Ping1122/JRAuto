@@ -25,6 +25,7 @@ from state.states.slavagedShip import SlavagedShip
 from state.states.expiditionResult import ExpiditionResult
 from state.states.strategy import Strategy
 from state.states.quitGame import QuitGame
+from state.states.exerciseOpponentDetail import ExerciseOpponentDetail
 from state.states.networkDisconnected import NetworkDisconnected
 
 keyStateMap = {
@@ -54,5 +55,6 @@ keyStateMap = {
     StateKey.slavagedShip : SlavagedShip,
     StateKey.expiditionResult : ExpiditionResult,
     StateKey.strategy : Strategy,
+    StateKey.exerciseOpponentDetail : ExerciseOpponentDetail,
     StateKey.unknown : Unknown,
 }

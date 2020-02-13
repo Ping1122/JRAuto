@@ -6,6 +6,7 @@ from task.combat71a import Combat71a
 from task.combat74b import Combat74b
 from task.combat82c import Combat82c
 from task.campaign import Campaign
+from task.exercise import Exercise
 from taskWorker.taskHandler import TaskHandler
 from controllers.stateController import StateController
 from error.unexpectedGameCloseError import UnexpectedGameCloseError
@@ -22,6 +23,7 @@ class TaskController:
         	Combat74b(),
             Combat82c(),
         	Campaign(),
+            Exercise(),
         ]
         self.stateController = StateController()
 

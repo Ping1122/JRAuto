@@ -13,7 +13,7 @@ class ExpiditionResult(State):
 		super().__init__()
 		self.key = StateKey.expiditionResult
 		self.transition.update({
-            Transitions.nextState : ({StateKey.continueExpidition}, (2348, 1327, 10)),
+            Transitions.nextState : ({StateKey.continueExpidition, }, (2348, 1327, 10)),
         })
 
 

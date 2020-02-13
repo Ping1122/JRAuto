@@ -17,7 +17,7 @@ class StateController:
         self.mouseController = MouseController(self)
         self.stateFactory = StateFactory()
         self.navigation = Navigation()
-        self.popStateHandler = popStateHandler()
+        self.popStateHandler = PopStateHandler()
         self.currentTask = None
         self.currentState = None
         self.handleStateChange()
@@ -47,7 +47,7 @@ class StateController:
             raise UnexpectedGameCloseError
 
     def handlePopState(self):
-        if self.previousState.key != State.currentState.key:
+        if self.previousState and self.previousState.key != self.currentState.key:
             actions = self.popStateHandler.handlePopState(self.currentState)
             self.performActions(actions)
 
@@ -70,9 +70,9 @@ class StateController:
             exit(1)
         mouseInfo = self.currentState.behavior[key]
         if len(mouseInfo) == 3:
-            self.mouseController.clickAndNoStageChange(clickInfo)
+            self.mouseController.clickAndNoStageChange(mouseInfo)
         elif len(mouseInfo) == 2:
-            self.mouseController.scrollAndNoStageChange(clickInfo)
+            self.mouseController.scrollAndNoStageChange(mouseInfo)
         self.handleStateChange()
 
     def performActions(self, keys):
