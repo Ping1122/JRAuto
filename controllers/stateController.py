@@ -26,26 +26,30 @@ class StateController:
         self.currentTask = task
 
     def handleStateChange(self):
-        self.checkAndUpdateState()
+        self.updateState()
+        self.checkState()
         self.handlePopState()
         return self.currentState.key
 
-    def checkAndUpdateState(self):
+    def updateState(self):
         screenshot = self.monitor.takeScreenshot()
-        previousState = self.currentState
+        self.previousState = self.currentState
         self.currentState = self.stateFactory.makeStateByScreenshot(screenshot)
-        if (
-            self.currentState.key == StateKey.gameClosed and 
-            previousState and 
-            previousState.key != StateKey.quitGame and
-            previousState.key != StateKey.gameClosed
-        ):
-            raise UnexpectedGameCloseError
         log(str(self.currentState), Types.debug)
 
+    def checkState(self):
+        if (
+            self.currentState.key == StateKey.gameClosed and
+            self.previousState and
+            self.previousState.key != StateKey.quitGame and
+            self.previousState.key != StateKey.gameClosed
+        ):
+            raise UnexpectedGameCloseError
+
     def handlePopState(self):
-        actions = self.popStateHandler.handlePopState(self.currentState)
-        self.performActions(actions)
+        if self.previousState.key != State.currentState.key:
+            actions = self.popStateHandler.handlePopState(self.currentState)
+            self.performActions(actions)
 
     def transit(self, key):
         if key not in self.currentState.transition:
@@ -66,7 +70,7 @@ class StateController:
             exit(1)
         clickInfo = self.currentState.behavior[key]
         self.mouseController.clickAndNoStageChange(clickInfo)
-        self.checkAndUpdateState()
+        self.handleStateChange()
 
     def performActions(self, keys):
         for key in keys:

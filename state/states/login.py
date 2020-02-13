@@ -15,6 +15,5 @@ class Login(State):
 		self.transition.update({
 			Transitions.login : ({
 				StateKey.home,
-				StateKey.newsAndAnnouncement
 			}, (2270, 1234, 10))
 		})

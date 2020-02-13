@@ -1,6 +1,7 @@
 from state.state import State
 from state.stateKey import StateKey
-from state.behaviors import Behaviors
+from state.transitions import Transitions
+from util.fullSet import FullSet
 
 class NetworkDisconnected(State):
 	signature = {
@@ -12,6 +13,6 @@ class NetworkDisconnected(State):
 	def __init__(self):
 		super().__init__()
 		self.key = StateKey.networkDisconnected
-		self.behavior.update({
-			Behaviors.confirm : (987, 911, 8)
+		self.transition.update({
+			Transitions.confirm : (FullSet(), (987, 911, 8)),
 		})

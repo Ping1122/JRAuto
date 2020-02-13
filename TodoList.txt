@@ -1,6 +1,7 @@
 - login attendence signature
 - obtain combat resource state
 - default behavior for state
+- news checked signal
 - auto exercise
 - add map class with signature for initializor
 - close game

@@ -20,4 +20,3 @@ class Behaviors(IntEnum):
 	nextMap = 16,
 	prevMap = 17,
 	switchStrategy = 18,
-	confirm = 19
