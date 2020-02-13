@@ -12,3 +12,8 @@ class ValidateStartTaskCondition(TaskWorker):
         if self.stateController.currentState.signal[Signals.noMoreCampaignTrials]:
             return Status.terminate
         return Status.normal
+
+    def workExercise(self, status):
+        if self.stateController.currentState.signal[Signals.noMoreExerciseTrials]:
+            return Status.terminate
+        return Status.normal

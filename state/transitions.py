@@ -45,5 +45,9 @@ class Transitions(IntEnum):
 	nextState = 41,
 	login = 42,
 	backToCombatPreparation = 43,
-	selectStrategy = 44
-
+	selectStrategy = 44,
+	selectopponent1 = 45,
+	selectopponent2 = 46,
+	selectopponent3 = 47,
+	selectopponent4 = 48,
+	selectopponent5 = 49

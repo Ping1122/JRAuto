@@ -1,3 +1,5 @@
+- sailing off exercise signature
+- implement scroll up
 - login attendence signature
 - obtain combat resource state
 - default behavior for state

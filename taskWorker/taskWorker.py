@@ -2,6 +2,7 @@ from util.messages import Messages
 from taskWorker.status import Status
 from task.combat import Combat
 from task.campaign import Campaign
+from task.exercise import Exercise
 
 class TaskWorker:
     def __init__(self, stateController, task):
@@ -15,13 +16,18 @@ class TaskWorker:
     def init(self):
         if isinstance(self.task, Combat):
             self.initCombat()
-        if isinstance(self.task, Campaign):
+        elif isinstance(self.task, Campaign):
             self.initCampaign()
+        elif isinstance(self.task, Exercise):
+            self.initExercise()
 
     def initCombat(self):
         pass
 
     def initCampaign(self):
+        pass
+
+    def initExercise(self):
         pass
 
     def addTaskWorkers(self, taskWorkers):
@@ -46,6 +52,8 @@ class TaskWorker:
             resultStatus = self.workCombat(status)
         elif isinstance(self.task, Campaign):
             resultStatus = self.workCampaign(status)
+        elif isinstance (self.task, Exercise):
+            resultStatus = self.workExercise(status)
         return resultStatus
 
     def workDefault(self, status):
@@ -55,4 +63,7 @@ class TaskWorker:
         return status
 
     def workCampaign(self, status):
+        return status
+
+    def workExercise(self, status):
         return status

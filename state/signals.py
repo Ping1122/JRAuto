@@ -54,4 +54,9 @@ class Signals(IntEnum):
 	squardon4Selected = 50,
 	strategyEnabled = 51,
 	strategyDisabled = 52,
-	strategyExhausted = 53
+	strategyExhausted = 53,
+	noMoreExerciseTrials = 54,
+	opponent1Available = 55,
+	opponent2Available = 56,
+	opponent3Available = 57,
+	opponent4Available = 58
