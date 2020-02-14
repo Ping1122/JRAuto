@@ -1,6 +1,7 @@
 from state.state import State
 from state.stateKey import StateKey
 from state.transitions import Transitions
+from util.fullSet import FullSet
 
 class ObtainCombatResource(State):
 	signature = {
@@ -13,6 +14,6 @@ class ObtainCombatResource(State):
 		super().__init__()
 		self.key = StateKey.obtainCombatResource
 		self.transition.update({
-			Transitions.confirm : ({StateKey.unknown }, (1282, 800, 6)),
+			Transitions.confirm : (FullSet(), (1282, 800, 6)),
 		})
 
