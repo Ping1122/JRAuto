@@ -11,7 +11,7 @@ class CombatStrategy(Combat):
         self.formation = [1, ] * self.totalBattle
         self.retreatSignal = [None, ] * self.totalBattle
         self.maxRound = 10
-        self.targetStage = 1
-        self.targetMap = 4
+        self.targetStage = 5
+        self.targetMap = 0
         self.strategy = True
         self.squardon = 2
