@@ -27,9 +27,9 @@ class TaskController:
         	Campaign(),
             Exercise(),
         ]
-        self.stateController = StateController()
 
     def startTask(self, taskNum):
+        self.stateController = StateController()
         self.currentTask = self.tasks[taskNum-1]
         taskHandler = TaskHandler(self.stateController, self.currentTask)
         self.stateController.setCurrentTask(self.currentTask)

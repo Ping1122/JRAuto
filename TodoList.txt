@@ -1,4 +1,5 @@
 - login attendence signature
+- ship2 needs supply but did not, check signature
 - task Queue
 - task schedualer
 - implement quit game
