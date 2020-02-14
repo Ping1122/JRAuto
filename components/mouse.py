@@ -43,8 +43,10 @@ class Mouse:
 		self.mouse.press(Button.left)
 		sleep(MOVE_CLICK_INTERVAL)
 		self.mouse.release(Button.left)
-		sleep(MOVE_CLICK_INTERVAL)
-		self.mouse.scroll(0,-10)
+		for _ in range(10):
+			sleep(MOVE_CLICK_INTERVAL)
+			self.mouse.scroll(0,-10)
+
 
 	def generateClickPosition(self, clickInfo):
 		nosie1 = gauss(0, clickInfo[2])

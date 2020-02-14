@@ -37,19 +37,20 @@ class SelectStage(TaskWorker):
         return self.stageIndex
 
     def workExercise(self, status):
-        stageIndex = -1;
-        for i in range(4):
-            if self.stateController.currentState.signal[Signals(55+i)]:
-                stageIndex = i
-                break
-        print (stageIndex)
-        if stageIndex != -1:
-            self.stateController.transit(Transitions(45+i))
+        if status == Status.normal:
+            self.stageIndex = 0
+        if status == Status.repeat:
+            self.stageIndex += 1
+        while self.stageIndex < 4 and not self.stateController.currentState.signal[Signals(55+self.stageIndex)]:
+            self.stageIndex += 1
+        if self.stageIndex < 4:
+            self.stateController.transit(Transitions(45+self.stageIndex))
             self.stateController.transit(Transitions.challenge)
-            return stageIndex
-        self.stateController.behave(Behaviors.scrollUp)
-        if self.stateController.currentState.signal[Signals.opponent5Available]:
-            self.stateController.transit(Transitions(49))
-            self.stateController.transit(Transitions.challenge)
-            return 4
+            return self.stageIndex
+        if self.stageIndex == 4:
+            self.stateController.behave(Behaviors.scrollUp)
+            if self.stateController.currentState.signal[Signals.opponent5Available]:
+                self.stateController.transit(Transitions(49))
+                self.stateController.transit(Transitions.challenge)
+                return 4
         return Status.terminate
