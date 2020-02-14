@@ -24,6 +24,7 @@ class ForwardOrRetreat(State):
 				StateKey.selectFormation,
 				StateKey.chaseOrGiveUp,
 				StateKey.battleResult,
+				StateKey.home,
 			}, (885, 938, 7)),
 			Transitions.retreatAtForwardOrRetreat : ({StateKey.sailingOffCombat,}, (1677, 938, 7)),
 		})
