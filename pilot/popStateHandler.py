@@ -19,7 +19,7 @@ class PopStateHandler:
         return self.stateActionMap[state.key]()
 
     def handleNetworkDisconnected(self):
-        return [Behaviors.confirm, ]
+        return [Transitions.confirm, ]
 
     def handleNewsAndAnnouncement(self):
         return [Behaviors.checkNoNewsToday, Transitions.close]
