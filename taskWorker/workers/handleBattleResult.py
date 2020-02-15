@@ -3,6 +3,7 @@ from taskWorker.status import Status
 from state.signals import Signals
 from state.transitions import Transitions
 from state.stateKey import StateKey
+from util.logger import log, Types
 
 class HandleBattleResult(TaskWorker):
     def workCombat(self, status):

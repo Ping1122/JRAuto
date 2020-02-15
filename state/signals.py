@@ -61,3 +61,5 @@ class Signals(IntEnum):
 	opponent3Available = 57,
 	opponent4Available = 58,
 	opponent5Available = 59,
+	stage81aExistsCL = 60,
+	stage81aExistsCA = 61

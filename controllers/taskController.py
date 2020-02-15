@@ -5,6 +5,7 @@ from task.combat61aAntiSubmarine import Combat61aAntiSubmarine
 from task.combat61aSubmarine import Combat61aSubmarine
 from task.combat71a import Combat71a
 from task.combat74b import Combat74b
+from task.combat81aAntiSubmarine import Combat81aAntiSubmarine
 from task.combat82c import Combat82c
 from task.campaign import Campaign
 from task.exercise import Exercise
@@ -23,6 +24,7 @@ class TaskController:
         	Combat61aAntiSubmarine(),
         	Combat71a(),
         	Combat74b(),
+            Combat81aAntiSubmarine(),
             Combat82c(),
         	Campaign(),
             Exercise(),
