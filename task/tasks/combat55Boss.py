@@ -1,10 +1,12 @@
 from task.combat import Combat
 from state.signals import Signals
 from state.stateKey import StateKey
+from task.taskKey import TaskKey
 
-class Combat55boss(Combat):
+class Combat55Boss(Combat):
     def __init__(self):
         super().__init__()
+        self.key = TaskKey.combat55Boss
         self.name += "5-5boss submarine"
         self.totalBattle = 3
         self.nightBattle = [False, False, True]

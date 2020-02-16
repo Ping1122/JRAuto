@@ -1,14 +1,14 @@
-from task.combatStrategy import CombatStrategy
-from task.combat31Ammunition import Combat31Ammunition
-from task.combat55boss import Combat55boss
-from task.combat61aAntiSubmarine import Combat61aAntiSubmarine
-from task.combat61aSubmarine import Combat61aSubmarine
-from task.combat71a import Combat71a
-from task.combat74b import Combat74b
-from task.combat81aAntiSubmarine import Combat81aAntiSubmarine
-from task.combat82c import Combat82c
-from task.campaign import Campaign
-from task.exercise import Exercise
+from task.tasks.combatStrategy import CombatStrategy
+from task.tasks.combat31Ammunition import Combat31Ammunition
+from task.tasks.combat55boss import Combat55boss
+from task.tasks.combat61aAntiSubmarine import Combat61aAntiSubmarine
+from task.tasks.combat61aSubmarine import Combat61aSubmarine
+from task.tasks.combat71a import Combat71a
+from task.tasks.combat74b import Combat74b
+from task.tasks.combat81aAntiSubmarine import Combat81aAntiSubmarine
+from task.tasks.combat82c import Combat82c
+from task.tasks.campaign import Campaign
+from task.tasks.exercise import Exercise
 from taskWorker.taskHandler import TaskHandler
 from controllers.stateController import StateController
 from error.unexpectedGameCloseError import UnexpectedGameCloseError
@@ -24,7 +24,7 @@ class TaskController:
         	Combat61aAntiSubmarine(),
         	Combat71a(),
         	Combat74b(),
-            Combat81aAntiSubmarine(),
+            Combat81aAntiSubmarine(1000),
             Combat82c(),
         	Campaign(),
             Exercise(),

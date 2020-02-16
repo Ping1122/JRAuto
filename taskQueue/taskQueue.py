@@ -1,4 +1,4 @@
-from threading import Lock, Semaphore
+from threading import Lock, Semaphore, Event
 from error.InvalidInsertIndexError import InvalidInsertIndexError
 
 class TaskQueue:
@@ -9,8 +9,11 @@ class TaskQueue:
         self.tail = 0
         self.size = 0
         self.queueLock = Lock()
-        self.empty = Semaphore(self.capcity)
-        self.full = Semaphore(0)
+        self.emptySlot = Semaphore(self.capcity)
+        self.filledSlot = Semaphore(0)
+        self.emptyEvent = Event()
+        self.emptyEvent.set()
+        self.nonEmptyEvent = Event()
 
     def __len__(self):
         with self.queueLock:
@@ -18,49 +21,64 @@ class TaskQueue:
         return length
 
     def get(self):
-        self.full.acquire(blocking = True)
+        self.filledSlot.acquire(blocking = True)
         with self.queueLock:
             task = self.buffer[self.head]
             self.head = (self.head+1) % self.capcity
-            self.size -= 1
-        self.empty.release()
+            if self.size == 1:
+                self.size -= 1
+                self.nonEmptyEvent.clear()
+                self.emptyEvent.set()
+        self.emptySlot.release()
         return task
 
-    def put(self, task):
-        acquired = self.empty.acquire(blocking = False)
+    def put(self, task, block):
+        acquired = self.emptySlot.acquire(blocking = block)
         if not acquired:
             return False
         with self.queueLock:
             self.buffer[self.tail] = task
             self.tail = (self.tail+1) % self.capcity
-            self.size += 1
-        self.full.release()
+            if self.size == 0:
+                self.size += 1
+                self.emptyEvent.clear()
+                self.nonEmptyEvent.set()
+        self.filledSlot.release()
         return True
 
-    def insert(self, index, task):
-        acquired = self.empty.acquire(blocking = False)
+    def insert(self, index, task, block):
+        acquired = self.emptySlot.acquire(blocking = block)
         if not acquired:
             return False
         with self.queueLock:
-            position = self.calculatePosition(index)
+            if index > self.size:
+                self.emptySlot.release()
+                raise InvalidInsertIndexError
+            position = (self.head+index) % self.capcity
             self.insertToPosition(position, task)
-        self.full.release()
+            if self.size == 0:
+                self.size += 1
+                self.emptyEvent.clear()
+                self.nonEmptyEvent.set()
+        self.filledSlot.release()
         return True
 
     def remove(self, index):
-        acquired = self.full.acquire(blocking = False)
+        acquired = self.filledSlot.acquire(blocking = False)
         if not acquired:
             return False
         with self.queueLock:
-            position = self.calculatePosition(index)
+            if index >= self.size:
+                self.filledSlot.release()
+                raise InvalidInsertIndexError
+            position = (self.head+index) % self.capcity
             self.removeFromPosition(position)
-        self.empty.release()
+            if self.size == 1:
+                self.size -= 1
+                self.nonEmptyEvent.clear()
+                self.emptyEvent.set()
+        self.emptySlot.release()
         return True
-
-    def calculatePosition(self, index):
-        if index >= self.size:
-            raise InvalidInsertIndexError
-        return (self.head+index) % self.capcity
 
     def insertToPosition(self, position, task):
         while position != self.tail:
@@ -70,7 +88,6 @@ class TaskQueue:
             position = (position+1) % self.capcity
         buffer[self.tail] = task
         self.tail = (self.tail+i) % self.capcity
-        self.size += 1
 
     def removeFromPosition(self, position):
         while position != self.head:
@@ -78,7 +95,6 @@ class TaskQueue:
             self.buffer[position] = self.buffer[nextPosition]
             position = nextPosition
         self.head = (self.head+1) % self.capcity
-        self.size -= 1
 
     def toList(self):
         result = []

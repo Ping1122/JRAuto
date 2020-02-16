@@ -1,10 +1,12 @@
 from task.combat import Combat
 from state.signals import Signals
 from state.stateKey import StateKey
+from task.taskKey import TaskKey
 
 class Combat74b(Combat):
     def __init__(self):
         super().__init__()
+        self.key = TaskKey.combat74b
         self.name = "7-4b"
         self.nightBattle = [False, ]
         self.formation = [0, ]

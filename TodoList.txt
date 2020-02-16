@@ -1,14 +1,16 @@
-- login attendence signature
 - ship2 needs supply but did not, check signature
-- task Queue
+- battle result signature need one not 255*4
 - task schedualer
+- auto mission complete
+- add mission tasks to queue
 - implement quit game
+- implement one state too long error
 - extract expidition
 - Make this multiple threaded server
+- Documentation
 - replace
 - unintended state recover
 - configureable campaign type
-- auto mission complete
 - auto tir down
 - statistic recorder
 - refactor behavior and transition to action
@@ -52,3 +54,6 @@ Completed:
 - default behavior for state
 - 3-1 ammunition
 - obtain combat resource state
+- login attendence signature
+- task Queue
+- refactor task

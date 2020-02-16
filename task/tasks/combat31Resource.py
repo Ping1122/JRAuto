@@ -1,10 +1,12 @@
 from task.combat import Combat
 from state.signals import Signals
 from state.stateKey import StateKey
+from task.taskKey import TaskKey
 
-class Combat31Ammunition(Combat):
+class Combat31Resource(Combat):
     def __init__(self):
         super().__init__()
+        self.key = TaskKey.combat31Resource
         self.name += "5-4 strategy"
         self.totalBattle = 1
         self.nightBattle = [False, ]
