@@ -24,7 +24,7 @@ class DailyRoutineScheduler(Scheduler):
                 else:
                     for taskKey in self.taskKeys:
                         task = self.taskFactory.makeTaskByKey(taskKey)
-                        self.taskQueue.put(task)
+                        self.taskQueue.put(task, True)
             currentTime = (datetime.utcnow() + timedelta(hours = 8)).time()
             currentIndex = linearSearch(self.refreshTime, currentTime)
             if currentIndex != len(self.refreshTime):

@@ -1,8 +1,10 @@
 - ship2 needs supply but did not, check signature
 - battle result signature need one not 255*4
-- task schedualer
+- commandline scheduler
+- add statistic in task
 - auto mission complete
 - add mission tasks to queue
+- task schedualer
 - implement quit game
 - implement one state too long error
 - extract expidition
@@ -57,3 +59,5 @@ Completed:
 - login attendence signature
 - task Queue
 - refactor task
+- default scheduler
+- time routine scheduler

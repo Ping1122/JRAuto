@@ -1,24 +1,16 @@
 from datetime import datetime
+from task.keyTaskMap import keyTaskMap
 
 class Messages:
     def __init__(self):
         pass
 
     def enterStagePrompt(self):
-        prompt = "Enter the stage number you want to level. \n"
-        prompt += "Currently support stage are:\n"
-        prompt += "1. Strategy\n"
-        prompt += "2. 3-1 Ammunition\n"
-        prompt += "3. 5-5boss\n"
-        prompt += "4. 6-1a submarines\n"
-        prompt += "5. 6-1a anti submarines\n"
-        prompt += "6. 7-1a\n"
-        prompt += "7. 7-4b\n"
-        prompt += "8. 8-1a anti submarines\n"
-        prompt += "9. 8-2c\n"
-        prompt += "10. Campaign\n"
-        prompt += "11. Exercise\n"
-        return prompt
+        prompt = ["Enter the stage number you want to level. \n", ]
+        prompt.append("Currently support stage are:\n")
+        for key in keyTaskMap.keys():
+            prompt.append(f"{str(int(key))}. {str(key)[7:]}")
+        return "".join(prompt)
 
     def invalidUserInput(self, taskNum):
         return f"The task number: {taskNum} is invalid"

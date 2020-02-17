@@ -1,5 +1,6 @@
 from threading import Lock, Semaphore, Event
-from error.InvalidInsertIndexError import InvalidInsertIndexError
+from error.invalidInsertIndexError import InvalidInsertIndexError
+from error.invalidTaskReferenceError import InvalidTaskReferenceError
 
 class TaskQueue:
     def __init__(self, capcity = 10):
