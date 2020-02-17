@@ -7,7 +7,7 @@ class Combat31Resource(Combat):
     def __init__(self):
         super().__init__()
         self.key = TaskKey.combat31Resource
-        self.name += "5-4 strategy"
+        self.name = "5-4 strategy"
         self.totalBattle = 1
         self.nightBattle = [False, ]
         self.formation = [1, ]

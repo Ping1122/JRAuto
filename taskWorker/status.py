@@ -6,3 +6,4 @@ class Status(IntEnum):
     damagedRepeat = 102,
     terminate = 103,
     damaged = 104,
+    interrupted = 105

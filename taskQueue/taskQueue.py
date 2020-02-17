@@ -20,17 +20,19 @@ class TaskQueue:
             length = self.size
         return length
 
-    def get(self):
-        self.filledSlot.acquire(blocking = True)
+    def __str__(self):
+        result = []
+        index = self.head
+        while index != self.tail:
+            result.append(f"{str(self.buffer[index])} | ")
+            index = (index+1) % self.capcity
+        return "".join(result)
+
+    def getHead(self):
         with self.queueLock:
-            task = self.buffer[self.head]
-            self.head = (self.head+1) % self.capcity
-            if self.size == 1:
-                self.size -= 1
-                self.nonEmptyEvent.clear()
-                self.emptyEvent.set()
-        self.emptySlot.release()
-        return task
+            if self.size == 0:
+                return None
+            return self.buffer[self.head]
 
     def put(self, task, block):
         acquired = self.emptySlot.acquire(blocking = block)
@@ -39,11 +41,13 @@ class TaskQueue:
         with self.queueLock:
             self.buffer[self.tail] = task
             self.tail = (self.tail+1) % self.capcity
-            if self.size == 0:
-                self.size += 1
+            self.size += 1
+            if self.size == 1:
+                task.isHead = True
                 self.emptyEvent.clear()
                 self.nonEmptyEvent.set()
         self.filledSlot.release()
+        print(self)
         return True
 
     def insert(self, index, task, block):
@@ -56,28 +60,40 @@ class TaskQueue:
                 raise InvalidInsertIndexError
             position = (self.head+index) % self.capcity
             self.insertToPosition(position, task)
-            if self.size == 0:
-                self.size += 1
+            self.size += 1
+            if index == 0:
+                task.isHead = True
+            if self.size == 1:
                 self.emptyEvent.clear()
                 self.nonEmptyEvent.set()
+            else:
+                self.buffer[1].isHead = False
         self.filledSlot.release()
+        print(self)
         return True
 
-    def remove(self, index):
-        acquired = self.filledSlot.acquire(blocking = False)
-        if not acquired:
-            return False
+    def removeByReference(self, task):
+        self.filledSlot.acquire(blocking = True)
         with self.queueLock:
-            if index >= self.size:
+            position = self.head;
+            while position != self.tail:
+                if self.buffer[position] is task:
+                    break
+                position = (index+1) % self.capcity
+            if index == self.head:
                 self.filledSlot.release()
-                raise InvalidInsertIndexError
-            position = (self.head+index) % self.capcity
+                raise InvalidTaskReferenceError
             self.removeFromPosition(position)
-            if self.size == 1:
-                self.size -= 1
+            self.size -= 1
+            if task.isHead:
+                task.isHead = False
+            if self.size == 0:
                 self.nonEmptyEvent.clear()
                 self.emptyEvent.set()
+            else:
+                self.buffer[0].isHead = True
         self.emptySlot.release()
+        print(self)
         return True
 
     def insertToPosition(self, position, task):

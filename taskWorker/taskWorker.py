@@ -40,7 +40,7 @@ class TaskWorker:
         while True:
             for worker in self.workers:
                 status = worker.dispatch(status)
-                if status == Status.terminate:
+                if status not in (Status.terminate, Status.interrupted):
                     return status
             if status not in (Status.repeat, Status.damagedRepeat):
                 break

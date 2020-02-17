@@ -8,6 +8,11 @@ class CheckExecute(TaskWorker):
         super(CheckExecute, self).__init__(stateController, task)
         self.countExecute = 0;
 
+    def workDefault(self, status):
+        if not self.task.isHead:
+            return Status.interrupted
+        return status
+
     def workCombat(self, status):
         self.countExecute += 1
         if self.countExecute > self.task.maxRound:
