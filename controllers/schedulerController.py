@@ -2,15 +2,17 @@ from taskScheduler.defaultScheduler import DefaultScheduler
 from taskScheduler.combatStrategyScheduler import CombatStrategyScheduler
 from taskScheduler.campaignScheduler import CampaignScheduler
 from taskScheduler.exerciseScheduler import ExerciseScheduler
+from taskScheduler.commandLineScheduler import CommandLineScheduler
 
 class SchedulerController:
     def __init__(self, taskQueue):
-        this.taskQueue = taskQueue
-        this.schedulers = [
+        self.taskQueue = taskQueue
+        self.schedulers = [
             DefaultScheduler(self.taskQueue),
             CombatStrategyScheduler(self.taskQueue),
             CampaignScheduler(self.taskQueue),
             ExerciseScheduler(self.taskQueue),
+            CommandLineScheduler(self.taskQueue),
         ]
 
     def startAllSchedulers(self):

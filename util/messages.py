@@ -9,7 +9,7 @@ class Messages:
         prompt = ["Enter the stage number you want to level. \n", ]
         prompt.append("Currently support stage are:\n")
         for key in keyTaskMap.keys():
-            prompt.append(f"{str(int(key))}. {str(key)[7:]}")
+            prompt.append(f"{str(int(key))}. {str(key)[8:]}\n")
         return "".join(prompt)
 
     def invalidUserInput(self, taskNum):

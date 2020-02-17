@@ -6,10 +6,15 @@ from task.taskKey import TaskKey
 class DefaultScheduler(Scheduler):
     def __init__(self, taskQueue):
         Scheduler.__init__(self, taskQueue)
+        self.taskFactory = TaskFactory()
+        self.taskKeys = (TaskKey.combat81aCVL, )
+        self.name = "Default Scheduler"
 
     def run(self):
-        while self.continue:
+        while self.restart:
             self.taskQueue.emptyEvent.wait()
-            if self.taksQueue.nonEmptyEvent.wait(DEFAULT_SCHEDULE_WAIT_TIME):
+            if self.taskQueue.nonEmptyEvent.wait(DEFAULT_SCHEDULE_WAIT_TIME):
                 continue;
-            self.taskQueue.put(Combat81aAntiSubmarine(50), False)
+            for taskKey in self.taskKeys:
+            	task = self.taskFactory.makeTaskByKey(taskKey)
+            	self.taskQueue.put(task, False)

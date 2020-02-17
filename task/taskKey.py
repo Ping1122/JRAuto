@@ -8,7 +8,8 @@ class TaskKey(IntEnum):
     combat71a = 4,
     combat74b = 5,
     combat81aAntiSS = 6,
-    combat82c = 7,
-    combatStrategy = 8,
-    exercise = 9,
-    campaign = 10
+    combat81aCVL = 7,
+    combat82c = 8,
+    combatStrategy = 9,
+    exercise = 10,
+    campaign = 11

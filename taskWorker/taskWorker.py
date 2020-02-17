@@ -1,8 +1,8 @@
 from util.messages import Messages
 from taskWorker.status import Status
-from task.combat import Combat
-from task.campaign import Campaign
-from task.exercise import Exercise
+from task.tasks.combat import Combat
+from task.tasks.campaign import Campaign
+from task.tasks.exercise import Exercise
 
 class TaskWorker:
     def __init__(self, stateController, task):
@@ -38,9 +38,9 @@ class TaskWorker:
         if not self.workers:
             return self.work(status)
         while True:
-            for worker in self.workers:
+            for worker in self.workers:                
                 status = worker.dispatch(status)
-                if status not in (Status.terminate, Status.interrupted):
+                if status in (Status.terminate, Status.interrupted):
                     return status
             if status not in (Status.repeat, Status.damagedRepeat):
                 break

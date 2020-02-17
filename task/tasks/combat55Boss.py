@@ -1,4 +1,4 @@
-from task.combat import Combat
+from task.tasks.combat import Combat
 from state.signals import Signals
 from state.stateKey import StateKey
 from task.taskKey import TaskKey

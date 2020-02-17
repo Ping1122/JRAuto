@@ -4,5 +4,5 @@ class TaskFactory():
     def __init__(self):
         pass
 
-    def makeTaskByKey(self, key, args):
+    def makeTaskByKey(self, key):
         return keyTaskMap[key]()

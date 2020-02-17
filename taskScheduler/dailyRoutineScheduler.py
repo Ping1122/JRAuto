@@ -1,4 +1,4 @@
-from datetime import datetime, time
+from datetime import datetime, date, time, timedelta
 from time import sleep
 from taskScheduler.scheduler import Scheduler
 from task.taskFactory import TaskFactory
@@ -11,10 +11,10 @@ class DailyRoutineScheduler(Scheduler):
         self.refreshTime = [
             time(hour = 0, minute = 5),
         ]
-        self.initial = False
+        self.initial = True
 
     def run(self):
-        while self.continue:
+        while self.restart:
             if self.initial:
                 self.initial = False
             else:
@@ -28,8 +28,15 @@ class DailyRoutineScheduler(Scheduler):
             currentTime = (datetime.utcnow() + timedelta(hours = 8)).time()
             currentIndex = linearSearch(self.refreshTime, currentTime)
             if currentIndex != len(self.refreshTime):
-                sleepTime = (self.refreshTime[currentIndex] - currentTime).seconds
+                endTime = datetime.combine(date.min, self.refreshTime[currentIndex])
+                beginTime = datetime.combine(date.min, currentTime)
+                sleepTime = (endTime - beginTime).seconds
             else:
-                sleepTime = (time.max - currentTime).seconds
-                sleepTime += self.refreshTime[0] - time.min
+                endTime = datetime.combine(date.min, time.max)
+                beginTime = datetime.combine(date.min, currentTime)
+                sleepTime = (endTime - beginTime).seconds
+                endTime = datetime.combine(date.min, self.refreshTime[0])
+                beginTime = datetime.combine(date.min, time.min)
+                sleepTime += (endTime - beginTime).seconds
+            print(f"{self.name}: will wake up after {sleepTime}")
             sleep(sleepTime)

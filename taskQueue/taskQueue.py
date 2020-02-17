@@ -33,6 +33,7 @@ class TaskQueue:
         with self.queueLock:
             if self.size == 0:
                 return None
+            print(self)
             return self.buffer[self.head]
 
     def put(self, task, block):

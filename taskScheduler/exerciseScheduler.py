@@ -1,5 +1,6 @@
 from task.taskKey import TaskKey
 from taskScheduler.dailyRoutineScheduler import DailyRoutineScheduler
+from datetime import time
 
 class ExerciseScheduler(DailyRoutineScheduler):
     def __init__(self, taskQueue):
@@ -9,4 +10,5 @@ class ExerciseScheduler(DailyRoutineScheduler):
             time(hour = 12, minute = 5),
             time(hour = 18, minute = 5),
         ]
-        self.taskKey = (TaskKey.exercise, )
+        self.taskKeys = (TaskKey.exercise, )
+        self.name = "Exercise Scheduler"
