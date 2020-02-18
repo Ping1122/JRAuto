@@ -69,7 +69,7 @@ class TaskQueue:
                 self.emptyEvent.clear()
                 self.nonEmptyEvent.set()
             else:
-                self.buffer[1].isHead = False
+                self.buffer[self.head+1].isHead = False
         self.filledSlot.release()
         print(self)
         return True
@@ -81,8 +81,8 @@ class TaskQueue:
             while position != self.tail:
                 if self.buffer[position] is task:
                     break
-                position = (index+1) % self.capcity
-            if index == self.head:
+                position = (position+1) % self.capcity
+            if position == self.tail:
                 self.filledSlot.release()
                 raise InvalidTaskReferenceError
             self.removeFromPosition(position)
@@ -93,7 +93,7 @@ class TaskQueue:
                 self.nonEmptyEvent.clear()
                 self.emptyEvent.set()
             else:
-                self.buffer[0].isHead = True
+                self.buffer[self.head].isHead = True
         self.emptySlot.release()
         print(self)
         return True
