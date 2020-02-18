@@ -1,14 +1,18 @@
 - ship2 needs supply but did not, check signature
 - battle result signature need one not 255*4
-- commandline scheduler
+- test interruped task
+- change removeByReference to removeById
+- Make this multiple threaded server
+- test task queue test case
+- refactor task queue
 - add statistic in task
+- refactor logger and messages
+- add Configuration
 - auto mission complete
 - add mission tasks to queue
-- task schedualer
 - implement quit game
 - implement one state too long error
 - extract expidition
-- Make this multiple threaded server
 - Documentation
 - replace
 - unintended state recover
@@ -61,3 +65,4 @@ Completed:
 - refactor task
 - default scheduler
 - time routine scheduler
+- commandline scheduler
