@@ -15,11 +15,10 @@ class TaskQueue:
         self.emptyEvent = Event()
         self.emptyEvent.set()
         self.nonEmptyEvent = Event()
+        self.nextTaskId = 1
 
     def __len__(self):
-        with self.queueLock:
-            length = self.size
-        return length
+        return self.size
 
     def __str__(self):
         result = []
@@ -44,13 +43,15 @@ class TaskQueue:
             self.buffer[self.tail] = task
             self.tail = (self.tail+1) % self.capcity
             self.size += 1
+            task.id = self.nextTaskId
+            self.nextTaskId += 1
             if self.size == 1:
                 task.isHead = True
                 self.emptyEvent.clear()
                 self.nonEmptyEvent.set()
         self.filledSlot.release()
         print(self)
-        return True
+        return task.id
 
     def insert(self, index, task, block):
         acquired = self.emptySlot.acquire(blocking = block)
@@ -63,6 +64,8 @@ class TaskQueue:
             position = (self.head+index) % self.capcity
             self.insertToPosition(position, task)
             self.size += 1
+            task.id = self.nextTaskId
+            self.nextTaskId += 1
             if index == 0:
                 task.isHead = True
             if self.size == 1:
@@ -72,14 +75,14 @@ class TaskQueue:
                 self.buffer[self.head+1].isHead = False
         self.filledSlot.release()
         print(self)
-        return True
+        return task.id
 
-    def removeByReference(self, task):
+    def removeById(self, taskId):
         self.filledSlot.acquire(blocking = True)
         with self.queueLock:
             position = self.head;
             while position != self.tail:
-                if self.buffer[position] is task:
+                if self.buffer[position].id == taskId:
                     break
                 position = (position+1) % self.capcity
             if position == self.tail:

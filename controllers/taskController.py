@@ -19,7 +19,7 @@ class TaskController(Thread):
 				continue
 			status = self.startTask()
 			if status == Status.terminate:
-				self.taskQueue.removeByReference(self.currentTask)
+				self.taskQueue.removeById(self.currentTask.id)
 			if status == Status.interrupted:
 				print("task is interrupted, start another task")
 
