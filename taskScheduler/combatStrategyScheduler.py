@@ -9,4 +9,4 @@ class CombatStrategyScheduler(DailyRoutineScheduler):
             time(hour = 0, minute = 5),
         ]
         self.taskKeys = (TaskKey.combatStrategy, )
-        self.name = "Combat Strategy Handler"
+        self.name = "Combat Strategy Scheduler"

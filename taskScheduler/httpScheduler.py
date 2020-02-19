@@ -1,10 +1,11 @@
 from server.server import app, init
+from taskScheduler.scheduler import Scheduler
 
 class HttpScheduler(Scheduler):
     def __init__(self, taskQueue):
-        taskQueue.__init__(self, taskQueue)
+        Scheduler.__init__(self, taskQueue)
         self.name = "Http Scheduler"
 
     def run(self):
         init(self.taskQueue)
-        app.run(host = '0.0.0.0', port = 5000)
+        app.run( port = 5000)

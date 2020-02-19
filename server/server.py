@@ -8,18 +8,19 @@ app = Flask(__name__)
 taskFactory = TaskFactory()
 taskQueue = None
 
-def init(taskQueue):
-    global taskQueue = taskQueue
+def init(tq):
+    global taskQueue
+    taskQueue = tq
 
 @app.route('/')
 def index():
     return "Under development"
 
-@app.route('/put')
+@app.route('/put', methods = ["POST", ])
 @validateTask
 def putTask():
     taskInfo = request.get_json()
-    task = taskFactory.makeTaskByKey(taskInfo["taskId"])
+    task = taskFactory.makeTaskByKey(taskInfo["id"])
     taskId = taskQueue.put(task, False)
     if not taskId:
         response = Response("Task Queue is full", status=201, mimetype='application/json')
