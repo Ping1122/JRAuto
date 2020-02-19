@@ -1,8 +1,9 @@
-from flask import Flask, Response, request, jsonify
-from jsonschema import ValidationError
+from os import path, getcwd
+from flask import Flask, Response, request, jsonify, current_app, send_from_directory
+from jsonschema import validate, ValidationError
 from simplejson import dumps
 from task.taskFactory import TaskFactory
-from server.decorator import validateTask
+from server.schema import taskSchema
 
 app = Flask(__name__)
 taskFactory = TaskFactory()
@@ -12,14 +13,22 @@ def init(tq):
     global taskQueue
     taskQueue = tq
 
-@app.route('/')
-def index():
-    return "Under development"
+@app.route('/', methods = ["GET", ])
+def serveIndex():
+    root_dir = path.dirname(getcwd())
+    folderPath = path.join(root_dir, 'JRAuto', 'frontend', 'build')
+    return send_from_directory(folderPath, "index.html")
+
+@app.route('/static/<folder>/<file>', methods = ["GET", ])
+def serveStatic(folder, file):
+    root_dir = path.dirname(getcwd())
+    folderPath = path.join(root_dir, 'JRAuto', 'frontend', 'build', 'static', folder)
+    return send_from_directory(folderPath, file)
 
 @app.route('/put', methods = ["POST", ])
-@validateTask
 def putTask():
     taskInfo = request.get_json()
+    validate(taskInfo, taskSchema)
     task = taskFactory.makeTaskByKey(taskInfo["id"])
     taskId = taskQueue.put(task, False)
     if not taskId:
