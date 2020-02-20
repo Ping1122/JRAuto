@@ -1,5 +1,6 @@
 - ship2 needs supply but did not, check signature
 - develop front end
+	- add toast notification
 - test task queue test case
 - refactor task queue
 - add statistic in task
@@ -67,4 +68,3 @@ Completed:
 - test interruped task
 - change removeByReference to removeById
 - Make this multiple threaded server
-

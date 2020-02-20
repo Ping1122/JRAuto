@@ -37,6 +37,7 @@ body {
   height: 100%;
   width: 100%;
   text-align: center;
+  background-image: url("./images/background.jpg");
 }
 
 .App {
@@ -52,7 +53,8 @@ body {
 }
 
 .main-background {
-  background-color: #52a6d1;
+  background-image: url("./images/boarder.png");
+  background-color: transparent;
   opacity: 1;
   background-size: 100% 100%;
 }
@@ -108,6 +110,27 @@ body {
 .cover .btn-lg {
   padding: 0.75rem 1.25rem;
   font-weight: 700;
+}
+
+.scroll-container {
+  background-color: #218cca;
+  min-width: 100%;
+  min-height: 180px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.scroll-card {
+  min-width: 150px;
+}
+
+.queue-card {
+  height: 66%;
+}
+
+.task-queue-col {
+  width: 100%;
+  min-height: 100px;
 }
 
 /*
