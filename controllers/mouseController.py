@@ -28,7 +28,7 @@ class MouseController:
 
     def scrollAndNoStageChange(self, scrollInfo):
         self.mouse.simulateScroll(scrollInfo)
-        self.normalSleep()
+        self.longSleep()
 
     def longSleep(self):
         sleepTime = LONG_CLICK_INTERVAL + gauss(0, LONG_CLICK_INTERVAL_STD)

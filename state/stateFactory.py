@@ -25,7 +25,7 @@ class StateFactory:
 		return state
 
 	def debug(self, pos, data, color, state):
-		if state == keyStateMap[StateKey.attendence]:
+		if state == keyStateMap[StateKey.sailingOffExercise]:
 		#if state == Signals.squardon2Selected:
 			print(data[pos[1]*IMG_RESOLUTION[0]+pos[0]], color)
 		return data[pos[1]*IMG_RESOLUTION[0]+pos[0]] in color

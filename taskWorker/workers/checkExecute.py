@@ -16,7 +16,7 @@ class CheckExecute(TaskWorker):
     def workCombat(self, status):
         self.countExecute += 1
         print(self.countExecute)
-        if self.countExecute > self.task.maxRound:
+        if self.countExecute >= self.task.maxRound:
             return Status.normal
         return Status.repeat
 

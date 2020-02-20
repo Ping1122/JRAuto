@@ -48,6 +48,8 @@ class TaskWorker:
 
     def work(self, status):
         resultStatus = self.workDefault(status)
+        if resultStatus in (Status.terminate, Status.interrupted):
+                    return resultStatus
         if isinstance(self.task, Combat):
             resultStatus = self.workCombat(status)
         elif isinstance(self.task, Campaign):
