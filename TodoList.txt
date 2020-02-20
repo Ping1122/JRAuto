@@ -1,8 +1,5 @@
 - ship2 needs supply but did not, check signature
-- battle result signature need one not 255*4
-- test interruped task
-- change removeByReference to removeById
-- Make this multiple threaded server
+- develop front end
 - test task queue test case
 - refactor task queue
 - add statistic in task
@@ -66,3 +63,8 @@ Completed:
 - default scheduler
 - time routine scheduler
 - commandline scheduler
+- battle result signature need one not 255*4
+- test interruped task
+- change removeByReference to removeById
+- Make this multiple threaded server
+

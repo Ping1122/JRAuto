@@ -15,5 +15,5 @@ class CommandLineScheduler(Scheduler):
             log(Messages().enterStagePrompt(), Types.info)
             stageNum = int(input())
             task = self.taskFactory.makeTaskByKey(stageNum)
-            if not self.taskQueue.put(task, False):
+            if not self.taskQueue.insert(0, task, False):
                 print("taskQueue is full")

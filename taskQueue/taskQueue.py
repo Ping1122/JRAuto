@@ -90,8 +90,8 @@ class TaskQueue:
                 raise InvalidTaskReferenceError
             self.removeFromPosition(position)
             self.size -= 1
-            if task.isHead:
-                task.isHead = False
+            if self.buffer[position].isHead:
+                self.buffer[position].isHead = False
             if self.size == 0:
                 self.nonEmptyEvent.clear()
                 self.emptyEvent.set()
@@ -107,8 +107,8 @@ class TaskQueue:
             self.buffer[position] = task
             task = temp
             position = (position+1) % self.capcity
-        buffer[self.tail] = task
-        self.tail = (self.tail+i) % self.capcity
+        self.buffer[self.tail] = task
+        self.tail = (self.tail+1) % self.capcity
 
     def removeFromPosition(self, position):
         while position != self.head:
