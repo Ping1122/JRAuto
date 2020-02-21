@@ -7,7 +7,7 @@ class Combat81aCVL(Combat):
     def __init__(self):
         Combat.__init__(self)
         self.key = TaskKey.combat81aCVL
-        self.name = "8-1a CVL"
+        self.name += "8-1 A CVL"
         self.nightBattle = [False, ]
         self.formation = [4, ]
         self.retreatSignal = [(Signals.stage81aExistsCA, ), ]

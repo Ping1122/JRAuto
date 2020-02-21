@@ -6,7 +6,7 @@ class Combat82c(Combat):
     def __init__(self):
         super().__init__()
         self.key = TaskKey.combat82c
-        self.name = "8-2c"
+        self.name += "8-2 C"
         self.nightBattle = [False, ]
         self.formation = [0, ]
         self.maxRound = 100

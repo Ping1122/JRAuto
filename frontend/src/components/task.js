@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import TaskScrollContainer from "./taskScrollContainer";
 import TaskQueue from "./taskQueue";
-import taskService from "../services/taskService";
 
 class Task extends Component {
   render() {

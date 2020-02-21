@@ -7,7 +7,7 @@ class CombatStrategy(Combat):
     def __init__(self):
         super().__init__()
         self.key = TaskKey.combatStrategy
-        self.name += "strategy"
+        self.name += "6-1 Strategy"
         self.totalBattle = 4
         self.nightBattle = [False, ] * self.totalBattle
         self.formation = [1, ] * self.totalBattle

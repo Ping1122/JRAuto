@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TaskQueueCard from "./taskQueueCard";
 import planning from "../images/planning.gif";
 import performing from "../images/performing.gif";
+import taskService from "../services/taskService";
 
 class TaskQueue extends Component {
   render() {

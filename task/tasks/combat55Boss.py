@@ -7,7 +7,7 @@ class Combat55Boss(Combat):
     def __init__(self):
         super().__init__()
         self.key = TaskKey.combat55Boss
-        self.name = "5-5boss submarine"
+        self.name += "5-5 Boss SS"
         self.totalBattle = 3
         self.nightBattle = [False, False, True]
         self.formation = [1, 1, 3]
@@ -19,4 +19,5 @@ class Combat55Boss(Combat):
         self.maxRound = 10
         self.targetStage = 4
         self.targetMap = 4
+        self.targetPoint = "Boss"
         self.squardon = 0

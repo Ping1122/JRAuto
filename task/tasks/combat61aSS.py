@@ -7,7 +7,7 @@ class Combat61aSS(Combat):
     def __init__(self):
         super().__init__()
         self.key = TaskKey.combat61aSS
-        self.name = "6-1a Submarine"
+        self.name += "6-1 A SS"
         self.nightBattle = [False, ]
         self.formation = [3, ]
         self.retreatSignal = [None, ]

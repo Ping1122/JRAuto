@@ -21,10 +21,3 @@ taskSchema = {
     },
     "required" : ["id", ]
 }
-schema = {
-     "type" : "object",
-     "properties" : {
-         "price" : {"type" : "number"},
-         "name" : {"type" : "string"},
-     },
- }
