@@ -85,7 +85,7 @@ class TaskQueue:
                 if self.buffer[position].id == taskId:
                     break
                 position = (position+1) % self.capcity
-            if position == self.tail:
+            if position == self.tail and self.size != self.capcity:
                 self.filledSlot.release()
                 raise InvalidTaskReferenceError
             self.removeFromPosition(position)
