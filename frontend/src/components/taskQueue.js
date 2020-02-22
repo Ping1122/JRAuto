@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import TaskQueueCard from "./taskQueueCard";
 import planning from "../images/planning.gif";
 import performing from "../images/performing.gif";
-import taskService from "../services/taskService";
 
 class TaskQueue extends Component {
   render() {
@@ -12,6 +11,7 @@ class TaskQueue extends Component {
           <div className="col-1 p-1 task-queue-col">
             <img
               src={planning}
+              alt="planning"
               style={{ maxWidth: "100%", maxHeight: "100%" }}
             />
           </div>
@@ -48,6 +48,7 @@ class TaskQueue extends Component {
           <div className="col-1 p-1 task-queue-col">
             <img
               src={performing}
+              alt="performing"
               style={{ maxWidth: "100%", maxHeight: "100%" }}
             />
           </div>

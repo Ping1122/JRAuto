@@ -29,10 +29,18 @@ def serveStatic(folder, file):
 @app.route("/supportedtasks", methods = ["GET", ])
 def serverSupportedTasks():
     tasks = []
-    for key, task in keyTaskMap:
-        temp = {"id" : key, "name" : task().name}
+    for key, task in keyTaskMap.items():
+        name = task().name.split()
+        temp = {"key" : key, "type" : name[0]}
+        if len(name) > 1:
+            temp["stage"] = name[1]
+        if len(name) > 2:
+            temp["point"] = name[2]
+        if len(name) > 3:
+            temp["description"] = name[3]
         tasks.append(temp)
     response = Response(dumps(tasks), status=200, mimetype="application/json")
+    return response
 
 @app.route("/put", methods = ["POST", ])
 def putTask():

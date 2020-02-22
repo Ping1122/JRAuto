@@ -4,6 +4,9 @@ __pycache__/
 # image
 stateImages
 *.png
+*.gif
+*.jpg
+*.jpeg
 
 .DS_Store
 
