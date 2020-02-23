@@ -4,48 +4,33 @@ import planning from "../images/planning.gif";
 import performing from "../images/performing.gif";
 
 class TaskQueue extends Component {
+  renderTaskQueueCards() {
+    return this.props.tasks.map((task, index) => {
+      const colorCode = index * 0.1;
+      const style = {
+        backgroundColor: `rgba(34, 140, 202, ${colorCode})`
+      };
+      return (
+        <div className="col-1 p-1 task-queue-col" style={style} key={task.id}>
+          <TaskQueueCard task={task} key={task.key} />
+        </div>
+      );
+    });
+  }
+
   render() {
     return (
       <div className="container queue-container">
         <div className="row">
-          <div className="col-1 p-1 task-queue-col">
+          <div className="col-1 p-1 ">
             <img
               src={planning}
               alt="planning"
               style={{ maxWidth: "100%", maxHeight: "100%" }}
             />
           </div>
-          <div className="col-1 p-1 task-queue-col">
-            <TaskQueueCard />
-          </div>
-          <div className="col-1 p-1 task-queue-col">
-            <TaskQueueCard />
-          </div>
-          <div className="col-1 p-1 task-queue-col">
-            <TaskQueueCard />
-          </div>
-          <div className="col-1 p-1 task-queue-col">
-            <TaskQueueCard />
-          </div>
-          <div className="col-1 p-1 task-queue-col">
-            <TaskQueueCard />
-          </div>
-          <div className="col-1 p-1 task-queue-col">
-            <TaskQueueCard />
-          </div>
-          <div className="col-1 p-1 task-queue-col">
-            <TaskQueueCard />
-          </div>
-          <div className="col-1 p-1 task-queue-col">
-            <TaskQueueCard />
-          </div>
-          <div className="col-1 p-1 task-queue-col">
-            <TaskQueueCard />
-          </div>
-          <div className="col-1 p-1 task-queue-col">
-            <TaskQueueCard />
-          </div>
-          <div className="col-1 p-1 task-queue-col">
+          {this.renderTaskQueueCards()}
+          <div className="col-1 p-1">
             <img
               src={performing}
               alt="performing"

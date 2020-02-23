@@ -27,20 +27,36 @@ def serveStatic(folder, file):
     return send_from_directory(folderPath, file)
 
 @app.route("/supportedtasks", methods = ["GET", ])
-def serverSupportedTasks():
+def serveSupportedTasks():
     tasks = []
-    for key, task in keyTaskMap.items():
-        name = task().name.split()
-        temp = {"key" : key, "type" : name[0]}
-        if len(name) > 1:
-            temp["stage"] = name[1]
-        if len(name) > 2:
-            temp["point"] = name[2]
-        if len(name) > 3:
-            temp["description"] = name[3]
-        tasks.append(temp)
+    for task in keyTaskMap.values():
+        tasks.append(taskToJson(task()))
     response = Response(dumps(tasks), status=200, mimetype="application/json")
     return response
+
+@app.route("/taskqueue", methods =["GET", ])
+def serveTaskQueue():
+    global taskQueue
+    tasks = []
+    taskList = taskQueue.toList()
+    for task in taskList:
+        tasks.append(taskToJson(task))
+    response = Response(dumps(tasks), status=200, mimetype="application/json")
+    return response
+
+def taskToJson(task):
+    name = task.name.split()
+    temp = {"key" : task.key, "type" : name[0]}
+    if task.id:
+        temp["id"] = task.id
+    if len(name) > 1:
+        temp["stage"] = name[1]
+    if len(name) > 2:
+        temp["point"] = name[2]
+    if len(name) > 3:
+        temp["description"] = name[3]
+    return temp
+
 
 @app.route("/put", methods = ["POST", ])
 def putTask():
