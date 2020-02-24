@@ -1,6 +1,5 @@
 from threading import Lock, Semaphore, Event
 from error.invalidInsertIndexError import InvalidInsertIndexError
-from error.invalidTaskReferenceError import InvalidTaskReferenceError
 
 class TaskQueue:
     def __init__(self, capcity = 10):
@@ -87,7 +86,7 @@ class TaskQueue:
                 position = (position+1) % self.capcity
             if position == self.tail and self.size != self.capcity:
                 self.filledSlot.release()
-                raise InvalidTaskReferenceError
+                return False
             self.removeFromPosition(position)
             self.size -= 1
             if self.buffer[position].isHead:
@@ -121,7 +120,9 @@ class TaskQueue:
         result = []
         with self.queueLock:
             index = self.head
-            while index != self.tail:
+            count = 0
+            while count < self.size:
                 result.append(self.buffer[index])
                 index = (index+1) % self.capcity
+                count += 1
         return result

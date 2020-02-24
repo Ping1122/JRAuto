@@ -18,7 +18,7 @@ class DailyRoutineScheduler(Scheduler):
             if self.initial:
                 self.initial = False
             else:
-                if len(self.taskKeys) == 0:
+                if len(self.taskKeys) == 1:
                     task = self.taskFactory.makeTaskByKey(self.taskKeys[0])
                     self.taskQueue.insert(0, task)
                 else:

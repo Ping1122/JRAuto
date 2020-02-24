@@ -6,7 +6,7 @@ class Combat71a(Combat):
     def __init__(self):
         super().__init__()
         self.key = TaskKey.combat71a
-        self.name = "7-1a"
+        self.name += "7-1 A"
         self.nightBattle = [True, ]
         self.formation = [4, ]
         self.targetStage = 6
