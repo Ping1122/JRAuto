@@ -8,7 +8,7 @@ class SailingOffCombat(SailingOff):
 	signature = {
 		**SailingOff.signature,
 		(432, 56) : ((254, 255, 255, 255),),
-		(563, 53) : ((15, 126, 219, 255),),
+		(563, 53) : ((15, 126, 219, 255), (255, 228, 221, 255)),
 	}
 	def __init__(self):
 		super().__init__()
