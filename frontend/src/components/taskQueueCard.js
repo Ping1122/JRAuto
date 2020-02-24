@@ -1,15 +1,30 @@
 import React, { Component } from "react";
 
 class TaskQueueCard extends Component {
+  renderCloseButton() {
+    return this.props.task.type === "empty" ? null : (
+      <p className="p-0 mx-1">
+        <button
+          type="button"
+          className="close btn-sm"
+          aria-label="Close"
+          onClick={() => this.props.handleRemove(this.props.index)}
+        >
+          &times;
+        </button>
+      </p>
+    );
+  }
+
   render() {
     const { task } = this.props;
     let imageIndex;
     let displayText = "";
     if (task.type === "Combat") {
       imageIndex = parseInt(task.stage.charAt(0)) - 1;
-      displayText = displayText.concat(task.stage, task.point);
+      displayText = displayText.concat(task.stage, " ", task.point);
       if (task.description) {
-        displayText = displayText.concat(" ", task.description);
+        displayText = displayText.concat(" ", task.description.substring(0, 7));
       }
     } else if (task.type === "Exercise") {
       displayText = "Exercise";
@@ -42,7 +57,10 @@ class TaskQueueCard extends Component {
           alt="..."
         />
         <div className="card-img-overlay p-0">
-          <p style={{ fontSize: "2px" }}>{displayText}</p>
+          {this.renderCloseButton()}
+          <p className="m-0" style={{ fontSize: "2px" }}>
+            {displayText}
+          </p>
         </div>
       </div>
     );

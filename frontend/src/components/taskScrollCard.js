@@ -1,39 +1,7 @@
 import React, { Component } from "react";
 import NewTask from "./newTask";
-import taskService from "../services/taskService";
 
 class TaskScrollCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      showNewTask: false
-    };
-    this.openNewTask = this.openNewTask.bind(this);
-    this.closeNewTask = this.closeNewTask.bind(this);
-    this.handlePut = this.handlePut.bind(this);
-    this.handleInsert = this.handleInsert.bind(this);
-  }
-
-  openNewTask() {
-    this.setState({ showNewTask: true });
-  }
-
-  closeNewTask() {
-    this.setState({ showNewTask: false });
-  }
-
-  async handlePut() {
-    console.log(this.props);
-    await taskService.putTask({ id: this.props.task.key });
-    this.closeNewTask();
-    console.log(this.state);
-  }
-
-  async handleInsert() {
-    await taskService.insertTask({ index: 0, id: this.props.task.id });
-    this.closeNewTask();
-  }
-
   render() {
     const { task } = this.props;
     let imageIndex;
@@ -58,7 +26,10 @@ class TaskScrollCard extends Component {
     ];
     return (
       <div className="card scroll-card my-2 mx-1 text-center">
-        <a href="/#" onClick={this.openNewTask} className="stretched-link">
+        <a
+          onClick={() => this.props.openNewTask(this.props.index)}
+          className="stretched-link"
+        >
           <img
             src={images[imageIndex]}
             className="card-img-top scroll-card-img round"
@@ -77,10 +48,10 @@ class TaskScrollCard extends Component {
           </div>
         </a>
         <NewTask
-          show={this.state.showNewTask}
-          handleClose={this.closeNewTask}
-          handleInsert={this.handleInsert}
-          handlePut={this.handlePut}
+          show={this.props.showNewTask}
+          handleClose={() => this.props.closeNewTask(this.props.index)}
+          handleInsert={() => this.props.handleInsert(this.props.index)}
+          handlePut={() => this.props.handlePut(this.props.index)}
         />
       </div>
     );

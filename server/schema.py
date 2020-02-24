@@ -3,7 +3,7 @@ from task.taskKey import TaskKey
 taskSchema = {
     "type" : "object",
     "properties" : {
-        "id" : {
+        "key" : {
             "type" : "number",
             "minimum" : 0,
             "maximum" : len(TaskKey)-1,
@@ -19,5 +19,5 @@ taskSchema = {
             "maximum" : 7200,
         },
     },
-    "required" : ["id", ]
+    "required" : ["key", ]
 }

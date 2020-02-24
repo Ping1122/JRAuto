@@ -1,12 +1,20 @@
+- logs and screenshot
+- reload task queue when update happens
+- component will unmount
+- display log
+- style the screenshot
+- replace
+- auto mission complete
+- insert to location
+- drag and drop replace and assign
 - ship2 needs supply but did not, check signature
 - develop front end
-	- add toast notification
 - test task queue test case
 - refactor task queue
 - add statistic in task
+- progress bar
 - refactor logger and messages
 - add Configuration
-- auto mission complete
 - add mission tasks to queue
 - implement quit game
 - implement one state too long error

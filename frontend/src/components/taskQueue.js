@@ -12,7 +12,11 @@ class TaskQueue extends Component {
       };
       return (
         <div className="col-1 p-1 task-queue-col" style={style} key={task.id}>
-          <TaskQueueCard task={task} key={task.key} />
+          <TaskQueueCard
+            task={task}
+            index={index}
+            handleRemove={this.props.handleRemove}
+          />
         </div>
       );
     });
