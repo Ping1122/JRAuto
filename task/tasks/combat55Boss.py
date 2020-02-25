@@ -5,7 +5,7 @@ from task.taskKey import TaskKey
 
 class Combat55Boss(Combat):
     def __init__(self):
-        super().__init__()
+        super(Combat55Boss, self).__init__()
         self.key = TaskKey.combat55Boss
         self.name += "5-5 Boss SS"
         self.totalBattle = 3

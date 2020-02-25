@@ -11,7 +11,7 @@ class BattleResult(State):
         (1139, 128) : ((255, 255, 255, 255), ),
     }
     def __init__(self):
-        super().__init__()
+        super(BattleResult, self).__init__()
         self.key = StateKey.battleResult
         self.sign.update({
             Signals.noDamagedShip: {

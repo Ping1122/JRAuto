@@ -1,16 +1,17 @@
+from copy import copy
 from state.stateKey import StateKey
 from state.signals import Signals
 from state.transitions import Transitions
 from state.states.sailingOff import SailingOff
 
 class SailingOffExpidition(SailingOff):
-	signature = {
-		**SailingOff.signature,
+	signature = copy(SailingOff.signature)
+	signature.update({
 		(1120, 51) : ((16, 132, 228, 255),),
 		(1136, 57) : ((172, 213, 245, 255),),
-	}
+	})
 	def __init__(self):
-		super().__init__()
+		super(SailingOffExpidition, self).__init__()
 		self.key = StateKey.sailingOffExpidition
 		self.transition.pop(Transitions.selectExpidition, None)
 		self.transition.update({

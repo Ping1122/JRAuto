@@ -3,7 +3,7 @@ from state.stateKey import StateKey
 
 class Combat(Task):
     def __init__(self):
-        Task.__init__(self)
+        super(Combat, self).__init__()
         self.name = "Combat "
         self.totalBattle = 1
         self.nightBattle = [False, ]

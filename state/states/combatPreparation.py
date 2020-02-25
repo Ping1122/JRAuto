@@ -13,7 +13,7 @@ class CombatPreparation(State):
 	}
 
 	def __init__(self):
-		super().__init__()
+		super(CombatPreparation, self).__init__()
 		self.sign.update({
 			Signals.ship1Intact : {
 				(138, 856) : ((64, 162, 110, 255), ),

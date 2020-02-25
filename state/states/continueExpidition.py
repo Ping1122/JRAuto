@@ -10,7 +10,7 @@ class ContinueExpidition(State):
 		(928, 886) : ((148, 132, 46, 255),),
 	}
 	def __init__(self):
-		super().__init__()
+		super(ContinueExpidition, self).__init__()
 		self.key = StateKey.continueExpidition
 		self.transition.update({
 			Transitions.confirmAtContinueExpidition : ({StateKey.sailingOffExpidition, }, (983, 906, 8)),

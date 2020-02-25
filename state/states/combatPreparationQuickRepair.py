@@ -1,16 +1,17 @@
+from copy import copy
 from state.stateKey import StateKey
 from state.behaviors import Behaviors
 from state.transitions import Transitions
 from state.states.combatPreparation import CombatPreparation
 
 class CombatPreparationQuickRepair(CombatPreparation):
-	signature = {
-		**CombatPreparation.signature,
+	signature = copy(CombatPreparation.signature)
+	signature.update({
 		(1116, 1108) : ((209, 233, 253, 255),),
 		(1261, 1142) : ((30, 138, 240, 255),),
-	}
+	})
 	def __init__(self):
-		super().__init__()
+		super(CombatPreparationQuickRepair, self).__init__()
 		self.key = StateKey.combatPreparationQuickRepair
 		self.transition.pop(Transitions.selectQuickRepair, None)
 		self.behavior.update({

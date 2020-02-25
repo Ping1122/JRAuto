@@ -1,3 +1,4 @@
+from copy import copy
 from state.stateKey import StateKey
 from state.signals import Signals
 from state.behaviors import Behaviors
@@ -5,8 +6,8 @@ from state.transitions import Transitions
 from state.states.sailingOff import SailingOff
 
 class SailingOffExercise(SailingOff):
-	signature = {
-		**SailingOff.signature,
+	signature = copy(SailingOff.signature)
+	signature.update({
 		(795, 59) : ((16, 132, 228, 255),),
 		(853, 41) : ((247, 251, 254, 255),),
 		(2473, 804) : ((179, 186, 194, 255), ),
@@ -14,9 +15,9 @@ class SailingOffExercise(SailingOff):
 		(1368, 682) : ((237, 237, 237, 255), ),
 		(1186, 721) : ((237, 237, 237, 255), (37, 71, 105, 255)),
 		(1202, 765) : ((25, 60, 93, 255), (237, 237, 237, 255)),
-	}
+	})
 	def __init__(self):
-		super().__init__()
+		super(SailingOffExercise, self).__init__()
 		self.key = StateKey.sailingOffExercise
 		self.sign.update({
 			Signals.noMoreExerciseTrials : {

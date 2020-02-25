@@ -11,7 +11,7 @@ class ForwardOrRetreat(State):
 		(928, 926) : ((212, 144, 144, 255),),
 	}
 	def __init__(self):
-		super().__init__()
+		super(ForwardOrRetreat, self).__init__()
 		self.key = StateKey.forwardOrRetreat
 		self.sign.update({
 			Signals.existsSeriouslyDamagedShip : {

@@ -4,7 +4,7 @@ from base64 import b64encode
 from flask import Flask, Response, request, jsonify, current_app, send_from_directory
 from jsonschema import validate, ValidationError
 from simplejson import dumps
-from server.schema import taskSchema
+from schema import taskSchema
 from task.taskFactory import TaskFactory
 from task.keyTaskMap import keyTaskMap
 from components.monitor import Monitor

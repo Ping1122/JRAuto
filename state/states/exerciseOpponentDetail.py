@@ -10,7 +10,7 @@ class ExerciseOpponentDetail(State):
 		(2343, 361) : ((224, 224, 224, 255), ),
 	}
 	def __init__(self):
-		super().__init__()
+		super(ExerciseOpponentDetail, self).__init__()
 		self.key = StateKey.exerciseOpponentDetail
 		self.transition.update({
             Transitions.close : ({StateKey.sailingOffExercise, }, (2347, 359, 6)),

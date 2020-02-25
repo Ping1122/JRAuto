@@ -10,7 +10,7 @@ class ExpiditionResult(State):
 		(2471, 1350) : ((255, 255, 255, 255), ),
 	}
 	def __init__(self):
-		super().__init__()
+		super(ExpiditionResult, self).__init__()
 		self.key = StateKey.expiditionResult
 		self.transition.update({
             Transitions.nextState : ({StateKey.continueExpidition, }, (2348, 1327, 10)),

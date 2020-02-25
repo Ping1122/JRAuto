@@ -3,7 +3,7 @@ from taskScheduler.scheduler import Scheduler
 
 class HttpScheduler(Scheduler):
     def __init__(self, taskQueue):
-        Scheduler.__init__(self, taskQueue)
+        super(HttpScheduler, self).__init__(taskQueue)
         self.name = "Http Scheduler"
 
     def run(self):

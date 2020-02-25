@@ -11,7 +11,7 @@ class SailingOff(State):
 		(2246, 1391) : ((12, 32, 57, 255),),
 	}
 	def __init__(self):
-		super().__init__()
+		super(SailingOff, self).__init__()
 		self.sign.update({
 			Signals.existsCompletedExpidition : {
 				(1254, 25) : ((255, 254, 254, 255),),

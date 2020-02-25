@@ -11,7 +11,7 @@ class Strategy(State):
 		(148, 213) : ((11, 14, 26, 255), ),
 	}
 	def __init__(self):
-		super().__init__()
+		super(Strategy, self).__init__()
 		self.key = StateKey.strategy
 		self.transition.update({
 			Transitions.backToCombatPreparation : ({StateKey.combatPreparationStatistic, }, (1598, 1194, 8)),

@@ -11,7 +11,7 @@ class NewsAndAnnouncement(State):
 		(2414, 93) : ((255, 255, 255, 255), ),
 	}
 	def __init__(self):
-		super().__init__()
+		super(NewsAndAnnouncement, self).__init__()
 		self.key = StateKey.newsAndAnnouncement
 		self.transition.update({
 			Transitions.close : ({StateKey.attendence, StateKey.home}, (79, 75, 8)),

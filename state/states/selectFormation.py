@@ -10,7 +10,7 @@ class SelectFormation(State):
 		(2476, 1339) : ((30, 135, 220, 255),),
 	}
 	def __init__(self):
-		super().__init__()
+		super(SelectFormation, self).__init__()
 		self.key = StateKey.selectFormation
 		resultStates = {
 			StateKey.chaseOrGiveUp,

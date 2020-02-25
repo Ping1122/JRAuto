@@ -12,7 +12,7 @@ class EnemyInfo(State):
 	}
 
 	def __init__(self):
-		super().__init__()
+		super(EnemyInfo, self).__init__()
 		self.sign.update({
 			Signals.stage74bExistsSubmarine : {
 				(1829, 171) : ((32, 39, 42, 255),),

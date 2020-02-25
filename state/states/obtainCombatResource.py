@@ -11,7 +11,7 @@ class ObtainCombatResource(State):
 		(1315, 813) : ((92, 171, 245, 255), ),
 	}
 	def __init__(self):
-		super().__init__()
+		super(ObtainCombatResource, self).__init__()
 		self.key = StateKey.obtainCombatResource
 		self.transition.update({
 			Transitions.confirm : (FullSet(), (1282, 800, 6)),

@@ -1,10 +1,10 @@
 from util.messages import Messages
-from taskWorker.status import Status
+from status import Status
 from task.tasks.combat import Combat
 from task.tasks.campaign import Campaign
 from task.tasks.exercise import Exercise
 
-class TaskWorker:
+class TaskWorker(object):
     def __init__(self, stateController, task):
         self.stateController = stateController
         self.task = task

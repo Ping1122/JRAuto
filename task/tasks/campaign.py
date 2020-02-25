@@ -4,7 +4,7 @@ from task.taskKey import TaskKey
 
 class Campaign(Task):
 	def __init__(self):
-		Task.__init__(self)
+		super(Campaign, self).__init__()
 		self.key = TaskKey.campaign
 		self.name = "Campaign "
 		self.nightBattle = [True, True, True, True, True]

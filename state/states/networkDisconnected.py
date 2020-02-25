@@ -11,7 +11,7 @@ class NetworkDisconnected(State):
         (931, 908) : ((196, 224, 252, 255), ),
 	}
 	def __init__(self):
-		super().__init__()
+		super(NetworkDisconnected, self).__init__()
 		self.key = StateKey.networkDisconnected
 		self.transition.update({
 			Transitions.confirm : (FullSet(), (987, 911, 8)),

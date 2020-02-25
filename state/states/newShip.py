@@ -10,7 +10,7 @@ class NewShip(State):
 		(1519, 679) : ((195, 195, 195, 255),),
 	}
 	def __init__(self):
-		super().__init__()
+		super(NewShip, self).__init__()
 		self.key = StateKey.newShip
 		self.transition.update({
 			Transitions.confirmAtNewShip : ({

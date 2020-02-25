@@ -1,16 +1,16 @@
-from task.tasks.combat31Resource import Combat31Resource
-from task.tasks.combat55Boss import Combat55Boss
-from task.tasks.combat61aAntiSS import Combat61aAntiSS
-from task.tasks.combat61aSS import Combat61aSS
-from task.tasks.combat71a import Combat71a
-from task.tasks.combat74b import Combat74b
-from task.tasks.combat81aAntiSS import Combat81aAntiSS
-from task.tasks.combat81aCVL import Combat81aCVL
-from task.tasks.combat82c import Combat82c
-from task.tasks.combatStrategy import CombatStrategy
-from task.tasks.exercise import Exercise
-from task.tasks.campaign import Campaign
-from task.taskKey import TaskKey
+from tasks.combat31Resource import Combat31Resource
+from tasks.combat55Boss import Combat55Boss
+from tasks.combat61aAntiSS import Combat61aAntiSS
+from tasks.combat61aSS import Combat61aSS
+from tasks.combat71a import Combat71a
+from tasks.combat74b import Combat74b
+from tasks.combat81aAntiSS import Combat81aAntiSS
+from tasks.combat81aCVL import Combat81aCVL
+from tasks.combat82c import Combat82c
+from tasks.combatStrategy import CombatStrategy
+from tasks.exercise import Exercise
+from tasks.campaign import Campaign
+from taskKey import TaskKey
 
 keyTaskMap = {
     TaskKey.combat31Resource : Combat31Resource,

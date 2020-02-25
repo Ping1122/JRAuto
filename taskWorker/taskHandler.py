@@ -1,8 +1,8 @@
-from taskWorker.status import Status
-from taskWorker.taskWorker import TaskWorker
-from taskWorker.workers.initialize import Initialize
-from taskWorker.workers.execute import Execute
-from taskWorker.workers.finalize import Finalize
+from status import Status
+from taskWorker import TaskWorker
+from workers.initialize import Initialize
+from workers.execute import Execute
+from workers.finalize import Finalize
 
 class TaskHandler(TaskWorker):
     def init(self):

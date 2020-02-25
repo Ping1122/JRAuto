@@ -10,7 +10,7 @@ class QuitGame(State):
         (853, 384) : ((178, 206, 228, 255), ),
 	}
 	def __init__(self):
-		super().__init__()
+		super(QuitGame, self).__init__()
 		self.key = StateKey.quitGame
 		self.transition.update({
 			Transitions.confirm : ({StateKey.gameClosed, }, (981, 906, 8)),

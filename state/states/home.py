@@ -10,7 +10,7 @@ class Home(State):
 		(1700, 1290) : ((55, 134, 208, 255),),
 	}
 	def __init__(self):
-		super().__init__()
+		super(Home, self).__init__()
 		self.key = StateKey.home
 		self.transition.update({
 			Transitions.sailingOff : ({

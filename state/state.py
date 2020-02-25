@@ -1,6 +1,6 @@
 from data.constants import IMG_RESOLUTION
 
-class State:
+class State(object):
 	signature = dict()
 	def __init__(self):
 		self.sign = dict()

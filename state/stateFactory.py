@@ -1,9 +1,9 @@
-from state.keyStateMap import keyStateMap
-from state.stateKey import StateKey
+from keyStateMap import keyStateMap
+from stateKey import StateKey
 from data.constants import IMG_RESOLUTION
-from state.signals import Signals
-from state.keyStateMap import keyStateMap
-from state.states.unknown import Unknown
+from signals import Signals
+from keyStateMap import keyStateMap
+from states.unknown import Unknown
 
 class StateFactory:
 	def __init__(self):

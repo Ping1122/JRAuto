@@ -1,3 +1,4 @@
+from copy import copy
 from state.signals import Signals
 from state.stateKey import StateKey
 from state.behaviors import Behaviors
@@ -5,13 +6,13 @@ from state.transitions import Transitions
 from state.states.sailingOff import SailingOff
 
 class SailingOffCombat(SailingOff):
-	signature = {
-		**SailingOff.signature,
+	signature = copy(SailingOff.signature)
+	signature.update({
 		(432, 56) : ((254, 255, 255, 255),),
 		(563, 53) : ((15, 126, 219, 255),),
-	}
+	})
 	def __init__(self):
-		super().__init__()
+		super(SailingOffCombat, self).__init__()
 		self.key = StateKey.sailingOffCombat
 		self.sign.update({
 			Signals.stage1Selected : {

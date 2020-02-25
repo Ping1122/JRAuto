@@ -1,3 +1,4 @@
+from copy import copy
 from state.stateKey import StateKey
 from state.signals import Signals
 from state.behaviors import Behaviors
@@ -5,13 +6,13 @@ from state.transitions import Transitions
 from state.states.combatPreparation import CombatPreparation
 
 class CombatPreparationQuickSupply(CombatPreparation):
-	signature = {
-		**CombatPreparation.signature,
+	signature = copy(CombatPreparation.signature)
+	signature.update({
 		(678, 1099) : ((35, 145, 248, 255), ),
 		(890, 1128) : ((151, 202, 249, 255), ),
-	}
+	})
 	def __init__(self):
-		super().__init__()
+		super(CombatPreparationQuickSupply, self).__init__()
 		self.key = StateKey.combatPreparationQuickSupply
 		self.sign.update({
 			Signals.ship1NeedSupply : {

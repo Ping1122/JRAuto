@@ -10,7 +10,7 @@ class Login(State):
 		(2167, 1220) : ((53, 53, 53, 255), ),
 	}
 	def __init__(self):
-		super().__init__()
+		super(Login, self).__init__()
 		self.key = StateKey.login
 		self.transition.update({
 			Transitions.login : ({

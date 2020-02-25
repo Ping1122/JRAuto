@@ -1,16 +1,17 @@
+from copy import copy
 from state.stateKey import StateKey
 from state.signals import Signals
 from state.transitions import Transitions
 from state.states.combatPreparation import CombatPreparation
 
 class CombatPreparationStatistic(CombatPreparation):
-	signature = {
-		**CombatPreparation.signature,
+	signature = copy(CombatPreparation.signature)
+	signature.update({
 		(448, 1132) : ((31, 140, 242, 255), ),
 		(525, 1120) : ((254, 255, 255, 255), ),
-	}
+	})
 	def __init__(self):
-		super().__init__()
+		super(CombatPreparationStatistic, self).__init__()
 		self.sign.update({
 			Signals.strategyEnabled: {
 				(1644, 260) : ((235, 175, 44, 255), ),

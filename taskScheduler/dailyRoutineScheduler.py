@@ -7,7 +7,7 @@ from util.functions import linearSearch
 
 class DailyRoutineScheduler(Scheduler):
     def __init__(self, taskQueue):
-        Scheduler.__init__(self, taskQueue)
+        super(DailyRoutineScheduler, self).__init__(taskQueue)
         self.refreshTime = [
             time(hour = 0, minute = 5),
         ]
@@ -38,5 +38,5 @@ class DailyRoutineScheduler(Scheduler):
                 endTime = datetime.combine(date.min, self.refreshTime[0])
                 beginTime = datetime.combine(date.min, time.min)
                 sleepTime += (endTime - beginTime).seconds
-            print(f"{self.name}: will wake up after {sleepTime}")
+            print(self.name + ": will wake up after " + str(sleepTime))
             sleep(sleepTime)

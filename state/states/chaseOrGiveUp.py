@@ -10,7 +10,7 @@ class ChaseOrGiveUp(State):
 		(1644, 917) : ((121, 189, 253, 255),),
 	}
 	def __init__(self):
-		super().__init__()
+		super(ChaseOrGiveUp, self).__init__()
 		self.key = StateKey.chaseOrGiveUp
 		resultStates = {
 			StateKey.battleResult,

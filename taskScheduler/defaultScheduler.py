@@ -5,7 +5,7 @@ from task.taskKey import TaskKey
 
 class DefaultScheduler(Scheduler):
     def __init__(self, taskQueue):
-        Scheduler.__init__(self, taskQueue)
+        super(DefaultScheduler, self).__init__(taskQueue)
         self.taskFactory = TaskFactory()
 
     def run(self):
