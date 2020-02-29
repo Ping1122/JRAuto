@@ -5,14 +5,14 @@ from util.fullSet import FullSet
 
 class NetworkDisconnected(State):
 	signature = {
-		(1036, 391) : ((13, 108, 183, 255), ),
-        (1136, 648) : ((198, 198, 198, 255), ),
-        (1415, 694) : ((174, 174, 174, 255), ),
-        (931, 908) : ((196, 224, 252, 255), ),
+		(226, 191) : ((57, 125, 189), ),
+		(243, 245) : ((181, 182, 181), ),
+		(295, 250) : ((148, 154, 148), ),
+		(463, 243) : ((189, 195, 189), ),
 	}
 	def __init__(self):
 		super(NetworkDisconnected, self).__init__()
 		self.key = StateKey.networkDisconnected
 		self.transition.update({
-			Transitions.confirm : (FullSet(), (987, 911, 8)),
+			Transitions.confirm : (FullSet(), (269, 326, 2)),
 		})

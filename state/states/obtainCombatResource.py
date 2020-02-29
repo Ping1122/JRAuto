@@ -5,15 +5,15 @@ from util.fullSet import FullSet
 
 class ObtainCombatResource(State):
 	signature = {
-		(817, 370) : ((137, 179, 214, 255), ),
-		(855, 386) : ((129, 175, 213, 255), ),
-		(1239, 800) : ((148, 200, 250, 255), ),
-		(1315, 813) : ((92, 171, 245, 255), ),
+		(221, 170) : ((82, 142, 198), ),
+		(232, 168) : ((206, 227, 239), ),
+		(234, 177) : ((132, 178, 214), ),
+		(214, 168) : ((140, 178, 214), ),
 	}
 	def __init__(self):
 		super(ObtainCombatResource, self).__init__()
 		self.key = StateKey.obtainCombatResource
 		self.transition.update({
-			Transitions.confirm : (FullSet(), (1282, 800, 6)),
+			Transitions.confirm : (FullSet(), (351, 290, 2)),
 		})
 

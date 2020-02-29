@@ -1,14 +1,14 @@
 from threading import Lock
 from PIL import Image, ImageGrab
-from data.constants import SIMULATOR_WINDOW_POSITION
+from components.window import Window
 
 class Monitor:
 	lock = Lock()
 
 	def __init__(self):
-		pass
+		self.window = Window()
 
 	def takeScreenshot(self):
 		with self.lock:
-			img = ImageGrab.grab(bbox = SIMULATOR_WINDOW_POSITION)
+			img = ImageGrab.grab(bbox = self.window.getWindow())
 			return img

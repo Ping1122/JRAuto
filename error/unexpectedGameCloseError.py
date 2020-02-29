@@ -1,4 +1,4 @@
-from error import Error
+from error.error import Error
 
 class UnexpectedGameCloseError(Error):
     pass

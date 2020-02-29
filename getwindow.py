@@ -4,7 +4,9 @@ window = []
 
 def callback(hwnd, extra):
 	global window
-	if "MuMu" in GetWindowText(hwnd):
+	print(GetWindowText(hwnd))
+	print(GetWindowRect(hwnd))
+	if "夜神模拟器" in GetWindowText(hwnd):
 		window = GetWindowRect(hwnd)
 
 def main():

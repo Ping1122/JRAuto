@@ -4,16 +4,16 @@ from state.transitions import Transitions
 
 class ExpiditionResult(State):
 	signature = {
-		(1135, 94) : ((255, 255, 255, 255), ),
-		(1131, 317) : ((154, 196, 98, 255), ),
-		(1138, 449) : ((232, 232, 232, 255), ),
-		(2471, 1350) : ((255, 255, 255, 255), ),
+		(311, 55) : ((82, 117, 123), ),
+		(369, 72) : ((231, 235, 239), ),
+		(311, 164) : ((181, 211, 156), ),
+		(308, 183) : ((74, 117, 74), ),
 	}
 	def __init__(self):
 		super(ExpiditionResult, self).__init__()
 		self.key = StateKey.expiditionResult
 		self.transition.update({
-            Transitions.nextState : ({StateKey.continueExpidition, }, (2348, 1327, 10)),
+            Transitions.nextState : ({StateKey.continueExpidition, }, (637, 442, 2)),
         })
 
 

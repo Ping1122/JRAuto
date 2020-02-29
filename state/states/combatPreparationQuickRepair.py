@@ -7,19 +7,19 @@ from state.states.combatPreparation import CombatPreparation
 class CombatPreparationQuickRepair(CombatPreparation):
 	signature = copy(CombatPreparation.signature)
 	signature.update({
-		(1116, 1108) : ((209, 233, 253, 255),),
-		(1261, 1142) : ((30, 138, 240, 255),),
+		(311, 388) : ((33, 138, 239), ),
+		(276, 386) : ((33, 142, 247), ),
 	})
 	def __init__(self):
 		super(CombatPreparationQuickRepair, self).__init__()
 		self.key = StateKey.combatPreparationQuickRepair
 		self.transition.pop(Transitions.selectQuickRepair, None)
 		self.behavior.update({
-			Behaviors.repairAllShips : (2195, 978, 8),
-			Behaviors.repairShip1 : (264, 603, 10),
-			Behaviors.repairShip2 : (558, 603, 10),
-			Behaviors.repairShip3 : (870, 603, 10),
-			Behaviors.repairShip4 : (1170, 603, 10),
-			Behaviors.repairShip5 : (1470, 603, 10),
-			Behaviors.repairShip6 : (1764, 603, 10),
+			Behaviors.repairAllShips : (600, 346, 2),
+			Behaviors.repairShip1 : (72, 248, 6),
+			Behaviors.repairShip2 : (155, 248, 6),
+			Behaviors.repairShip3 : (233, 248, 6),
+			Behaviors.repairShip4 : (316, 248, 6),
+			Behaviors.repairShip5 : (395, 248, 6),
+			Behaviors.repairShip6 : (479, 248, 6),
 		})

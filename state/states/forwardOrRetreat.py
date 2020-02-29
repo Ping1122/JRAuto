@@ -5,17 +5,19 @@ from state.transitions import Transitions
 
 class ForwardOrRetreat(State):
 	signature = {
-		(790, 602) : ((177, 177, 177, 255),),
-		(955, 780) : ((230, 230, 230, 255),),
-		(847, 919) : ((224, 174, 174, 255),),
-		(928, 926) : ((212, 144, 144, 255),),
+		(261, 271) : ((74, 117, 74), ),
+		(261, 296) : ((132, 162, 99), ),
+		(239, 329) : ((189, 93, 90), ),
+		(232, 335) : ((198, 130, 132), ),
+		(249, 332) : ((247, 243, 247), ),
+		(453, 330) : ((189, 223, 255), ),
 	}
 	def __init__(self):
 		super(ForwardOrRetreat, self).__init__()
 		self.key = StateKey.forwardOrRetreat
 		self.sign.update({
 			Signals.existsSeriouslyDamagedShip : {
-				(811, 504) : ((255, 201, 70, 255), ),
+				(223, 216) : ((255, 203, 74), ),			
 			}
 		})
 		self.transition.update({
@@ -25,6 +27,9 @@ class ForwardOrRetreat(State):
 				StateKey.chaseOrGiveUp,
 				StateKey.battleResult,
 				StateKey.home,
-			}, (885, 938, 7)),
-			Transitions.retreatAtForwardOrRetreat : ({StateKey.sailingOffCombat,}, (1677, 938, 7)),
+			}, (241, 335, 2)),
+			Transitions.retreatAtForwardOrRetreat : (
+				{StateKey.sailingOffCombat,}, 
+				(459, 334, 2),
+			),
 		})

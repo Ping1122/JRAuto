@@ -4,17 +4,20 @@ from state.transitions import Transitions
 
 class ExerciseOpponentDetail(State):
 	signature = {
-		(535, 352) : ((104, 149, 192, 255), ),
-		(217, 1065) : ((188, 188, 188, 255), ),
-		(759, 1040) : ((123, 123, 123, 255), ),
-		(2343, 361) : ((224, 224, 224, 255), ),
+		(143, 168) : ((66, 125, 181), ),
+		(580, 361) : ((82, 170, 247), ),
+		(599, 369) : ((173, 211, 247), ),
+		(590, 361) : ((74, 166, 247), ),
 	}
 	def __init__(self):
 		super(ExerciseOpponentDetail, self).__init__()
 		self.key = StateKey.exerciseOpponentDetail
 		self.transition.update({
-            Transitions.close : ({StateKey.sailingOffExercise, }, (2347, 359, 6)),
-            Transitions.challenge : ({StateKey.combatPreparationStatistic, }, (2171, 1056, 6)),
+            Transitions.close : ({StateKey.sailingOffExercise, }, (647, 176, 1)),
+            Transitions.challenge : (
+            	{StateKey.combatPreparationStatistic, }, 
+            	(594, 368, 2)
+            ),
         })
 
 

@@ -4,10 +4,10 @@ from state.transitions import Transitions
 
 class NewShip(State):
 	signature = {
-		(1085, 561) : ((225, 225, 225, 255),),
-		(143, 124) : ((255, 255, 255, 255),),
-		(468, 186) : ((255, 255, 255, 255),),
-		(1519, 679) : ((195, 195, 195, 255),),
+		(251, 183) : ((107, 162, 206), ),
+		(261, 186) : ((99, 154, 206), ),
+		(348, 252) : ((156, 162, 156), ),
+		(53, 87) : ((255, 255, 255), ),
 	}
 	def __init__(self):
 		super(NewShip, self).__init__()
@@ -17,10 +17,10 @@ class NewShip(State):
 				StateKey.forwardOrRetreat,
 				StateKey.flagShipSeriousDamaged,
 				StateKey.sailingOffCombat,
-			}, (982, 909, 7)),
+			}, (269, 325, 2)),
 			Transitions.cancelAtNewShip : ({
 				StateKey.forwardOrRetreat,
 				StateKey.flagShipSeriousDamaged,
 				StateKey.sailingOffCombat,
-			}, (1587, 909, 7)),
+			}, (433, 325, 2)),
 		})

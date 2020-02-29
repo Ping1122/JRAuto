@@ -10,5 +10,5 @@ def linearSearch(array, target):
 lock = Lock()
 def synchronizedInput(prompt):
     with lock:
-    	print(prompt)
+        print(prompt)
         return stdin.readline()

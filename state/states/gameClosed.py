@@ -4,14 +4,14 @@ from state.transitions import Transitions
 
 class GameClosed(State):
 	signature = {
-		(52, 46) : ((15, 17, 21, 255),),
-		(132, 1258) : ((22, 24, 30, 255),),
-		(2470, 214) : ((23, 25, 31, 255),),
-		(2422, 1308) : ((21, 23, 28, 255),),
+		(104, 144) : ((241, 208, 186), ),
+		(48, 445) : ((26, 28, 35), ),
+		(664, 458) : ((44, 45, 52), ),
+		(376, 503) : ((20, 20, 26), ),
 	}
 	def __init__(self):
 		super(GameClosed, self).__init__()
 		self.key = StateKey.gameClosed
 		self.transition.update({
-			Transitions.startGame : ({StateKey.login, }, (1286, 310, 10)),
+			Transitions.startGame : ({StateKey.login, }, (108, 137, 3)),
 		})

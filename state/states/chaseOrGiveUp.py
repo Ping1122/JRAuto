@@ -4,10 +4,10 @@ from state.transitions import Transitions
 
 class ChaseOrGiveUp(State):
 	signature = {
-		(766, 601) : ((176, 176, 176, 255),),
-		(953, 702) : ((185, 194, 111, 255),),
-		(842, 921) : ((228, 187, 187, 255),),
-		(1644, 917) : ((121, 189, 253, 255),),
+		(208, 242) : ( (214, 211, 214), ),
+		(260, 269) : ( (255, 243, 132), ),
+		(264, 295) : ( (156, 190, 107), ),
+		(266, 332) : ( (156, 4, 8), ),
 	}
 	def __init__(self):
 		super(ChaseOrGiveUp, self).__init__()
@@ -16,6 +16,6 @@ class ChaseOrGiveUp(State):
 			StateKey.battleResult,
 		}
 		self.transition.update({
-			Transitions.chase : (resultStates, (885, 938, 7)),
-			Transitions.giveUp : (resultStates, (1677, 938, 7)),
+			Transitions.chase : (resultStates, (242, 334, 2)),
+			Transitions.giveUp : (resultStates, (459, 335, 2)),
 		})

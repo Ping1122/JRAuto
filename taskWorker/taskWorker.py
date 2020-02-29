@@ -1,5 +1,5 @@
 from util.messages import Messages
-from status import Status
+from taskWorker.status import Status
 from task.tasks.combat import Combat
 from task.tasks.campaign import Campaign
 from task.tasks.exercise import Exercise

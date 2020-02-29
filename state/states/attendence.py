@@ -4,14 +4,17 @@ from state.transitions import Transitions
 
 class Attendence(State):
 	signature = {
-		(310, 382) : ( (255, 255, 255, 255), ),
-		(1201, 950) : ( (217, 188, 46, 255), ),
-		(1266, 920) : ( (207, 178, 43, 255), ),
-		(1352, 926) : ( (211, 181, 44, 255), ),
+		(106, 177) : ((255, 255, 255),),
+		(317, 319) : ((255, 215, 43),),
+		(377, 327) : ((174, 150, 42),),
+		(361, 324) : ((172, 148, 41),),
 	}
 	def __init__(self):
 		super(Attendence, self).__init__()
 		self.key = StateKey.attendence
 		self.transition.update({
-			Transitions.confirm : ({StateKey.obtainLoginResource,}, (1280, 929, 6)),
+			Transitions.confirm : (
+				{StateKey.obtainLoginResource, }, 
+				(357, 329, 3)
+			),
 		})
