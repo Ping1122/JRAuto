@@ -23,7 +23,7 @@ class TaskQueue:
         result = []
         index = self.head
         while index != self.tail:
-            result.append(f"{str(self.buffer[index])} | ")
+            result.append(str(self.buffer[index]) + " | ")
             index = (index+1) % self.capcity
         return "".join(result)
 

@@ -9,8 +9,9 @@ def main():
 		x.append(int(input("x:")))
 		y.append(int(input("y:")))
 	img = Monitor().takeScreenshot()
+	width = img.size[0]
 	for i in range(4):
-		print((x[i],y[i]),": (",str(img.getdata()[y[i]*IMG_RESOLUTION[0]+x[i]])+", ),")
+		print((x[i],y[i]),": (" + str(img.getdata()[y[i]*width+x[i]])+", ),")
 
 if __name__== "__main__":
 	main()

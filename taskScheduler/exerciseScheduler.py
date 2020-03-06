@@ -4,7 +4,7 @@ from datetime import time
 
 class ExerciseScheduler(DailyRoutineScheduler):
     def __init__(self, taskQueue):
-        DailyRoutineScheduler.__init__(self, taskQueue)
+        super(ExerciseScheduler, self).__init__(taskQueue)
         self.refreshTime = [
             time(hour = 0, minute = 5),
             time(hour = 12, minute = 5),

@@ -4,17 +4,18 @@ from state.transitions import Transitions
 
 class Home(State):
 	signature = {
-		(2027, 1280) : ((74, 61, 89, 255), ),
-		(2371, 1137) : ((72, 72, 72, 255),),
-		(2016, 1238) : ((255, 246, 226, 255),),
-		(1700, 1290) : ((55, 134, 208, 255),),
+
+		(483, 466) : ((214, 97, 90), ),
+		(547, 485) : ((173, 186, 189), ),
+		(561, 470) : ((99, 69, 90), ),
+		(615, 437) : ((24, 28, 24), ),
 	}
 	def __init__(self):
-		super().__init__()
+		super(Home, self).__init__()
 		self.key = StateKey.home
 		self.transition.update({
 			Transitions.sailingOff : ({
 				StateKey.sailingOffCombat,
 				StateKey.sailingOffExpidition
-			}, (2400, 1298, 10)),
+			}, (658, 471, 4)),
 		})

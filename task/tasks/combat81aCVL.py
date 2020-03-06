@@ -5,7 +5,7 @@ from task.taskKey import TaskKey
 
 class Combat81aCVL(Combat):
     def __init__(self):
-        Combat.__init__(self)
+        super(Combat81aCVL, self).__init__()
         self.key = TaskKey.combat81aCVL
         self.name += "8-1 A CVL"
         self.nightBattle = [False, ]

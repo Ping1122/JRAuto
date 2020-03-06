@@ -9,33 +9,33 @@ class Messages:
         prompt = ["Enter the stage number you want to level. \n", ]
         prompt.append("Currently support stage are:\n")
         for key in keyTaskMap.keys():
-            prompt.append(f"{str(int(key))}. {str(key)[8:]}\n")
+            prompt.append(str(int(key)) + ". " + str(key)[8:] + "\n")
         return "".join(prompt)
 
     def invalidUserInput(self, taskNum):
-        return f"The task number: {taskNum} is invalid"
+        return "The task number:" + str(taskNum) + "is invalid"
 
     def invalidStageWarning(self, stage):
-        return f"{stage} is not supported, please try again"
+        return str(stage) + "is not supported, please try again"
 
     def startLevelStageMessage(self, stage):
         self.time = datetime.now()
-        return f"Start leveling at {stage}"
+        return "Start leveling at" + str(stage)
 
     def stageCompleteMessage(self, count, stage):
         now = datetime.now()
         timeUsed = (now - self.time).total_seconds()
-        return f"Completed the {stage} for {count} times. Used {int(timeUsed)} seconds"
+        return "Completed the" + srt(stage) + " for " + srt(count) + "times. Used " + str(int(timeUsed)) + "seconds"
 
     def startSelectStateMessage(self, stage, state):
-        return f"Start selecting {stage}, at screen {str(state)[9:]}"
+        return "Start selecting" +  str(stage) + ", at screen {str(state)[9:]}"
 
     def startSupplyMessage(self):
         return "Start to supply ships"
 
     def existsDamagedShipsWarning(self, damagedShips):
         verb = "is" if len(damagedShips) == 1 else "are"
-        return f"Ship {str(list(damagedShips))[1:-1]} {verb} damaged, quick repair it"
+        return "Ship " + str(list(damagedShips))[1:-1] + str(verb) + " damaged, quick repair it"
 
     def stage74bExistsSubmarineMessage(self):
         return "There are enemy submarines at 7-4b, retreat"
@@ -44,7 +44,7 @@ class Messages:
         return "There are no damaged ships, ready to start battle"
 
     def invalidTransitionOrBehavior(self, type):
-        return f"Trying to {str(type)}, but not in correct screen"
+        return "Trying to " + str(type) + ", but not in correct screen"
 
     def existsCompletedExpiditionMessage(self):
         return "There exists one or more completed expidition, collecting the resource"
@@ -71,4 +71,4 @@ class Messages:
         return "Retreat since the flag ship is seriously damaged"
 
     def selectFormation(self, formation):
-        return f"Select {str(formation)[12:]} formation"
+        return "Select" + str(formation)[12:] + " formation"

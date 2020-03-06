@@ -9,6 +9,7 @@ from pilot.popStateHandler import PopStateHandler
 from util.messages import Messages
 from util.logger import log, Types
 from error.unexpectedGameCloseError import UnexpectedGameCloseError
+from error.directFromUnknownStateError import DirectFromUnknownStateError
 
 class StateController:
     def __init__(self):
@@ -86,6 +87,8 @@ class StateController:
         if self.currentState.key == targetState:
             return
         path = self.navigation.navigate(self.currentState.key, targetState)
+        if not path:
+            raise DirectFromUnknownStateError
         for transitionKey, nextStateKey in path:
             self.transit(transitionKey)
             if self.currentState.key != nextStateKey:

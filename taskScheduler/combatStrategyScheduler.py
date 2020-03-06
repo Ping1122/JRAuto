@@ -4,7 +4,7 @@ from datetime import time
 
 class CombatStrategyScheduler(DailyRoutineScheduler):
     def __init__(self, taskQueue):
-        DailyRoutineScheduler.__init__(self, taskQueue)
+        super(CombatStrategyScheduler, self).__init__(taskQueue)
         self.refreshTime = [
             time(hour = 0, minute = 5),
         ]

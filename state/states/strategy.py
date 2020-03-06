@@ -5,17 +5,20 @@ from state.transitions import Transitions
 
 class Strategy(State):
 	signature = {
-		(2054, 1353) : ((155, 134, 30, 255), ),
-		(140, 1236) : ((14, 23, 34, 255), ),
-		(2053, 161) : ((13, 23, 38, 255), ),
-		(148, 213) : ((11, 14, 26, 255), ),
+		(569, 482) : ((156, 134, 33), ),
+		(641, 485) : ((16, 20, 16), ),
+		(45, 389) : ((24, 32, 41), ),
+		(53, 484) : ((8, 16, 33), ),
 	}
 	def __init__(self):
-		super().__init__()
+		super(Strategy, self).__init__()
 		self.key = StateKey.strategy
 		self.transition.update({
-			Transitions.backToCombatPreparation : ({StateKey.combatPreparationStatistic, }, (1598, 1194, 8)),
+			Transitions.backToCombatPreparation : (
+				{StateKey.combatPreparationStatistic, }, 
+				(435, 459, 4)
+			),
 		})
 		self.behavior.update({
-			Behaviors.switchStrategy : (1987, 744, 8),
+			Behaviors.switchStrategy : (540, 282, 2),
 		})

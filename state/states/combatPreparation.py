@@ -6,139 +6,148 @@ from state.transitions import Transitions
 
 class CombatPreparation(State):
 	signature = {
-		(247, 47) : ((255, 255, 255, 255),),
-		(437, 64) : ((255, 255, 255, 255),),
-		(2080, 1335) : ((255, 218, 48, 255),),
-		(2343, 1347) : ((97, 87, 38, 255),),
+		(118, 49) : ((107, 109, 115), ),
+		(102, 49) : ((140, 142, 148), ),
+		(91, 48) : ((41, 44, 57), ),
+		(66, 56) : ((41, 40, 57), ),
 	}
 
 	def __init__(self):
-		super().__init__()
+		super(CombatPreparation, self).__init__()
 		self.sign.update({
 			Signals.ship1Intact : {
-				(138, 856) : ((64, 162, 110, 255), ),
-				(149, 854) : ((79, 169, 121, 255), ),
+				(37, 311) : ((66, 162, 107), ),
+				(36, 310) : ((82, 170, 123), ),
 			},
 			Signals.ship2Intact : {
-				(434, 854) : ((63, 161, 108, 255), ),
-				(445, 854) : ((85, 172, 126, 255), ),
+				(118, 310) : ((82, 170, 123), ),
+				(120, 310) : ((66, 162, 107), ),
 			},
 			Signals.ship3Intact : {
-				(734, 855) : ((63, 161, 108, 255), ),
-				(742, 854) : ((84, 171, 124, 255), ),
+				(200, 310) : ((82, 170, 123), ),
+				(201, 310) : ((66, 162, 107), ),
 			},
 			Signals.ship4Intact : {
-				(1025, 850) : ((86, 172, 126, 255), ),
-				(1031, 854) : ((63, 161, 108, 255), ),
+				(200, 310) : ((82, 170, 123), ),
+				(201, 310) : ((66, 162, 107), ),
 			},
 			Signals.ship5Intact : {
-				(1325, 850) : ((85, 172, 125, 255), ),
-				(1329, 854) : ((63, 161, 108, 255), ),
+				(362, 310) : ((82, 170, 123), ),
+				(363, 311) : ((66, 162, 107), ),
 			},
 			Signals.ship6Intact : {
-				(1625, 854) : ((64, 161, 109, 255), ),
-				(1638, 852) : ((86, 172, 126, 255), ),
+				(443, 310) : ((82, 170, 123), ),
+				(445, 310) : ((66, 162, 107), ),
 			},
 			Signals.slot1Empty : {
-				(261, 649) : ((188, 191, 194, 255), ),
-				(262, 719) : ((47, 86, 117, 255), ),
-			},
-			Signals.ship1Repairing : {
-				(215, 597) : ((251, 241, 182, 255), ),
-				(270, 601) : ((251, 241, 182, 255), ),
-			},
-			Signals.ship2Repairing : {
-				(512, 597) : ((251, 241, 182, 255), ),
-				(568, 600) : ((251, 241, 182, 255), ),
-			},
-			Signals.ship3Repairing : {
-				(812, 596) : ((251, 239, 181, 255), ),
-				(867, 600) : ((251, 241, 182, 255), ),
-			},
-			Signals.ship4Repairing : {
-				(1108, 598) : ((251, 241, 182, 255), ),
-				(1163, 601) : ((251, 241, 182, 255), ),
-			},
-			Signals.ship5Repairing : {
-				(1406, 597) : ((251, 241, 182, 255), ),
-				(1462, 601) : ((251, 241, 182, 255), ),
-			},
-			Signals.ship6Repairing : {
-				(1704, 597) : ((251, 241, 182, 255), ),
-				(1760, 601) : ((251, 241, 182, 255), ),
+				(71, 253) : ((189, 190, 198), ),
+				(72, 297) : ((74, 117, 148), ),
 			},
 			Signals.slot2Empty: {
-				(560, 672) : ((188, 193, 194, 255), ),
-				(562, 721) : ((50, 90, 122, 255), ),
+				(154, 254) : ((189, 190, 198), ),
+				(153, 296) : ((82, 121, 148), ),
 			},
 			Signals.slot3Empty : {
-				(895, 648) : ((188, 192, 194, 255), ),
-				(860, 729) : ((49, 93, 123, 255), ),
+				(236, 253) : ((189, 190, 198), ),
+				(236, 296) : ((82, 121, 156), ),
 			},
 			Signals.slot4Empty: {
-				(1159, 644) : ((188, 192, 195, 255), (235, 240, 244, 255),),
-				(1157, 722) : ((49, 91, 124, 255), (61, 114, 155, 255),),
+				(316, 253) : ((239, 239, 247), (189, 190, 198)),
+				(315, 296) : ((99, 154, 198), (82, 121, 156), ),
 			},
 			Signals.slot5Empty : {
-				(1459, 647) : ((188, 192, 195, 255), (235, 240, 244, 255),),
-				(1459, 716) : ((49, 91, 123, 255), (61, 113, 153, 255), ),
+				(398, 253) : ((239, 239, 247), (189, 190, 198)),
+				(397, 296) : ((90, 150, 189), (74, 121, 148)),
 			},
 			Signals.slot6Empty: {
-				(1758, 646) : ((188, 192, 194, 255), (235, 240, 243, 255),),
-				(1757, 732) : ((50, 94, 125, 255), (62, 117, 156, 255),)
+				(479, 253) : ((239, 239, 247), (189, 190, 198)),
+				(479, 296) : ((99, 154, 198), (82, 121, 156)),
+			},
+			Signals.ship1Repairing : {
+				(75, 238) : ((255, 239, 181), ),
+				(85, 240) : ((255, 239, 181), ),
+			},
+			Signals.ship2Repairing : {
+				(157, 238) : ((247, 227, 173), ),
+				(166, 240) : ((247, 239, 181), ),
+			},
+			Signals.ship3Repairing : {
+				(239, 238) : ((247, 227, 173), ),
+				(248, 240) : ((247, 239, 181), ),
+			},
+			Signals.ship4Repairing : {
+				(320, 238) : ((247, 223, 173), ),
+				(329, 240) : ((247, 239, 181), ),
+			},
+			Signals.ship5Repairing : {
+				(401, 238) : ((255, 239, 181), ),
+				(411, 240) : ((255, 243, 181), ),
+			},
+			Signals.ship6Repairing : {
+				(483, 238) : ((247, 223, 165), ),
+				(492, 240) : ((247, 239, 181), ),
 			},
 			Signals.ship1NeedSupply : {
-				(379, 996) : ((160, 160, 160, 255), ),
+				(102, 334) : ((156, 162, 156), ),
 			},
 			Signals.ship2NeedSupply : {
-				(975, 993) : ((160, 160, 160, 255), ),
+				(186, 334) : ((156, 162, 156), ),
 			},
 			Signals.ship3NeedSupply : {
-				(1274, 997) : ((160, 160, 160, 255), ),
+				(267, 334) : ((156, 162, 156), ),
 			},
 			Signals.ship4NeedSupply : {
-				(1571, 996) : ((160, 160, 160, 255), ),
+				(348, 336) : ((156, 162, 156), ),
 			},
 			Signals.ship5NeedSupply : {
-				(1572, 944) : ((160, 160, 160, 255), ),
+				(429, 335) : ((156, 162, 156), ),
 			},
 			Signals.ship6NeedSupply : {
-				(1867, 943) : ((160, 160, 160, 255), ),
+				(512, 334) : ((156, 162, 156), ),
 			},
 			Signals.squardon4Selected: {
-				(1342, 254) : ((14, 131, 232, 255), ),
+				(321, 142) : ((16, 134, 231), ),
 			},
 			Signals.squardon3Selected: {
-				(863, 232) : ((15, 132, 229, 255), ),
+				(237, 142) : ((16, 134, 231), ),
 			},
 			Signals.squardon2Selected: {
-				(513, 234) : ((15, 132, 229, 255), )
+				(150, 142) : ((16, 134, 231), ),
 			},
 			Signals.squardon1Selected: {
-				(351, 234) : ((15, 132, 229, 255), )
+				(63, 142) : ((16, 134, 231), ),
 			},
 		})
 		self.transition.update({
-			Transitions.selectStatistic : ({StateKey.combatPreparationStatistic, }, (447, 1133, 8)),
-			Transitions.selectQuickSupply : ({StateKey.combatPreparationQuickSupply, }, (789, 1133, 8)),
-			Transitions.selectQuickRepair : ({StateKey.combatPreparationQuickRepair, }, (1138, 1133, 8)),
+			Transitions.selectStatistic : (
+				{StateKey.combatPreparationStatistic, }, 
+				(123, 387, 2)
+			),
+			Transitions.selectQuickSupply : (
+				{StateKey.combatPreparationQuickSupply, }, 
+				(217, 386, 2)
+			),
+			Transitions.selectQuickRepair : (
+				{StateKey.combatPreparationQuickRepair, }, 
+				(310, 387, 2)
+			),
 			Transitions.backAtCombatPreparation : ({
 				StateKey.sailingOffCombat,
 				StateKey.sailingOffCampaign,
 				StateKey.sailingOffExercise
-			}, (77, 74, 8)),
+			}, (20, 58, 2)),
 			Transitions.startBattleAtCombatPreparation : ({
 				StateKey.enemyInfo,
 				StateKey.selectFormation,
 				StateKey.chaseOrGiveUp,
 				StateKey.battleResult,
-			}, (2234, 1317, 8)),
+			}, (611, 480, 3)),
 		})
 		self.behavior.update({
-			Behaviors.selectSquardon1 : (272, 231, 8),
-			Behaviors.selectSquardon2 : (589, 231, 8),
-			Behaviors.selectSquardon3 : (906, 231, 8),
-			Behaviors.selectSquardon4 : (1220, 231, 8),
+			Behaviors.selectSquardon1 : (76, 142, 2),
+			Behaviors.selectSquardon2 : (161, 142, 2),
+			Behaviors.selectSquardon3 : (248, 142, 2),
+			Behaviors.selectSquardon4 : (333, 142, 2),
 		})
 
 	def getDamagedShips(self):

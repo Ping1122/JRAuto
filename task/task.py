@@ -1,4 +1,4 @@
-class Task:
+class Task(object):
     def __init__(self):
         self.name = ""
         self.isHead = False
@@ -6,4 +6,4 @@ class Task:
 
     def __str__(self):
         head = "Head" if self.isHead else ""
-        return f"{head} {self.name}"
+        return head + str(self.name)
